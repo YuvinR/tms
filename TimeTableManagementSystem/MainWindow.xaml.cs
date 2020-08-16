@@ -57,8 +57,37 @@ namespace TimeTableManagementSystem
                     break;
                 case 1:
                     GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Working_Days_and_Hours());
+                    break;
+                case 2:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Lecturer());
+                    break;
+                case 3:
+                    GridPrincipal.Children.Clear();
                     GridPrincipal.Children.Add(new Student());
                     break;
+                case 4:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Subject());
+                    break;
+                case 5:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Location());
+                    break;
+                case 6:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Session());
+                    break;
+                case 7:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new De_Allocation());
+                    break;
+                case 8:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Timetable());
+                    break;
+
                 default:
                     break;
             }
