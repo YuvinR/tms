@@ -21,5 +21,27 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         {
             InitializeComponent();
         }
+
+        private void getStartingTime(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem comboBoxItem = (ComboBoxItem) startTime.SelectedItem;
+            MessageBox.Show(comboBoxItem.Content.ToString());
+        }
+
+        private void getEndingTime(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem comboBoxItem = (ComboBoxItem) endTime.SelectedItem;
+            MessageBox.Show(comboBoxItem.Content.ToString());
+        }
+
+        private void addTimeSlots(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateTimeSlots(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
