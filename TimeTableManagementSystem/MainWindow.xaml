@@ -45,7 +45,7 @@
                 <ColumnDefinition Width="238*"/>
                 <ColumnDefinition Width="149*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="GridPrincipal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="387,0,0,0"/>
+            <Grid x:Name="GridPrincipal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="81,0,0,0" Grid.ColumnSpan="2" Height="625" Width="823"/>
         </Grid>
 
         <Grid Width="280" HorizontalAlignment="Left" Background="#424242">
