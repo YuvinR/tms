@@ -5,23 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours"
         mc:Ignorable="d"
-        Title="ManageWorkignDaysAndHours" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="ManageWorkignDaysAndHours" Height="483" Width="972" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="263" Margin="464,83,0,0" Stroke="Black" VerticalAlignment="Top" Width="473"/>
+
+        <Rectangle HorizontalAlignment="Left" Height="133" Margin="230,171,0,0" Stroke="Black" VerticalAlignment="Top" Width="195"/>
+
         <Label x:Name="label" Content="Manage Time Slots" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="265" FontWeight="Bold" FontSize="28" Margin="10,10,0,0"/>
         <Label x:Name="label1" Content="Type" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="120" FontSize="17" FontWeight="Bold" Margin="10,83,0,0"/>
         <Label x:Name="label1_Copy" Content="No of Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,122,0,0"/>
         <Label x:Name="label1_Copy1" Content="Select Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,161,0,0"/>
         <Label x:Name="label1_Copy2" Content="Working Time Per Day" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="10,318,0,0"/>
-        <CheckBox x:Name="checkBox" Content="Weekday" HorizontalAlignment="Left" Margin="230,90,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox1" Content="Weekend" HorizontalAlignment="Left" Margin="343,90,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="230,128,0,0" VerticalAlignment="Top" Width="195"/>
-        <CheckBox x:Name="checkBox2" Content="Monday" HorizontalAlignment="Left" Margin="234,180,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox3" Content="Tuesday" HorizontalAlignment="Left" Margin="234,204,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox4" Content="Wednesday" HorizontalAlignment="Left" Margin="234,228,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox5" Content="Thursday" HorizontalAlignment="Left" Margin="234,252,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox6" Content="Friday" HorizontalAlignment="Left" Margin="234,276,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox7" Content="Saturday" HorizontalAlignment="Left" Margin="347,180,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <CheckBox x:Name="checkBox8" Content="Sunday" HorizontalAlignment="Left" Margin="347,204,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <ComboBox x:Name="cmbWorkingDayNumber" HorizontalAlignment="Left" Margin="230,128,0,0" VerticalAlignment="Top" Width="195"/>
+        <CheckBox x:Name="cmbMonday" Content="Monday" HorizontalAlignment="Left" Margin="234,180,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbTuesday" Content="Tuesday" HorizontalAlignment="Left" Margin="234,204,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbWednesday" Content="Wednesday" HorizontalAlignment="Left" Margin="234,228,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbThursday" Content="Thursday" HorizontalAlignment="Left" Margin="234,252,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbFriday" Content="Friday" HorizontalAlignment="Left" Margin="234,276,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbSaturday" Content="Saturday" HorizontalAlignment="Left" Margin="343,180,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <CheckBox x:Name="cmbSunday" Content="Sunday" HorizontalAlignment="Left" Margin="343,204,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <RadioButton x:Name="radioWeekday" Content="Weekday" HorizontalAlignment="Left" Margin="234,91,0,0" VerticalAlignment="Top" GroupName="weekdays" FontSize="15"/>
+        <RadioButton x:Name="radioWeekend" Content="Weekend" HorizontalAlignment="Left" Margin="344,91,0,0" VerticalAlignment="Top" GroupName="weekdays" FontSize="15"/>
+        <ComboBox x:Name="cmbMin" HorizontalAlignment="Left" Margin="379,324,0,0" VerticalAlignment="Top" Width="46"/>
+        <ComboBox x:Name="cmbHours" HorizontalAlignment="Left" Margin="273,324,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label x:Name="label2" Content="Hours" HorizontalAlignment="Left" Margin="230,322,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy" Content="Min" HorizontalAlignment="Left" Margin="339,322,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy3" Content="Starting Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="10,357,0,0"/>
+        <Label x:Name="label1_Copy4" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="10,396,0,0"/>
+        <ComboBox x:Name="cmbStartTime" HorizontalAlignment="Left" Margin="236,362,0,0" VerticalAlignment="Top" Width="189"/>
+        <ComboBox x:Name="cmbEndTime" HorizontalAlignment="Left" Margin="236,400,0,0" VerticalAlignment="Top" Width="189"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="852,317,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="765,317,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="464,357,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF4EE607"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="639,356,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF39ECD3"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="829,356,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="27" Background="#FFAA2DF1"/>
 
     </Grid>
 </Window>
