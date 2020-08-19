@@ -43,7 +43,7 @@
                   CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" RowHeight="30">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Subject Code" Binding="{Binding Subject_Code}" Width="88" />
-                <DataGridTextColumn Header="Subject Name" Binding="{Binding Subject_Name}" Width="100"/>
+                <DataGridTextColumn Header="Subject Name" Binding="{Binding Subject_Name}" Width="150"/>
                 <DataGridTextColumn Header="Offere Year" Binding="{Binding Offered_Year}" Width="95.8" />
                 <DataGridTextColumn Header="Offered Semester" Binding="{Binding Offered_Semester}" Width="110" />
                 <DataGridTextColumn Header="Lecture Hours" Binding="{Binding Lecture_Hours}" Width="95.8"/>
@@ -51,7 +51,7 @@
                 <DataGridTextColumn Header="Lab Hours" Binding="{Binding Lab_Hours}" Width="90"/>
                 <DataGridTextColumn Header="Lecture Hours" Binding="{Binding Evaluation_Hours}" Width="95.8" />
 
-                <DataGridTemplateColumn Header="Edit" Width="90">
+                <DataGridTemplateColumn Header="Edit" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnEdit" Click="BtnEdit_Click" >
@@ -63,7 +63,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Delete" Width="95">
+                <DataGridTemplateColumn Header="Delete" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnDelete" Click="BtnDelete_Click">

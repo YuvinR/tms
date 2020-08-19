@@ -22,7 +22,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
     {
         private SQLiteConnection connection = db_config.connect();
 
-        private int empID;
+        private string empID;
         private string empName;
         private string faculty;
         private string department;
@@ -90,16 +90,18 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
 
         private void BtnAddLecturer_Click(object sender, RoutedEventArgs e)
         {
-            connection.Open();
+            
 
-            if (String.IsNullOrEmpty(EmpIdTxt.Text) && String.IsNullOrEmpty(EmpNameTxt.Text) && String.IsNullOrEmpty(FacultyCombo.Text) && String.IsNullOrEmpty(EmpDepTxt.Text)
-                && String.IsNullOrEmpty(CenterCombo.Text) && String.IsNullOrEmpty(BuildingCombo.Text) && String.IsNullOrEmpty(LevelCombo.Text) && String.IsNullOrEmpty(RankTxt.Text))
+            if (String.IsNullOrEmpty(EmpIdTxt.Text) || String.IsNullOrEmpty(EmpNameTxt.Text) || String.IsNullOrEmpty(FacultyCombo.Text) || String.IsNullOrEmpty(EmpDepTxt.Text)
+                && String.IsNullOrEmpty(CenterCombo.Text) || String.IsNullOrEmpty(BuildingCombo.Text) || String.IsNullOrEmpty(LevelCombo.Text) || String.IsNullOrEmpty(RankTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }
             else
             {
-                empID = int.Parse(EmpIdTxt.Text);
+                connection.Open();
+
+                empID = EmpIdTxt.Text;
                 empName = EmpNameTxt.Text;
                 faculty = FacultyCombo.Text;
                 department = EmpDepTxt.Text;

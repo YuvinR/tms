@@ -22,7 +22,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
     {
         private SQLiteConnection connection = db_config.connect();
 
-        private int empID;
+        private string empID;
         private string empName;
         private string faculty;
         private string department;
@@ -50,7 +50,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             DataRowView row = LecDataGrid.SelectedItem as DataRowView;
-            empID = int.Parse(row.Row["EmployeeID"].ToString());
+            empID = row.Row["EmployeeID"].ToString();
 
             connection.Open();
             try
@@ -227,54 +227,64 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            empID = int.Parse(UpdEmpIdTxt.Text);
-            empName = UpdEmpNameTxt.Text;
-            faculty = UpdFacultyCombo.Text;
-            department = UpdEmpDepTxt.Text;
-            center = UpdCenterCombo.Text;
-            building = UpdBuildingCombo.Text;
-            level = UpdLevelCombo.Text;
-            rank = double.Parse(UpdRankTxt.Text);
-
-            connection.Open();
-
-            try
+           
+            if (String.IsNullOrEmpty(UpdEmpIdTxt.Text) || String.IsNullOrEmpty(UpdEmpNameTxt.Text) || String.IsNullOrEmpty(UpdFacultyCombo.Text) || String.IsNullOrEmpty(UpdEmpDepTxt.Text)
+                && String.IsNullOrEmpty(UpdCenterCombo.Text) || String.IsNullOrEmpty(UpdBuildingCombo.Text) || String.IsNullOrEmpty(UpdLevelCombo.Text) || String.IsNullOrEmpty(UpdRankTxt.Text))
             {
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Update Lecturer " +
-                                      "Set Name = @Name, Faculty = @Faculty, Department = @Department, Center = @Center, Building = @Building, Level = @Level, Rank = @Rank " +
-                                      "Where EmployeeID = @EmployeeID ";
-                
-                command.Parameters.AddWithValue("@Name", empName);
-                command.Parameters.AddWithValue("@Faculty", faculty);
-                command.Parameters.AddWithValue("@Department", department);
-                command.Parameters.AddWithValue("@Center", center);
-                command.Parameters.AddWithValue("@Building", building);
-                command.Parameters.AddWithValue("@Level", level);
-                command.Parameters.AddWithValue("@Rank", rank);
-                command.Parameters.AddWithValue("@EmployeeID", empID);
+                MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
+            }
+            else
+            {
+                connection.Open();
+                empID = UpdEmpIdTxt.Text;
+                empName = UpdEmpNameTxt.Text;
+                faculty = UpdFacultyCombo.Text;
+                department = UpdEmpDepTxt.Text;
+                center = UpdCenterCombo.Text;
+                building = UpdBuildingCombo.Text;
+                level = UpdLevelCombo.Text;
+                rank = double.Parse(UpdRankTxt.Text);
 
-                int rows = command.ExecuteNonQuery();
-
-                if (rows > 0)
+                try
                 {
-                    MessageBox.Show($"Employee {empID} Has been Updated!");
-                }
-                else
-                {
-                    MessageBox.Show("Error Occurd");
-                }
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "Update Lecturer " +
+                                          "Set Name = @Name, Faculty = @Faculty, Department = @Department, Center = @Center, Building = @Building, Level = @Level, Rank = @Rank " +
+                                          "Where EmployeeID = @EmployeeID ";
 
+                    command.Parameters.AddWithValue("@Name", empName);
+                    command.Parameters.AddWithValue("@Faculty", faculty);
+                    command.Parameters.AddWithValue("@Department", department);
+                    command.Parameters.AddWithValue("@Center", center);
+                    command.Parameters.AddWithValue("@Building", building);
+                    command.Parameters.AddWithValue("@Level", level);
+                    command.Parameters.AddWithValue("@Rank", rank);
+                    command.Parameters.AddWithValue("@EmployeeID", empID);
+
+                    int rows = command.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show($"Employee {empID} Has been Updated!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occurd");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            loadDataGrid();
+            clearFields();
         }
     }
 }
