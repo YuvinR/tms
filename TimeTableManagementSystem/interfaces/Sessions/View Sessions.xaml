@@ -1,0 +1,35 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.Sessions.View_Sessions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Sessions"
+        mc:Ignorable="d"
+        Title="View_Sessions" Height="600" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="250" Height="45" >
+            <TextBlock TextDecorations="Underline" Width="220" FontWeight="Medium">Display Sessions</TextBlock>
+        </Label>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="422,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+                " Width="152" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <DataGrid Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"/>
+        <Label Content="Lecturers"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="55,45,0,0"/>
+        <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="35,46,0,0" Grid.Column="1"/>
+        <Label Content="Tag"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="35,117,0,0" Grid.Column="1"/>
+        <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="55,117,0,0"/>
+        <ComboBox HorizontalAlignment="Left" Margin="250,46,0,460" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="230,47,0,459" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
+        <ComboBox HorizontalAlignment="Left" Margin="250,118,0,388" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="230,119,0,387" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
+
+    </Grid>
+</Window>

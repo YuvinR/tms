@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeTableManagementSystem.interfaces.Lecturer;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -21,6 +22,18 @@ namespace TimeTableManagementSystem.Pages
         public Lecturer()
         {
             InitializeComponent();
+        }
+
+        private void BtnViewLec_Click(object sender, RoutedEventArgs e)
+        {
+            View_Lecturer view_Lecturer = new View_Lecturer();
+            view_Lecturer.Show();
+        }
+
+        private void BtnAddLec_Click(object sender, RoutedEventArgs e)
+        {
+            Add_Lecturer add_Lecturer = new Add_Lecturer();
+            add_Lecturer.Show();
         }
     }
 }

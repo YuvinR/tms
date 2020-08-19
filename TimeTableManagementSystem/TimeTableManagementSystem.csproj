@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="interfaces\ManageTimeSlots\delete.png" />
-    <None Remove="interfaces\ManageTimeSlots\edit.png" />
-    <None Remove="interfaces\ManageTimeSlots\time.jpg" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\edit.png" />
+    <None Remove="Images\LecturerPng.png" />
+    <None Remove="Images\SessionPng.png" />
+    <None Remove="Images\SubjectPng.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,9 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="interfaces\ManageTimeSlots\delete.png" />
-    <Resource Include="interfaces\ManageTimeSlots\edit.png" />
-    <Resource Include="interfaces\ManageTimeSlots\time.jpg" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\LecturerPng.png" />
+    <Resource Include="Images\SessionPng.png" />
+    <Resource Include="Images\SubjectPng.jpg" />
   </ItemGroup>
 
 </Project>

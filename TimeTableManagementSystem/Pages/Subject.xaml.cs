@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeTableManagementSystem.interfaces.Subject;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -22,5 +23,19 @@ namespace TimeTableManagementSystem.Pages
         {
             InitializeComponent();
         }
+
+        private void BtnViewSub_Click(object sender, RoutedEventArgs e)
+        {
+            View_Subjects view = new View_Subjects();
+            view.Show();
+        }
+
+        private void BtnAddSub_Click(object sender, RoutedEventArgs e)
+        {
+            Add_Subjects add = new Add_Subjects();
+            add.Show();
+        }
+
+       
     }
 }

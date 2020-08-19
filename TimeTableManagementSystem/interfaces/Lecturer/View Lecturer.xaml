@@ -5,8 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Lecturer"
         mc:Ignorable="d"
-        Title="View_Lecturer" Height="450" Width="800">
+        Title="View_Lecturer" Height="650" Width="1000" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFA0A0A0" Offset="1"/>
+            <GradientStop Color="White" Offset="0"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="283*"/>
+            <ColumnDefinition Width="251*"/>
+            <ColumnDefinition Width="249*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="500" Height="45" Grid.ColumnSpan="3" >
+            <TextBlock TextDecorations="Underline" Width="500" FontWeight="Medium">View, Update and Delete Lecturers</TextBlock>
+        </Label>
+        <!--Search-->
+        <TextBox  x:Name ="SearchTxt"  HorizontalAlignment="Left" Margin="213,7,0,0" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="3" Height="31" FontSize="18" TextChanged="SearchTxt_TextChanged"/>
+        <Button x:Name="BtnSearch" Content="Search" Background="#4DB5AB" Foreground="White" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="130" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2" Margin="139,7,0,0" Click="BtnSearch_Click"/>
+
+        <!--DataGrid-->
+        <DataGrid x:Name="LecDataGrid" Grid.Row="2" Margin="20,3,22,20" Grid.ColumnSpan="4" Grid.RowSpan="2"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                  CanUserReorderColumns="False" CanUserResizeColumns="False" RowHeight="30">
+            <DataGrid.Columns >
+                <DataGridTextColumn  Header="Employee ID" Binding="{Binding EmployeeID}" Width="95.8" />
+                <DataGridTextColumn Header="Employee Name" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="Faculty" Width="110" Binding="{Binding Faculty}"  />
+                <DataGridTextColumn Header="Department" Width="99" Binding="{Binding Department}"  />
+                <DataGridTextColumn Header="Center" Width="95.8" Binding="{Binding Center}" />
+                <DataGridTextColumn Header="Building" Width="95.8" Binding="{Binding Building}" />
+                <DataGridTextColumn Header="Level" Width="93.6" Binding="{Binding Level}" />
+                <DataGridTextColumn Header="Rank" Width="90" Binding="{Binding Rank}"  />
+
+                <DataGridTemplateColumn Header="Edit" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnEdit" Click="BtnEdit_Click" >
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/edit.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Delete" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnDelete" Click="BtnDelete_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/delete.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--Labels-->
+        <Label Content="Employee ID"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Margin="36,0,0,0"/>
+        <Label Content="Name"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Margin="36,0,0,0"/>
+        <Label Content="Faculty"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="36,3,0,0"/>
+        <Label Content="Department"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Margin="36,0,0,0"/>
+        <Label Content="Center"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.Column="2" Margin="28,0,0,0"/>
+        <Label Content="Building"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.Column="2" Margin="28,0,0,0"/>
+        <Label Content="Level"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.Column="2" Margin="28,0,0,0"/>
+        <Label Content="Rank"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Margin="27,0,0,0" Grid.Column="2"/>
+
+        <!--Texts-->
+        <TextBox x:Name="UpdEmpIdTxt" HorizontalAlignment="Left" Margin="22,5,0,5" Grid.Row="4"  TextWrapping="Wrap" Width="223" Height="33" FontSize="18" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="UpdEmpNameTxt" HorizontalAlignment="Left" Margin="22,5,0,5" Grid.Row="5"  TextWrapping="Wrap" Width="223" Height="33" FontSize="18" Grid.Column="1"/>
+        <TextBox x:Name="UpdEmpDepTxt" HorizontalAlignment="Left" Margin="22,5,0,5" Grid.Row="7"  TextWrapping="Wrap" Width="223" Height="33" FontSize="18" Grid.Column="1"/>
+        <TextBox x:Name="UpdRankTxt" HorizontalAlignment="Left" Margin="238,5,0,5" Grid.Row="7"  TextWrapping="Wrap" Width="218" Height="33" FontSize="18" Grid.Column="2" IsReadOnly="True" Grid.ColumnSpan="2"/>
+
+        <!--Button-->
+        <Button x:Name="BtnSave" Content="Save" Background="#2296F3" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="75,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="40" Width="150" FontSize="20" FontWeight="Bold" Click="BtnSave_Click"/>
+        <Button x:Name="BtnClear" Content="Clear" Background="#F54337" Foreground="White" Grid.Column="2" HorizontalAlignment="Left" Margin="46,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="40" Width="150" FontSize="20" FontWeight="Bold" Click="BtnClear_Click"/>
+
+        <!--Combo box-->
+        <ComboBox x:Name="UpdFacultyCombo" Grid.Column="1" HorizontalAlignment="Left" Margin="22,5,0,5"  Grid.Row="6" Width="223" Height="33" FontSize="18">
+            <ComboBoxItem x:Name="UpdFacultyItem1" Content="Computing"/>
+            <ComboBoxItem x:Name="UpdFacultyItem2" Content="Engineering"/>
+            <ComboBoxItem x:Name="UpdFacultyItem3" Content="Business"/>
+            <ComboBoxItem x:Name="UpdFacultyItem4" Content="Humanities &amp; Sciences"/>
+        </ComboBox>
+        <ComboBox x:Name="UpdCenterCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="238,5,0,5"  Grid.Row="4" Width="218" Height="33" FontSize="18" Grid.ColumnSpan="2">
+            <ComboBoxItem x:Name="UpdCenterItem1" Content="Malabe"/>
+            <ComboBoxItem x:Name="UpdCenterItem2" Content="Metro"/>
+            <ComboBoxItem x:Name="UpdCenterItem3" Content="Matara"/>
+            <ComboBoxItem x:Name="UpdCenterItem4" Content="Kandy"/>
+            <ComboBoxItem x:Name="UpdCenterItem5" Content="Kurunagala"/>
+            <ComboBoxItem x:Name="UpdCenterItem6" Content="Jaffna"/>
+        </ComboBox>
+        <ComboBox x:Name="UpdBuildingCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="238,5,0,5"  Grid.Row="5" Width="218" Height="33" FontSize="18" Grid.ColumnSpan="2"/>
+        <ComboBox  x:Name="UpdLevelCombo" Grid.Column="2" HorizontalAlignment="Left" Margin="238,5,0,5"  Grid.Row="6" Width="218" Height="33" FontSize="18" DropDownClosed="UpdLevelCombo_DropDownClosed" Grid.ColumnSpan="2">
+            <ComboBoxItem x:Name="UpdLevelItem1" Content="Professor"/>
+            <ComboBoxItem x:Name="UpdLevelItem2" Content="Assistant Professor"/>
+            <ComboBoxItem x:Name="UpdLevelItem3" Content="Senior Lecturer(HG)"/>
+            <ComboBoxItem x:Name="UpdLevelItem4" Content="Senior Lecturer"/>
+            <ComboBoxItem x:Name="UpdLevelItem5" Content="Lecturer"/>
+            <ComboBoxItem x:Name="UpdLevelItem6" Content="Assistant Lecturer"/>
+            <ComboBoxItem x:Name="UpdLevelItem7" Content="Instructors"/>
+        </ComboBox>
     </Grid>
 </Window>

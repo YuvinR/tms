@@ -25,11 +25,19 @@
         </materialDesign:TransitioningContent>
 
         <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
-            <Button Grid.Column="1"  x:Name="BtnViewLec" Content="View Subjects" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117"/>
+            <Button Grid.Column="1"  x:Name="BtnViewSub" Content="   View&#xa;Subjects" FontWeight="Medium" FontSize ="25" Height="80" Width="200"  Click="BtnViewSub_Click" Margin="100,6,100,99"/>
         </materialDesign:TransitioningContent>
 
         <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Button Grid.Column="1" x:Name="BtnAddLec" Content="Add Subjects" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,47,50,88" />
+            <Button Grid.Column="1" x:Name="BtnAddSub" Content="   Add&#xa;Subjects" FontWeight="Medium"  FontSize ="25" Height="80" Width="200"  Click="BtnAddSub_Click" Margin="100,28,100,77" />
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"  Height="266" Grid.Column="0"  Grid.RowSpan="2" Grid.Row="1"  Width="286"  >
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="400"  UriSource="/Images/SubjectPng.jpg"/>
+                </Image.Source>
+            </Image>
         </materialDesign:TransitioningContent>
 
     </Grid>
