@@ -42,14 +42,14 @@
         <DataGrid x:Name="LecDataGrid" Grid.Row="2" Margin="20,3,22,20" Grid.ColumnSpan="4" Grid.RowSpan="2"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                   CanUserReorderColumns="False" CanUserResizeColumns="False" RowHeight="30">
             <DataGrid.Columns >
-                <DataGridTextColumn  Header="Employee ID" Binding="{Binding EmployeeID}" Width="95.8" />
+                <DataGridTextColumn  Header="Employee ID" Binding="{Binding EmployeeID}" Width="90" />
                 <DataGridTextColumn Header="Employee Name" Binding="{Binding Name}" Width="150"/>
                 <DataGridTextColumn Header="Faculty" Width="110" Binding="{Binding Faculty}"  />
                 <DataGridTextColumn Header="Department" Width="99" Binding="{Binding Department}"  />
                 <DataGridTextColumn Header="Center" Width="95.8" Binding="{Binding Center}" />
                 <DataGridTextColumn Header="Building" Width="95.8" Binding="{Binding Building}" />
-                <DataGridTextColumn Header="Level" Width="93.6" Binding="{Binding Level}" />
-                <DataGridTextColumn Header="Rank" Width="90" Binding="{Binding Rank}"  />
+                <DataGridTextColumn Header="Level" Width="101.4" Binding="{Binding Level}" />
+                <DataGridTextColumn Header="Rank" Width="88" Binding="{Binding Rank}"  />
 
                 <DataGridTemplateColumn Header="Edit" Width="60">
                     <DataGridTemplateColumn.CellTemplate>

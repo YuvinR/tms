@@ -8,10 +8,57 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label>
-                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Working Days &amp; Hours</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="185"/>
+            <RowDefinition Height="185"/>
+        </Grid.RowDefinitions>
+        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" HorizontalAlignment="Right" Width="550">
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Width="350"  TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Working Days &amp; Hours</TextBlock>
             </Label>
         </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Image  Height="266" Grid.Column="0"  Grid.RowSpan="2" Grid.Row="1"  Width="286" Margin="7,60,7,0" VerticalAlignment="Top"  >
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="400"  UriSource="/Images/clock.jpg"/>
+                </Image.Source>
+            </Image>
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Height="162" Background="#EFEDDE" Margin="0,38,0,0" VerticalAlignment="Top">
+                <Button Content="Lecture Room" Height="32" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+                <Button Content="Lecturer" Height="32" Width="115" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,60,0,0"/>
+                <Button Content="Student" Height="32" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,110,0,0"/>
+            </Grid>
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="2" Grid.Row="2" x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Grid Grid.Column="2" Grid.Row="2" Height="150" Width="230" Background="#EFEDDE" Margin="10,28,10,0" VerticalAlignment="Top">
+                <Button Content="Manage Working Days &amp;&#xa;Hours"  Grid.Column="1" Grid.Row="1" Height="40" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" />
+                <Button Content="Manage Time Slots" Grid.Column="1" Grid.Row="1" Height="40" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0"/>
+            </Grid>
+        </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent Grid.Column="2" Grid.Row="1" x:Name="TrainsitionigContentSlide5" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Label>
+                <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,90,0,0">Time table Generate</TextBlock>
+            </Label>
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2" x:Name="TrainsitionigContentSlide6" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Label>
+                <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,80,0,0">Working Days and Hours</TextBlock>
+            </Label>
+        </materialDesign:TransitioningContent>
+
+
     </Grid>
 </UserControl>

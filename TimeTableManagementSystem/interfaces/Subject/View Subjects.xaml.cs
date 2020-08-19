@@ -127,57 +127,66 @@ namespace TimeTableManagementSystem.interfaces.Subject
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            sbjCode = UptSubCodeTxt.Text;
-            sbjName = UptSubNameTxt.Text;
-            sbjYear = UptOffYearTxt.Text;
-            sbjSem = UptOffSemTxt.Text;
 
-            numOfLecHr = int.Parse(UptNumLecHrTxt.Text);
-            numOfTuteHr = int.Parse(UptNumTuteHrTxt.Text);
-            numOfLabHr = int.Parse(UptNumLabTxt.Text);
-            numOfEvlHr = int.Parse(UptNumEvaTxt.Text);
-
-            connection.Open();
-
-            try
+            if (string.IsNullOrEmpty(UptSubCodeTxt.Text) || string.IsNullOrEmpty(UptSubNameTxt.Text) || string.IsNullOrEmpty(UptOffYearTxt.Text) || string.IsNullOrEmpty(UptOffSemTxt.Text)
+                || string.IsNullOrEmpty(UptNumLecHrTxt.Text) || string.IsNullOrEmpty(UptNumTuteHrTxt.Text) || string.IsNullOrEmpty(UptNumLabTxt.Text) || string.IsNullOrEmpty(UptNumEvaTxt.Text))
             {
-
-                SQLiteCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "Update Subject " +
-                        "set Subject_Name = @Subject_Name, Offered_Year = @Offered_Year, Offered_Semester = @Offered_Semester, Lecture_Hours = @Lecture_Hours, Tutorial_Hours = @Tutorial_Hours, Lab_Hours = @Lab_Hours, Evaluation_Hours = @Evaluation_Hours " +
-                        "Where Subject_Code = @Subject_Code";
-
-                cmd.Parameters.AddWithValue("@Subject_Name", sbjName);
-                cmd.Parameters.AddWithValue("@Offered_Year", sbjYear);
-                cmd.Parameters.AddWithValue("@Offered_Semester", sbjSem);
-                cmd.Parameters.AddWithValue("@Lecture_Hours", numOfLecHr);
-                cmd.Parameters.AddWithValue("@Tutorial_Hours", numOfTuteHr);
-                cmd.Parameters.AddWithValue("@Lab_Hours", numOfLabHr);
-                cmd.Parameters.AddWithValue("@Evaluation_Hours", numOfEvlHr);
-                cmd.Parameters.AddWithValue("@Subject_Code", sbjCode);
-
-                int rows = cmd.ExecuteNonQuery();
-
-
-                if (rows > 0)
-                {
-                    MessageBox.Show("Record has been Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Error Occured");
-                }
-
+                MessageBox.Show("Please fill the Required Fields Before Inserting Data!");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
+                sbjCode = UptSubCodeTxt.Text;
+                sbjName = UptSubNameTxt.Text;
+                sbjYear = UptOffYearTxt.Text;
+                sbjSem = UptOffSemTxt.Text;
+
+                numOfLecHr = int.Parse(UptNumLecHrTxt.Text);
+                numOfTuteHr = int.Parse(UptNumTuteHrTxt.Text);
+                numOfLabHr = int.Parse(UptNumLabTxt.Text);
+                numOfEvlHr = int.Parse(UptNumEvaTxt.Text);
+
+                connection.Open();
+
+                try
+                {
+
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "Update Subject " +
+                            "set Subject_Name = @Subject_Name, Offered_Year = @Offered_Year, Offered_Semester = @Offered_Semester, Lecture_Hours = @Lecture_Hours, Tutorial_Hours = @Tutorial_Hours, Lab_Hours = @Lab_Hours, Evaluation_Hours = @Evaluation_Hours " +
+                            "Where Subject_Code = @Subject_Code";
+
+                    cmd.Parameters.AddWithValue("@Subject_Name", sbjName);
+                    cmd.Parameters.AddWithValue("@Offered_Year", sbjYear);
+                    cmd.Parameters.AddWithValue("@Offered_Semester", sbjSem);
+                    cmd.Parameters.AddWithValue("@Lecture_Hours", numOfLecHr);
+                    cmd.Parameters.AddWithValue("@Tutorial_Hours", numOfTuteHr);
+                    cmd.Parameters.AddWithValue("@Lab_Hours", numOfLabHr);
+                    cmd.Parameters.AddWithValue("@Evaluation_Hours", numOfEvlHr);
+                    cmd.Parameters.AddWithValue("@Subject_Code", sbjCode);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Record has been Updated");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occured");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
 
             loadDataGrid();

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\clock.jpg" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\LecturerPng.png" />
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\clock.jpg" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\edit.png" />
     <Resource Include="Images\LecturerPng.png" />
