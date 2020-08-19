@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TimeTableManagementSystem.interfaces.ManageTimeSlots.ManageTimeSlots"
         mc:Ignorable="d"
         Title="ManageTimeSlots" Height="472" Width="978" WindowStartupLocation="CenterScreen" SizeToContent="Manual" ResizeMode="NoResize">
-    <Grid Margin="0,0,28,24">
+    <Grid Margin="0,0,10,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="415*"/>
             <RowDefinition Height="17*"/>
@@ -25,10 +25,10 @@
         <Label x:Name="label1_Copy" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="111" FontSize="17" FontWeight="Bold" Margin="546,83,0,0" Grid.ColumnSpan="2"/>
         <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Height="34" Margin="212,83,0,0" VerticalAlignment="Top" Width="51" FontSize="15" FontWeight="Bold" Grid.Column="1" Click="addTimeSlots"/>
         <Button x:Name="button1" Content="Update" HorizontalAlignment="Left" Height="34" Margin="279,83,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="15" Grid.Column="1" Grid.ColumnSpan="2" Click="UpdateTimeSlots"/>
-        <ComboBox x:Name="startTime" HorizontalAlignment="Left" Height="34" Margin="449,83,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="getStartingTime">
-            <ComboBoxItem>8:30</ComboBoxItem>
-            <ComboBoxItem>9:00</ComboBoxItem>
-            <ComboBoxItem>9:30</ComboBoxItem>
+        <ComboBox x:Name="cmbStartTime" HorizontalAlignment="Left" Height="34" Margin="449,83,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="getStartingTime">
+            <ComboBoxItem>08:30</ComboBoxItem>
+            <ComboBoxItem>09:00</ComboBoxItem>
+            <ComboBoxItem>09:30</ComboBoxItem>
             <ComboBoxItem>10:00</ComboBoxItem>
             <ComboBoxItem>10:30</ComboBoxItem>
             <ComboBoxItem>11:00</ComboBoxItem>
@@ -52,10 +52,10 @@
             <ComboBoxItem>20:00</ComboBoxItem>
             <ComboBoxItem>20:30</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="endTime" HorizontalAlignment="Left" Height="34" Margin="77,83,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" SelectionChanged="getEndingTime">
-            <ComboBoxItem>8:30</ComboBoxItem>
-            <ComboBoxItem>9:00</ComboBoxItem>
-            <ComboBoxItem>9:30</ComboBoxItem>
+        <ComboBox x:Name="cmbEndTime" HorizontalAlignment="Left" Height="34" Margin="77,83,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" SelectionChanged="getEndingTime">
+            <ComboBoxItem>08:30</ComboBoxItem>
+            <ComboBoxItem>09:00</ComboBoxItem>
+            <ComboBoxItem>09:30</ComboBoxItem>
             <ComboBoxItem>10:00</ComboBoxItem>
             <ComboBoxItem>10:30</ComboBoxItem>
             <ComboBoxItem>11:00</ComboBoxItem>
@@ -79,24 +79,37 @@
             <ComboBoxItem>20:00</ComboBoxItem>
             <ComboBoxItem>20:30</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="267" Margin="325,137,0,0" VerticalAlignment="Top" Width="614" Grid.ColumnSpan="3">
+        <DataGrid x:Name="manageTimeSlotGrid" HorizontalAlignment="Left" Height="267" Margin="325,137,0,0" VerticalAlignment="Top" Width="614" Grid.ColumnSpan="3"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Starting Time" Width="100"/>
-                <DataGridTextColumn Header="Ending Time" Width="100"/>
-                <DataGridTextColumn Header="Duration" Width="100"/>
+                <DataGridTextColumn Header="Starting Time" Binding="{Binding start_time}" Width="150"/>
+                <DataGridTextColumn Header="Ending Time" Binding="{Binding end_time}" Width="150"/>
+                <DataGridTextColumn Header="Duration" Binding="{Binding time_duration}" Width="110"/>
 
-                <DataGridTemplateColumn Header="Edit" Width="100">
-                    <DataGridTemplateColumn.CellEditingTemplate>
+                <DataGridTemplateColumn Header="Edit" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit">
+                            <Button >
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/edit.png" Stretch="Fill"></ImageBrush>
+                                    <ImageBrush ImageSource="/interfaces/ManageTimeSlots/edit.png" Stretch="Uniform"></ImageBrush>
                                 </Button.Background>
                             </Button>
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
+                <DataGridTemplateColumn Header="Delete" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/interfaces/ManageTimeSlots/delete.png" Stretch="Uniform"></ImageBrush>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
             </DataGrid.Columns>
         </DataGrid>
 
