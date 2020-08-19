@@ -5,8 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Lecturer"
         mc:Ignorable="d"
-        Title="Add_Lecturer" Height="450" Width="800">
+        Title="Add_Lecturer" Height="500" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFA0A0A0" Offset="1"/>
+            <GradientStop Color="White" Offset="0"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="235*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="200" Height="45" >
+            <TextBlock TextDecorations="Underline" FontWeight="Medium">Add Lecturers</TextBlock>
+        </Label>
+        <Label Content="Employee ID" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Name" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Faculty" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Department" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Center" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Building" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Level" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Rank" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+
+        <!--ComboBoxes-->
+        <ComboBox x:Name="FacultyCombo" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="4" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18">
+            <ComboBoxItem x:Name="FacultyItem1" Content="Computing"/>
+            <ComboBoxItem x:Name="FacultyItem2" Content="Engineering"/>
+            <ComboBoxItem x:Name="FacultyItem3" Content="Business"/>
+            <ComboBoxItem x:Name="FacultyItem4" Content="Humanities &amp; Sciences"/>
+        </ComboBox>
+        <ComboBox x:Name="CenterCombo" Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="6" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18">
+            <ComboBoxItem x:Name="CenterItem1" Content="Malabe"/>
+            <ComboBoxItem x:Name="CenterItem2" Content="Metro"/>
+            <ComboBoxItem x:Name="CenterItem3" Content="Matara"/>
+            <ComboBoxItem x:Name="CenterItem4" Content="Kandy"/>
+            <ComboBoxItem x:Name="CenterItem5" Content="Kurunagala"/>
+            <ComboBoxItem x:Name="CenterItem6" Content="Jaffna"/>
+        </ComboBox>
+        <ComboBox x:Name="BuildingCombo" Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="7" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
+        <ComboBox x:Name="LevelCombo"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="8" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18" DropDownClosed="LevelCombo_DropDownClosed" >
+            <ComboBoxItem x:Name="LevelItem1" Content="Professor"/>
+            <ComboBoxItem x:Name="LevelItem2" Content="Assistant Professor"/>
+            <ComboBoxItem x:Name="LevelItem3" Content="Senior Lecturer(HG)"/>
+            <ComboBoxItem x:Name="LevelItem4" Content="Senior Lecturer"/>
+            <ComboBoxItem x:Name="LevelItem5" Content="Lecturer"/>
+            <ComboBoxItem x:Name="LevelItem6" Content="Assistant Lecturer"/>
+            <ComboBoxItem x:Name="LevelItem7" Content="Instructors"/>
+        </ComboBox>
+
+        <!--TextBoxes-->
+        <TextBox x:Name="EmpIdTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
+        <TextBox x:Name="EmpNameTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
+        <TextBox x:Name="EmpDepTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
+        <TextBox x:Name="RankTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18" IsReadOnly="True"/>
+
+        <!--Button-->
+        <Button x:Name="BtnViewLecturer" Content="View Lecturers" Background="#FF9802"  Foreground="White" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnViewLecturer_Click"/>
+        <Button x:Name="BtnAddLecturer" Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnAddLecturer_Click"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="284" Margin="32,21,0,0" Grid.RowSpan="8" Grid.Row="2" VerticalAlignment="Top" Width="286" Grid.ColumnSpan="2">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="400"  UriSource="/Images/LecturerPng.png"/>
+            </Image.Source>
+        </Image>
+
     </Grid>
 </Window>
