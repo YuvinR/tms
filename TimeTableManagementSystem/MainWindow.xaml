@@ -45,7 +45,12 @@
                 <ColumnDefinition Width="238*"/>
                 <ColumnDefinition Width="149*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="GridPrincipal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="81,0,0,0" Grid.ColumnSpan="2" Height="625" Width="823"/>
+            <Grid x:Name="GridPrincipal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="81,0,0,0" Grid.ColumnSpan="2" Height="625" Width="823">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="562*"/>
+                    <RowDefinition Height="63*"/>
+                </Grid.RowDefinitions>
+            </Grid>
         </Grid>
 
         <Grid Width="280" HorizontalAlignment="Left" Background="#424242">

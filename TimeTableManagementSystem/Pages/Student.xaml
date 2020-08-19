@@ -9,9 +9,7 @@
              Height="auto" Width="auto">
     <Grid>
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label>
-                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Student</TextBlock>
-            </Label>
+           
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>
