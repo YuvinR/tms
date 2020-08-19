@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="167*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="502,0,0,0" Grid.ColumnSpan="2" Width="464">
-                    <TextBlock Text="TimeTable Management System" VerticalAlignment="Center" FontSize="20" FontFamily="Champagne &amp; Limousines" Margin="60 0" Width="318"/>
+                    <TextBlock Text="TimeTable Management System" VerticalAlignment="Center" FontSize="30" FontFamily="Champagne &amp; Limousines" FontWeight="Medium" Margin="15 0" Width="435"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="280,0,0,0" Grid.Column="1">
