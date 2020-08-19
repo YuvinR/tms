@@ -7,11 +7,30 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label>
-                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Location</TextBlock>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="400*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="185*"/>
+            <RowDefinition Height="185*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="0" x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Label Grid.Column="0" Grid.Row="0" >
+                <TextBlock Grid.Column="0" Grid.Row="0"  TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Locations</TextBlock>
             </Label>
         </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
+            <Button Grid.Column="1"  x:Name="BtnViewLoc" Content="View Locations" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117" />
+        </materialDesign:TransitioningContent>
+
+        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Button Grid.Column="1" x:Name="BtnAddLoc" Content="Add Location" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,47,50,88" Click="BtnAddLocation_Click"/>
+        </materialDesign:TransitioningContent>
+
     </Grid>
 </UserControl>
