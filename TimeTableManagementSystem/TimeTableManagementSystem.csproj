@@ -12,6 +12,7 @@
     <None Remove="Images\LecturerPng.png" />
     <None Remove="Images\SessionPng.png" />
     <None Remove="Images\SubjectPng.jpg" />
+    <None Remove="interfaces\ManageTimeSlots\clock2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,7 @@
     <Resource Include="Images\LecturerPng.png" />
     <Resource Include="Images\SessionPng.png" />
     <Resource Include="Images\SubjectPng.jpg" />
+    <Resource Include="interfaces\ManageTimeSlots\clock2.jpg" />
   </ItemGroup>
 
 </Project>
