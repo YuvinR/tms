@@ -23,8 +23,8 @@
         <Label x:Name="label1" Content="Starting Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="120" FontSize="17" FontWeight="Bold" Margin="315,83,0,0"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="327" Margin="10,77,0,0" VerticalAlignment="Top" Width="300" Source="/interfaces/ManageTimeSlots/time.jpg" Stretch="Fill"/>
         <Label x:Name="label1_Copy" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="111" FontSize="17" FontWeight="Bold" Margin="546,83,0,0" Grid.ColumnSpan="2"/>
-        <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Height="34" Margin="212,83,0,0" VerticalAlignment="Top" Width="51" FontSize="15" FontWeight="Bold" Grid.Column="1" Click="addTimeSlots"/>
-        <Button x:Name="button1" Content="Update" HorizontalAlignment="Left" Height="34" Margin="279,83,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="15" Grid.Column="1" Grid.ColumnSpan="2" Click="UpdateTimeSlots"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="34" Margin="212,83,0,0" VerticalAlignment="Top" Width="51" FontSize="15" FontWeight="Bold" Grid.Column="1" Click="addTimeSlots"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="34" Margin="279,83,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="15" Grid.Column="1" Grid.ColumnSpan="2" Click="UpdateTimeSlots"/>
         <ComboBox x:Name="cmbStartTime" HorizontalAlignment="Left" Height="34" Margin="449,83,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="getStartingTime">
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
@@ -89,7 +89,7 @@
                 <DataGridTemplateColumn Header="Edit" Width="110">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button >
+                            <Button x:Name="btnEdit" Click="editFields">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/interfaces/ManageTimeSlots/edit.png" Stretch="Uniform"></ImageBrush>
                                 </Button.Background>
@@ -101,7 +101,7 @@
                 <DataGridTemplateColumn Header="Delete" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button>
+                            <Button x:Name="btnDelete" Click="deleteRecord">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/interfaces/ManageTimeSlots/delete.png" Stretch="Uniform"></ImageBrush>
                                 </Button.Background>

@@ -34,7 +34,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         public ManageTimeSlots()
         {
             InitializeComponent();
-            populateGrid();
+            initalLoad();
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
@@ -143,6 +143,97 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             finally
             {
                 connection.Close();
+            }
+        }
+
+
+
+        private void initalLoad()
+        {
+            populateGrid();
+            btnUpdate.IsEnabled = false;
+        }
+
+        private void editFields(object sender, RoutedEventArgs e)
+        {
+            string startTime;
+            string endTime;
+
+            DataRowView selectedRow = manageTimeSlotGrid.SelectedItem as DataRowView;
+
+            startTime = selectedRow.Row["start_time"].ToString();
+            endTime = selectedRow.Row["end_time"].ToString();
+
+            filterTimeWhenEdit(startTime, endTime);
+
+            btnUpdate.IsEnabled = true;
+        }
+
+        private void deleteRecord(object sender, RoutedEventArgs e)
+        {
+            DataRowView selectedRow = manageTimeSlotGrid.SelectedItem as DataRowView;
+            string recordID = selectedRow.Row["id"].ToString();
+
+            connection.Open();
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+
+                command.CommandType = CommandType.Text;
+                command.CommandText = "DELETE FROM time_slots WHERE id = @RecordID";
+                command.Parameters.AddWithValue("@RecordID", recordID);
+
+                int rows = command.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Data has been Deleted!");
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            populateGrid();
+
+        }
+
+
+
+
+
+        //Filtering method to time
+        public void filterTimeWhenEdit(string StartTime, string EndTime)
+        {
+
+            string startTimeObj = StartTime;
+            string endTimeObj = EndTime;
+
+            string[] cmbTimes = { "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00",
+                                  "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00",
+                                  "18:30", "19:00", "19:30", "20:00", "20:30" };
+
+            for (int i = 0; i < cmbTimes.Length; i++)
+            {
+                if (startTimeObj.ToString() == cmbTimes[i].ToString())
+                {
+                    cmbStartTime.SelectedIndex = i;
+                }
+
+                if (endTimeObj.ToString() == cmbTimes[i].ToString())
+                {
+                    cmbEndTime.SelectedIndex = i;
+                }
+
             }
         }
 
