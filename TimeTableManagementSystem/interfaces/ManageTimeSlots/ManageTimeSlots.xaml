@@ -25,7 +25,7 @@
         <Label x:Name="label1_Copy" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="111" FontSize="17" FontWeight="Bold" Margin="546,83,0,0" Grid.ColumnSpan="2"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="34" Margin="212,83,0,0" VerticalAlignment="Top" Width="51" FontSize="15" FontWeight="Bold" Grid.Column="1" Click="addTimeSlots"/>
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="34" Margin="279,83,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" FontSize="15" Grid.Column="1" Grid.ColumnSpan="2" Click="UpdateTimeSlots"/>
-        <ComboBox x:Name="cmbStartTime" HorizontalAlignment="Left" Height="34" Margin="449,83,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="getStartingTime">
+        <ComboBox x:Name="cmbStartTime" HorizontalAlignment="Left" Height="34" Margin="449,83,0,0" VerticalAlignment="Top" Width="92">
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
             <ComboBoxItem>09:30</ComboBoxItem>
@@ -52,7 +52,7 @@
             <ComboBoxItem>20:00</ComboBoxItem>
             <ComboBoxItem>20:30</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="cmbEndTime" HorizontalAlignment="Left" Height="34" Margin="77,83,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" SelectionChanged="getEndingTime">
+        <ComboBox x:Name="cmbEndTime" HorizontalAlignment="Left" Height="34" Margin="77,83,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1">
             <ComboBoxItem>08:30</ComboBoxItem>
             <ComboBoxItem>09:00</ComboBoxItem>
             <ComboBoxItem>09:30</ComboBoxItem>

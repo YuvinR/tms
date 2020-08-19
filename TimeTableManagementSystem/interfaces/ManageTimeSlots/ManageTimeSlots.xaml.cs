@@ -28,6 +28,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         private String startTime;
         private String endTime;
         private String timeDuration;
+        private String recordID;
 
         
 
@@ -37,23 +38,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             initalLoad();
         }
 
-        public void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
-        private void getStartingTime(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem comboBoxItem = (ComboBoxItem) cmbStartTime.SelectedItem;
-            //MessageBox.Show(comboBoxItem.Content.ToString());
-        }
 
-        private void getEndingTime(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem comboBoxItem = (ComboBoxItem) cmbEndTime.SelectedItem;
-            String x = comboBoxItem.Content.ToString().Replace(":", "");
-            //MessageBox.Show(x);
-        }
 
         private void addTimeSlots(object sender, RoutedEventArgs e)
         {
@@ -115,7 +101,59 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         private void UpdateTimeSlots(object sender, RoutedEventArgs e)
         {
+            
+            ComboBoxItem cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
+            ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
 
+            this.startTime = cmbStartTimeInput.Content.ToString();
+            this.endTime = cmbEndTimeInput.Content.ToString();
+
+            TimeSpan time = DateTime.Parse(this.endTime).Subtract(DateTime.Parse(this.startTime));
+
+            this.timeDuration = time.ToString(@"hh\:mm");
+
+            connection.Open();
+
+            try
+            {
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "UPDATE time_slots SET start_time = @StartTime, end_time = @EndTime, time_duration = @TimeDuration WHERE id = @RecordID;";
+
+                command.Parameters.AddWithValue("@RecordID", this.recordID);
+                command.Parameters.AddWithValue("@StartTime", this.startTime );
+                command.Parameters.AddWithValue("@EndTime", this.endTime);
+                command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
+
+
+                int rows = command.ExecuteNonQuery();
+
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Record has been Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured");
+                }
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            cmbStartTime.SelectedIndex = -1;
+            cmbEndTime.SelectedIndex = -1;
+            populateGrid();
+            btnUpdate.IsEnabled = false;
+            btnAdd.IsEnabled = true;
         }
 
         private void populateGrid()
@@ -163,10 +201,12 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
             startTime = selectedRow.Row["start_time"].ToString();
             endTime = selectedRow.Row["end_time"].ToString();
+            this.recordID = selectedRow.Row["id"].ToString();
 
             filterTimeWhenEdit(startTime, endTime);
 
             btnUpdate.IsEnabled = true;
+            btnAdd.IsEnabled = false;
         }
 
         private void deleteRecord(object sender, RoutedEventArgs e)
