@@ -22,7 +22,6 @@
     <Resource Include="interfaces\ManageTimeSlots\delete.png" />
     <Resource Include="interfaces\ManageTimeSlots\edit.png" />
     <Resource Include="interfaces\ManageTimeSlots\time.jpg" />
-    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

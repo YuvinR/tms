@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using TimeTableManagementSystem.DB_Config;
 using TimeTableManagementSystem.Pages;
 using System.Data.SQLite;
+using TimeTableManagementSystem.interfaces.ManageTimeSlots;
 
 namespace TimeTableManagementSystem
 {
@@ -30,7 +31,11 @@ namespace TimeTableManagementSystem
             StartupConfigurations stc = new StartupConfigurations();
             stc.initiate();
 
-           
+            ManageTimeSlots manageTimeSlots = new ManageTimeSlots();
+            manageTimeSlots.Show();
+            this.Hide();
+
+
         }
 
 
