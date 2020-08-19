@@ -31,9 +31,9 @@ namespace TimeTableManagementSystem
             StartupConfigurations stc = new StartupConfigurations();
             stc.initiate();
 
-            ManageTimeSlots manageTimeSlots = new ManageTimeSlots();
-            manageTimeSlots.Show();
-            this.Hide();
+            //ManageTimeSlots manageTimeSlots = new ManageTimeSlots();
+            //manageTimeSlots.Show();
+            //this.Hide();
 
 
         }
