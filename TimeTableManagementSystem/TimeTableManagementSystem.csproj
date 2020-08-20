@@ -11,6 +11,8 @@
     <None Remove="Images\delete.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\LecturerPng.png" />
+    <None Remove="Images\office-building.png" />
+    <None Remove="Images\pointer.png" />
     <None Remove="Images\SessionPng.png" />
     <None Remove="Images\SubjectPng.jpg" />
     <None Remove="interfaces\ManageTimeSlots\clock2.jpg" />
@@ -27,6 +29,8 @@
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\edit.png" />
     <Resource Include="Images\LecturerPng.png" />
+    <Resource Include="Images\office-building.png" />
+    <Resource Include="Images\pointer.png" />
     <Resource Include="Images\SessionPng.png" />
     <Resource Include="Images\SubjectPng.jpg" />
     <Resource Include="interfaces\ManageTimeSlots\clock2.jpg" />

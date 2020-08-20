@@ -25,11 +25,20 @@
         </materialDesign:TransitioningContent>
 
         <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
-            <Button Grid.Column="1"  x:Name="BtnViewLoc" Content="View Locations" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117" />
+            <Button Grid.Column="1"  x:Name="BtnViewLoc" Content="View Locations" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117" Click="BtnViewLocation_Click" />
         </materialDesign:TransitioningContent>
 
         <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
             <Button Grid.Column="1" x:Name="BtnAddLoc" Content="Add Location" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,47,50,88" Click="BtnAddLocation_Click"/>
+        </materialDesign:TransitioningContent>
+
+        <!--Image-->
+        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+            <Image HorizontalAlignment="Left" Height="236" Margin="28,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="332" Grid.RowSpan="2">
+                <Image.Source>
+                    <ImageSource>/Images/pointer.png</ImageSource>
+                </Image.Source>
+            </Image>
         </materialDesign:TransitioningContent>
 
     </Grid>

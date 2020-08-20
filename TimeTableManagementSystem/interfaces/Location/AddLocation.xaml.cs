@@ -21,5 +21,10 @@ namespace TimeTableManagementSystem.interfaces.Location
         {
             InitializeComponent();
         }
+
+        private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

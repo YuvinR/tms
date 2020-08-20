@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Location"
         mc:Ignorable="d"
-        Title="AddLocation" Height="450" Width="800">
+        Title="AddLocation" Height="500" Width="800">
 
-    <Grid>
+    <Grid Margin="0,0,0,-6">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="30"/>
@@ -15,7 +15,9 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+         
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -40,18 +42,21 @@
         <Label Content="Room Capacity" Grid.Column="4"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="34" Width="170" Grid.ColumnSpan="2"/>
 
         <!--Form Inputs-->
-        <TextBox x:Name="buildnameTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="2"  TextWrapping="Wrap" Width="240" Height="33" FontSize="18"/>
-        <ComboBox x:Name="roomtypComboBox" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="3" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="roomnoTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="4"  TextWrapping="Wrap" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="capacityTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="5"  TextWrapping="Wrap" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="buildnameTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="2"  TextWrapping="Wrap" Width="240" FontSize="18"/>
+        <ComboBox x:Name="roomtypComboBox" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="3" Width="240" FontSize="18">
+            <ComboBoxItem x:Name="typeItem1" Content="Lecture Hall"/>
+            <ComboBoxItem x:Name="typeItem2" Content="Laboratory"/>
+        </ComboBox>
+        <TextBox x:Name="roomnoTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="4"  TextWrapping="Wrap" Width="240" FontSize="18"/>
+        <TextBox x:Name="capacityTxt" Grid.Column="5" HorizontalAlignment="Center" Margin="0,14,0,13" Grid.Row="5"  TextWrapping="Wrap" Width="240" FontSize="18"/>
 
         <!--Buttons-->
-        <Button x:Name="BtnAddLocation" Content="SAVE" Grid.Column="5"  Grid.Row="6" Width="225" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Margin="10,20,27,59" />
+        <Button x:Name="BtnAddLocation" Content="SAVE" Grid.Column="5"  Grid.Row="6" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI"  Margin="11,32,11,10" Click="BtnAddLocation_Click" Background="#FF176797" Foreground="White"/>
 
         <!--Images-->
         <Image Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="14,28,0,0" Grid.Row="2" VerticalAlignment="Top" Width="294" Grid.ColumnSpan="4" Grid.RowSpan="4">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="400"  UriSource="/Images/office-building.png"/>
+                <ImageSource>/Images/office-building.png</ImageSource>
             </Image.Source>
         </Image>
 
