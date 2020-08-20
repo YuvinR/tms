@@ -22,7 +22,7 @@
             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
             VerticalAlignment="Top"
             Height="42"
-            Visibility="Visible"
+            Visibility="Hidden"
             AcceptsReturn="True"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
