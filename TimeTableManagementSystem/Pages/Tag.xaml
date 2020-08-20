@@ -31,7 +31,7 @@
                 <Button
                     Grid.Row="4"
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                    Click="BtnYnSAdd_Click"
+                    Click="BtnTag_Click"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
                     <materialDesign:PackIcon Kind="Tag" />

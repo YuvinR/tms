@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeTableManagementSystem.DB_Config;
+using TimeTableManagementSystem.interfaces.StudentOperations;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -28,7 +29,7 @@ namespace TimeTableManagementSystem.Pages
 
         private void BtnTag_Click(object sender, RoutedEventArgs e)
         {
-            Sub_Group sub_Group = new Sub_Group();
+            TagOp sub_Group = new TagOp();
             sub_Group.Show();
         }
     }

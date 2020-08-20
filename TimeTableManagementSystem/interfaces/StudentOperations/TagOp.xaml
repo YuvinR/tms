@@ -1,0 +1,128 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.StudentOperations.TagOp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.StudentOperations"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="Academic Year And Semester Operations" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <Label Margin="0,10,-53,0">
+            <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Tags</TextBlock>
+        </Label>
+
+        <TextBox
+            x:Name="idTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            Visibility="Visible"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="79,68,0,0" HorizontalAlignment="Left" Width="59" />
+
+
+
+        <TextBox
+            x:Name="codeTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Tag Code"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="0,69,509,0" HorizontalAlignment="Right" Width="133" />
+
+
+        <TextBox
+            x:Name="nameTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Tag Name"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="306,69,351,0" />
+
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Save"
+            x:Name="saveButton"
+            Click="Button_ClickSave" 
+            Margin="468,76,229,0" 
+            Height="34" 
+            VerticalAlignment="Top"/>
+
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Clear"
+            x:Name="ClearButton"
+            Click="Button_ClickClear" 
+            Margin="598,76,97,0" Background="#FF666C54" RenderTransformOrigin="0.2,0.648" Height="35" VerticalAlignment="Top"/>
+
+        <DataGrid 
+            x:Name="tagsGrid" 
+            AutoGenerateColumns="False" 
+            Margin="0,164,0,50" 
+            HorizontalAlignment="Center" 
+            Width="510" 
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False" Grid.RowSpan="2"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="Tag Code" Binding="{Binding tagCode}" />
+                <DataGridTextColumn Header="Tag Name" Binding="{Binding tagName}" />
+
+                <DataGridTemplateColumn Header="Action Edit" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnEdit"
+                                Click="BtnEdit_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="CircleEditOutline"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Action Delete" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnDelete"
+                                Click="BtnDelete_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="Delete"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="DeleteCircle" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>
