@@ -11,7 +11,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="AddAcademicYandS" Height="450" Width="800">
+        Title="Academic Year And Semester Operations" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
         <Label>
             <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Academic Year And Semester</TextBlock>
@@ -39,7 +39,7 @@
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
             materialDesign:HintAssist.Hint="Academic Year"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="160,78,0,0" HorizontalAlignment="Left" Width="179" />
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="131,78,0,0" HorizontalAlignment="Left" Width="179" />
 
 
 
@@ -52,7 +52,7 @@
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
             materialDesign:HintAssist.Hint="Academic Semester"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="363,78,0,0" HorizontalAlignment="Left" Width="179" />
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="333,78,0,0" HorizontalAlignment="Left" Width="179" />
 
         <Button
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
@@ -60,7 +60,7 @@
             Content="Save"
             x:Name="saveButton"
             Click="Button_ClickSave" 
-            Margin="602,84,0,0" 
+            Margin="529,82,0,0" 
             Height="34" 
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
@@ -68,8 +68,31 @@
 
         </Button>
 
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Clear"
+            x:Name="ClearButton"
+            Click="Button_ClickClear" 
+            Margin="640,82,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="93" Background="#FF666C54" RenderTransformOrigin="0.2,0.648">
 
-        <DataGrid x:Name="AcYnSDataGrid" AutoGenerateColumns="False" Margin="0,164,0,50" HorizontalAlignment="Center" Width="566">
+        </Button>
+
+        <DataGrid 
+            x:Name="AcYnSDataGrid" 
+            AutoGenerateColumns="False" 
+            Margin="0,164,0,50" 
+            HorizontalAlignment="Center" 
+            Width="509" 
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False"
+            >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}" />
                 <DataGridTextColumn Header="Academic Year" Binding="{Binding year}" />
@@ -79,9 +102,10 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
+                                x:Name="BtnEdit"
                                 Click="BtnEdit_Click"
                                 Style="{StaticResource MaterialDesignIconButton}"
-                                 Height="30"
+                                Height="30"
                                 Width="30"
                                 ToolTip="MaterialDesignIconButton"
                                 Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
@@ -99,7 +123,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-
+                                x:Name="BtnDelete"
                                 Click="BtnDelete_Click"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 Height="30"
@@ -108,22 +132,10 @@
                                 Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
                                 <materialDesign:PackIcon Kind="DeleteCircle" />
                             </Button>
-
-
-
-
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
-
-
-
-
             </DataGrid.Columns>
-
         </DataGrid>
-
-
     </Grid>
 </Window>

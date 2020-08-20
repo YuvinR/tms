@@ -10,50 +10,53 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        mc:Ignorable="d">
+        mc:Ignorable="d" >
     <Grid>
         <Label>
-            <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Tags</TextBlock>
+            <TextBlock FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Tag Operations</TextBlock>
         </Label>
-        <TextBox
-            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-            VerticalAlignment="Top"
-            Height="42"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto"
-            materialDesign:HintAssist.Hint="Tag Code"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="53,78,568,0" />
+
+        <materialDesign:Card Margin="280,145,356,168">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnYnSAdd_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="Tag" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Tags Related Operations"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                </StackPanel>
 
 
-        <TextBox
-            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-            VerticalAlignment="Top"
-            Height="42"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto"
-            materialDesign:HintAssist.Hint="Tag Name"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="262,78,359,0" />
 
-        <Button
-            Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="494,86,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="93">
-            Save
-        </Button>
+            </Grid>
+        </materialDesign:Card>
 
 
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="40,150,28,64">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" />
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Details}" Margin="10" />
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
+ 
+
+   
+
+       
+
 
     </Grid>
 </UserControl>

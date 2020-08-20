@@ -26,9 +26,6 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
         private string year;
         private string semester;
 
-
-
-
         public AddAcademicYandS()
         {
             InitializeComponent();
@@ -44,7 +41,6 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                 }
                 else
                 {
-
                     year = AcademicYearTxt.Text;
                     semester = AcademicSemTxt.Text;
 
@@ -91,14 +87,6 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                         }
 
                     }
-
-
-
-                        
-
-                        
-
-
                     }
                     catch (Exception ex)
                     {
@@ -187,17 +175,26 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
             DataRowView row = AcYnSDataGrid.SelectedItem as DataRowView;
             var id = int.Parse(row.Row["ID"].ToString());
             idTxt.Visibility = Visibility.Visible;
+            idTxt.IsEnabled = false;
             idTxt.Text = row.Row["ID"].ToString();
             AcademicYearTxt.Text = row.Row["year"].ToString();
             AcademicSemTxt.Text = row.Row["semester"].ToString();
-            //UpdFacultyCombo.Text = row.Row["Faculty"].ToString();
-            //UpdEmpDepTxt.Text = row.Row["Department"].ToString();
-            //UpdCenterCombo.Text = row.Row["Center"].ToString();
-            //UpdBuildingCombo.Text = row.Row["Building"].ToString();
-            //UpdLevelCombo.Text = row.Row["Level"].ToString();
-            //UpdRankTxt.Text = row.Row["Rank"].ToString();
             saveButton.Content = "Edit";
 
+        }
+
+        private void Button_ClickClear(object sender, RoutedEventArgs e)
+        {
+            clear();
+        }
+
+        public void clear()
+        {
+             AcademicYearTxt.Text ="";
+             AcademicSemTxt.Text = "";
+            idTxt.Text = "";
+            idTxt.Visibility = Visibility.Hidden;
+            saveButton.Content = "Save";
         }
 
 
