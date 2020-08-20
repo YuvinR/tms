@@ -45,56 +45,66 @@ namespace TimeTableManagementSystem.interfaces.Subject
 
         private void BtnAddSbj_Click(object sender, RoutedEventArgs e)
         {
-            sbjCode = SbjCodeTxt.Text;
-            sbjName = SbjNameTxt.Text;
-            sbjYear = OffYearTxt.Text;
-            sbjSem = OffSemTxt.Text;
-
-            numOfLecHr = int.Parse(NumLecHrTxt.Text);
-            numOfTuteHr = int.Parse(NumTuteHrTxt.Text);
-            numOfLabHr = int.Parse(NumLabHrTxt.Text);
-            numOfEvlHr = int.Parse(NumEvaHrTxt.Text);
-
-            connection.Open();
-
-            try
+            
+            
+            if (string.IsNullOrEmpty(SbjCodeTxt.Text) || string.IsNullOrEmpty(SbjNameTxt.Text) || string.IsNullOrEmpty(OffYearTxt.Text) || string.IsNullOrEmpty(OffSemTxt.Text)
+                || string.IsNullOrEmpty(NumLecHrTxt.Text) || string.IsNullOrEmpty(NumTuteHrTxt.Text) || string.IsNullOrEmpty(NumLabHrTxt.Text) || string.IsNullOrEmpty(NumEvaHrTxt.Text))
             {
-                SQLiteCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "insert into Subject" +
-                        "(Subject_Code, Subject_Name, Offered_Year, Offered_Semester, Lecture_Hours, Tutorial_Hours, Lab_Hours, Evaluation_Hours)" +
-                        " Values" +
-                        "(@Subject_Code, @Subject_Name, @Offered_Year, @Offered_Semester, @Lecture_Hours, @Tutorial_Hours, @Lab_Hours, @Evaluation_Hours)";
-
-                cmd.Parameters.AddWithValue("@Subject_Code", sbjCode);
-                cmd.Parameters.AddWithValue("@Subject_Name", sbjName);
-                cmd.Parameters.AddWithValue("@Offered_Year", sbjYear);
-                cmd.Parameters.AddWithValue("@Offered_Semester", sbjSem);
-                cmd.Parameters.AddWithValue("@Lecture_Hours", numOfLecHr);
-                cmd.Parameters.AddWithValue("@Tutorial_Hours", numOfTuteHr);
-                cmd.Parameters.AddWithValue("@Lab_Hours", numOfLabHr);
-                cmd.Parameters.AddWithValue("@Evaluation_Hours", numOfEvlHr);
-
-                int rows = cmd.ExecuteNonQuery();
-
-
-                if (rows > 0)
-                {
-                    MessageBox.Show("Data has been Inserted");
-                }
-                else
-                {
-                    MessageBox.Show("Error Occured");
-                }
+                MessageBox.Show("Please fill the Required Fields Before Inserting Data!");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
+            else {
+
+                connection.Open();
+
+                sbjCode = SbjCodeTxt.Text;
+                sbjName = SbjNameTxt.Text;
+                sbjYear = OffYearTxt.Text;
+                sbjSem = OffSemTxt.Text;
+
+                numOfLecHr = int.Parse(NumLecHrTxt.Text);
+                numOfTuteHr = int.Parse(NumTuteHrTxt.Text);
+                numOfLabHr = int.Parse(NumLabHrTxt.Text);
+                numOfEvlHr = int.Parse(NumEvaHrTxt.Text);
+
+                try
+                {
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "insert into Subject" +
+                            "(Subject_Code, Subject_Name, Offered_Year, Offered_Semester, Lecture_Hours, Tutorial_Hours, Lab_Hours, Evaluation_Hours)" +
+                            " Values" +
+                            "(@Subject_Code, @Subject_Name, @Offered_Year, @Offered_Semester, @Lecture_Hours, @Tutorial_Hours, @Lab_Hours, @Evaluation_Hours)";
+
+                    cmd.Parameters.AddWithValue("@Subject_Code", sbjCode);
+                    cmd.Parameters.AddWithValue("@Subject_Name", sbjName);
+                    cmd.Parameters.AddWithValue("@Offered_Year", sbjYear);
+                    cmd.Parameters.AddWithValue("@Offered_Semester", sbjSem);
+                    cmd.Parameters.AddWithValue("@Lecture_Hours", numOfLecHr);
+                    cmd.Parameters.AddWithValue("@Tutorial_Hours", numOfTuteHr);
+                    cmd.Parameters.AddWithValue("@Lab_Hours", numOfLabHr);
+                    cmd.Parameters.AddWithValue("@Evaluation_Hours", numOfEvlHr);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Data has been Inserted");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occured");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
 
             clearFields();
