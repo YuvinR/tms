@@ -92,6 +92,10 @@ namespace TimeTableManagementSystem
                     GridPrincipal.Children.Clear();
                     GridPrincipal.Children.Add(new Timetable());
                     break;
+                case 9:
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new Tag());
+                    break;
 
                 default:
                     break;
