@@ -36,9 +36,9 @@ namespace TimeTableManagementSystem
             //manageTimeSlots.Show();
             //this.Hide();
 
-            ManageWorkignDaysAndHours manageWorkignDaysAndHours = new ManageWorkignDaysAndHours();
-            manageWorkignDaysAndHours.Show();
-            this.Hide();
+            //ManageWorkignDaysAndHours manageworkigndaysandhours = new ManageWorkignDaysAndHours();
+            //manageworkigndaysandhours.Show();
+            //this.Hide();
 
 
         }
