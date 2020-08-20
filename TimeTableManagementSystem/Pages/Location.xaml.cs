@@ -31,5 +31,13 @@ namespace TimeTableManagementSystem.Pages
             
             Add_Location.Show();
         }
+
+        private void BtnViewLocation_Click(object sender, RoutedEventArgs e)
+        {
+
+            ViewLocation View_Location = new ViewLocation();
+
+            View_Location.Show();
+        }
     }
 }
