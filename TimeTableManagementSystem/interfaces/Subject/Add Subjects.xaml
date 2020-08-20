@@ -5,8 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Subject"
         mc:Ignorable="d"
-        Title="Add_Subjects" Height="450" Width="800">
+        Title="Add_Subjects" Height="500" Width="900" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White"/>
+            <GradientStop Color="#FFA0A0A0" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="200" Height="45" >
+            <TextBlock TextDecorations="Underline" FontWeight="Medium">Add Subjects</TextBlock>
+        </Label>
+
+        <!-- Form Labels -->
+        <Label Content="Subject Code" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Subject Name" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Offered Year" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Offered Semester" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Lecture Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Tutorial Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Lab Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Evaluation Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="18" Height="35" Width="240" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+
+        <!-- Form Input -->
+        <TextBox x:Name="SbjCodeTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="SbjNameTxt"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="OffYearTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="OffSemTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="NumLecHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="NumTuteHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="NumLabHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="NumEvaHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+
+        <!--Buttons-->
+        <Button x:Name="BtnviewSbj" Content="View Subjects" Background="#FF9802"  Foreground="White"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnviewSbj_Click"/>
+        <Button x:Name="BtnAddSbj" Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnAddSbj_Click"/>
+
+        <!--Image-->
+        <Image Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="284" Margin="5,0,0,0" Grid.RowSpan="8" Grid.Row="2" Width="286" Grid.ColumnSpan="2">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="400"  UriSource="/Images/SubjectPng.jpg" />
+            </Image.Source>
+        </Image>
+
     </Grid>
 </Window>

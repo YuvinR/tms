@@ -1,0 +1,69 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.Sessions.Add_Sessions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Sessions"
+        mc:Ignorable="d"
+        Title="Add_Sessions" Height="550" Width="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="74*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="250" Height="45" >
+            <TextBlock TextDecorations="Underline" Width="220" FontWeight="Medium">Create Sessions</TextBlock>
+        </Label>
+
+        <!--Labels-->
+        <Label Content="Lecturers" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Subject" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Tag" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Group ID" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Student Count" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Duration" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+
+        <!-- Form Input -->
+        <ComboBox x:Name="LctComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <ComboBox x:Name="SbjComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <ComboBox x:Name="GrpIdComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <ComboBox x:Name="TagComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="StdCountTxt" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="DurationTxt" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+
+        <!--List View-->
+        <ListView x:Name="listViewInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" Height="125" Margin="10,1.5,0,1.5"/>
+
+        <!--Buttons-->
+        <Button x:Name="BtnViewSessions" Content="View Sessions" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnViewSessions_Click"/>
+        <Button x:Name="BtnCreateSessions" Content="Create" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3"/>
+        <Button x:Name="BtnSelectSessions" Content="Select" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="70" FontSize="20" FontWeight="Medium"/>
+
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="324" Margin="14,28,0,0" Grid.Row="2" VerticalAlignment="Top" Width="294" Grid.ColumnSpan="2" Grid.RowSpan="7">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="400"  UriSource="/Images/SessionPng.png"/>
+            </Image.Source>
+
+        </Image>
+    </Grid>
+</Window>

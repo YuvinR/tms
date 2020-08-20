@@ -1,0 +1,129 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.StudentOperations.AddAcademicYandS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.StudentOperations"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="AddAcademicYandS" Height="450" Width="800">
+    <Grid>
+        <Label>
+            <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Academic Year And Semester</TextBlock>
+        </Label>
+
+        <TextBox
+            x:Name="idTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            Visibility="Hidden"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="67,78,0,0" HorizontalAlignment="Left" Width="59" />
+
+
+        <TextBox
+            x:Name="AcademicYearTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Academic Year"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="160,78,0,0" HorizontalAlignment="Left" Width="179" />
+
+
+
+        <TextBox
+            x:Name="AcademicSemTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Academic Semester"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="363,78,0,0" HorizontalAlignment="Left" Width="179" />
+
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Save"
+            x:Name="saveButton"
+            Click="Button_ClickSave" 
+            Margin="602,84,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="93">
+
+        </Button>
+
+
+        <DataGrid x:Name="AcYnSDataGrid" AutoGenerateColumns="False" Margin="0,164,0,50" HorizontalAlignment="Center" Width="566">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="Academic Year" Binding="{Binding year}" />
+                <DataGridTextColumn Header="Academic Semester" Binding="{Binding semester}" />
+
+                <DataGridTemplateColumn Header="Action Edit" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="BtnEdit_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                 Height="30"
+                                Width="30"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="CircleEditOutline"/>
+                            </Button>
+
+
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Action Delete" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+
+                                Click="BtnDelete_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="Delete"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="DeleteCircle" />
+                            </Button>
+
+
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+
+
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+    </Grid>
+</Window>
