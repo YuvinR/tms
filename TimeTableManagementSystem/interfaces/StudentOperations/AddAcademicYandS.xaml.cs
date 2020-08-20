@@ -43,7 +43,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                 {
                     year = AcademicYearTxt.Text;
                     semester = AcademicSemTxt.Text;
-
+                    string code = "Y"+year + "." + "S" + semester;
                     try
                     {
                         connection.Open();
@@ -52,11 +52,12 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     if (saveButton.Content.ToString() == "Save")
                     {
                         command.CommandText = "Insert into AcademicYnS " +
-                                               "(year, semester) " +
+                                               "(year, semester,code) " +
                                                "Values " +
-                                               "(@year, @semester)";
+                                               "(@year, @semester,@code)";
                         command.Parameters.AddWithValue("@year", year);
                         command.Parameters.AddWithValue("@semester", semester);
+                        command.Parameters.AddWithValue("@code", code);
                         int rows = command.ExecuteNonQuery();
 
                         if (rows > 0)
@@ -71,9 +72,10 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     else
                     {
                         var idx = int.Parse(idTxt.Text.ToString());
-                        command.CommandText = "Update AcademicYnS Set year = @year, semester = @semester Where id = @idx ";
+                        command.CommandText = "Update AcademicYnS Set year = @year, semester = @semester, code = @code Where id = @idx ";
                         command.Parameters.AddWithValue("@year", year);
                         command.Parameters.AddWithValue("@semester", semester);
+                        command.Parameters.AddWithValue("@code", "Y" + year + "." + "S" + semester);
                         command.Parameters.AddWithValue("@idx", idx);
                         int rows = command.ExecuteNonQuery();
 

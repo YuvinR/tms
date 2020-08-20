@@ -85,19 +85,19 @@
         <DataGrid 
             x:Name="AcYnSDataGrid" 
             AutoGenerateColumns="False" 
-            Margin="0,164,0,50" 
+            Margin="0,161,0,53" 
             HorizontalAlignment="Center" 
-            Width="509" 
+            Width="666" 
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
             CanUserResizeColumns="False"
             >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="ID"  Binding="{Binding id}" />
                 <DataGridTextColumn Header="Academic Year" Binding="{Binding year}" />
                 <DataGridTextColumn Header="Academic Semester" Binding="{Binding semester}" />
-
+                <DataGridTextColumn Header="Code" Width="100" Binding="{Binding code}" />
                 <DataGridTemplateColumn Header="Action Edit" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -11,85 +11,142 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="Group" Height="600" Width="1000">
+        Title="Sub-Group" Height="600" Width="1000"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
         <Label RenderTransformOrigin="0.5,0.481">
-            <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Group</TextBlock>
+            <TextBlock  FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">SubGroups</TextBlock>
         </Label>
+
+        <TextBox
+            x:Name="idTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="39"
+            Visibility="Hidden"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="134,87,0,0" HorizontalAlignment="Left" Width="62" />
+
+
+
         <ComboBox
             materialDesign:HintAssist.Hint="Group"
             materialDesign:HintAssist.HintOpacity=".26"
-            IsEditable="True" HorizontalAlignment="Left" Width="200" Margin="36,89,0,0" VerticalAlignment="Top">
-            <ComboBoxItem>
-                Group
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Banana
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Pear
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Orange
-            </ComboBoxItem>
+            IsEditable="True" 
+            HorizontalAlignment="Left"
+            Width="200" 
+            Margin="300,93,0,0"
+            VerticalAlignment="Top"
+            x:Name="comboGroup"
+            ItemsSource="{Binding}"
+            >
+
         </ComboBox>
 
 
 
         <Button
+            x:Name="generate"
+            Click="Button_ClickGenerate" 
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="565,135,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="186">
-            Generate Sub-Group ID
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Margin="471,154,0,0" 
+            Height="34" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" Width="180">
+            Generate SubGroup ID
         </Button>
 
         <Button
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="280,220,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="87">
-            Save
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Clear"
+            x:Name="ClearButton"
+            Click="Button_ClickClear" 
+            Margin="687,154,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="93" Background="#FF666C54" RenderTransformOrigin="0.2,0.648">
+
         </Button>
 
-        <DataGrid Name="dgUsers" AutoGenerateColumns="False" Margin="55,296,37,21" RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.163"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </DataGrid.RenderTransform>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Save"
+            Visibility="Hidden"
+            Click="Button_ClickSave"
+            x:Name="saveButton"
+            Margin="487,235,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="94">
+
+        </Button>
+
+        <DataGrid 
+            x:Name="subgrpsGrid" 
+            AutoGenerateColumns="False" 
+            Margin="0,312,0,44" 
+            HorizontalAlignment="Center" 
+            Width="592" 
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False"
+            >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" />
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Details}" Margin="10" />
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="GroupID" Binding="{Binding groupId}" />
+                <DataGridTextColumn Header="SubGroupNo" Binding="{Binding subgroupNo}" />
+                <DataGridTextColumn Header="SubGroupId" Binding="{Binding subgroupId}" />
+
+                <DataGridTemplateColumn Header="Action Edit" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnEdit"
+                                Click="BtnEdit_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="CircleEditOutline"/>
+                            </Button>
 
 
-        <DataGrid Name="program" AutoGenerateColumns="False" Margin="46,277,46,40" RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.163"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </DataGrid.RenderTransform>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" />
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Action Delete" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnDelete"
+                                Click="BtnDelete_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="Delete"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="DeleteCircle" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Details}" Margin="10" />
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
         </DataGrid>
 
         <TextBox
+            x:Name="subgroupnoTxt"
             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
             VerticalAlignment="Top"
             Height="42"
@@ -97,17 +154,19 @@
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
             materialDesign:HintAssist.Hint="Sub-Group No"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="280,82,522,0" RenderTransformOrigin="0.524,0.843" />
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="561,82,241,0" RenderTransformOrigin="0.524,0.843" />
 
         <TextBox
+            x:Name="subgroupID"
             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
             VerticalAlignment="Top"
+            Visibility="Hidden"
             Height="42"
             AcceptsReturn="True"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
             materialDesign:HintAssist.Hint="Sub-Group ID"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="65,216,736,0" RenderTransformOrigin="0.524,0.843" />
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="249,227,552,0" RenderTransformOrigin="0.524,0.843" />
 
     </Grid>
 </Window>

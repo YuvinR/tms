@@ -22,7 +22,7 @@ namespace TimeTableManagementSystem
                     connection.Open();
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "CREATE TABLE AcademicYnS (id Integer Primary Key Autoincrement,year varchar(100),semester varchar(100) );";
+                    cmd.CommandText = "CREATE TABLE AcademicYnS (id Integer Primary Key Autoincrement,year varchar(100),semester varchar(100),code varchar(100) );";
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
@@ -44,7 +44,7 @@ namespace TimeTableManagementSystem
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "CREATE TABLE Groups(id Integer Primary Key Autoincrement,yearSem Integer,groupNo Integer,groupId varchar(100));";
+                    cmd.CommandText = "CREATE TABLE Groups(id Integer Primary Key Autoincrement,yearSem Integer,groupNo Integer,groupId varchar(100),prgmID Integer);";
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
