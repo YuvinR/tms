@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeTableManagementSystem.interfaces.Location;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -21,6 +22,22 @@ namespace TimeTableManagementSystem.Pages
         public Location()
         {
             InitializeComponent();
+        }
+
+        private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
+        {
+            
+            AddLocation Add_Location = new AddLocation();
+            
+            Add_Location.Show();
+        }
+
+        private void BtnViewLocation_Click(object sender, RoutedEventArgs e)
+        {
+
+            ViewLocation View_Location = new ViewLocation();
+
+            View_Location.Show();
         }
     }
 }
