@@ -28,5 +28,10 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             this.Close();
             view.Show();
         }
+
+        private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

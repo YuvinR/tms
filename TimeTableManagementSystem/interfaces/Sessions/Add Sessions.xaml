@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Sessions"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="Add_Sessions" Height="550" Width="950">
+        Title="Add_Sessions" Height="550" Width="950" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -36,28 +42,58 @@
         </Label>
 
         <!--Labels-->
-        <Label Content="Lecturers" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Subject" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Tag" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Group ID" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Student Count" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Duration" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Lecturers" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Subject" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Tag" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Group ID" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Student Count" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Duration" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
 
         <!-- Form Input -->
-        <ComboBox x:Name="LctComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <ComboBox x:Name="SbjComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <ComboBox x:Name="GrpIdComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <ComboBox x:Name="TagComboBox" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="StdCountTxt" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="DurationTxt" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <ComboBox x:Name="LctComboBox"
+                  materialDesign:HintAssist.Hint="Select Lecturers"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
+        <ComboBox x:Name="SbjComboBox"
+                  materialDesign:HintAssist.Hint="Select Subject"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
+        <ComboBox x:Name="GrpIdComboBox"
+                  materialDesign:HintAssist.Hint="Select Tag"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
+        <ComboBox x:Name="TagComboBox"
+                  materialDesign:HintAssist.Hint="Select Group ID"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
+        <TextBox x:Name="StdCountTxt"
+                 materialDesign:HintAssist.Hint="Enter Student Count"
+                 materialDesign:HintAssist.HintOpacity=".26"
+                 Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
+        <TextBox x:Name="DurationTxt"
+                 materialDesign:HintAssist.Hint="Enter Duration"
+                 materialDesign:HintAssist.HintOpacity=".26"
+                 Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="16"/>
 
         <!--List View-->
-        <ListView x:Name="listViewInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" Height="125" Margin="10,1.5,0,1.5"/>
+        <ListView x:Name="listViewInput" 
+                  materialDesign:HintAssist.Hint="Selected Lecturers"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" Height="125" Margin="10,1.5,0,1.5"/>
 
         <!--Buttons-->
-        <Button x:Name="BtnViewSessions" Content="View Sessions" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnViewSessions_Click"/>
-        <Button x:Name="BtnCreateSessions" Content="Create" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3"/>
-        <Button x:Name="BtnSelectSessions" Content="Select" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="70" FontSize="20" FontWeight="Medium"/>
+        <Button x:Name="BtnViewSessions"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                Content="View Sessions" Grid.Column="1" Background="#FF9802" BorderBrush="Black" Foreground="White" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnViewSessions_Click"/>
+        <Button x:Name="BtnCreateSessions"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                Content="Create" Grid.Column="3" Background="#009588" BorderBrush="Black" Foreground="White" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="Bold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnCreateSessions_Click"/>
+        <Button x:Name="BtnSelectSessions"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                ToolTip="Resource name: MaterialDesignRaisedButton"
+                Content="Select" Grid.Column="5" HorizontalAlignment="Center" BorderBrush="Black" Foreground="White" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="80" FontSize="15" FontWeight="Medium"/>
 
         <Image Grid.Column="1" HorizontalAlignment="Left" Height="324" Margin="14,28,0,0" Grid.Row="2" VerticalAlignment="Top" Width="294" Grid.ColumnSpan="2" Grid.RowSpan="7">
             <Image.Source>

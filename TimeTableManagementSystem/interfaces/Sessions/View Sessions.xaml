@@ -4,6 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Sessions"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
         Title="View_Sessions" Height="600" Width="1000">
     <Grid>
@@ -19,17 +25,58 @@
         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="250" Height="45" >
             <TextBlock TextDecorations="Underline" Width="220" FontWeight="Medium">Display Sessions</TextBlock>
         </Label>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="422,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
-                " Width="152" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <DataGrid Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"/>
-        <Label Content="Lecturers"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="55,45,0,0"/>
-        <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="35,46,0,0" Grid.Column="1"/>
-        <Label Content="Tag"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="35,117,0,0" Grid.Column="1"/>
-        <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="18" Height="35" Width="170" Margin="55,117,0,0"/>
-        <ComboBox HorizontalAlignment="Left" Margin="250,46,0,460" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="230,47,0,459" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
-        <ComboBox HorizontalAlignment="Left" Margin="250,118,0,388" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="230,119,0,387" Grid.Row="1" Width="240" Height="33" FontSize="18"/>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Search" HorizontalAlignment="Left" Margin="422,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+            " Width="152" FontSize="20" FontWeight="Bold" BorderBrush="Black" Grid.ColumnSpan="2" Background="#4DB5AB" Foreground="White"
+            />
+        <DataGrid
+            Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"
+            AutoGenerateColumns="False" 
+            HorizontalAlignment="Center" 
+            HorizontalContentAlignment="Center"
+            Width="937"
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Session ID" Binding="{Binding Session_ID}" />
+                <DataGridTextColumn Header="Lecturers" Width="150" Binding="{Binding Lecturers}" />
+                <DataGridTextColumn Header="Subject" Width="130"  Binding="{Binding Subject}" />
+                <DataGridTextColumn Header="Subject Code" Binding="{Binding Subject_Code}" />
+                <DataGridTextColumn Header="Tag" Width="100" Binding="{Binding Tag}" />
+                <DataGridTextColumn Header="Group ID" Width="100" Binding="{Binding GroupID}" />
+                <DataGridTextColumn Header="Student Count" Binding="{Binding Student_Count}" />
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Lecturers"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,47,0,0"/>
+        <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="1"/>
+        <Label Content="Tag"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,121,0,0" Grid.Column="1"/>
+        <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,121,0,0"/>
+
+
+        <ComboBox
+            materialDesign:HintAssist.Hint="Select Lecturer"
+            materialDesign:HintAssist.HintOpacity=".26"
+            
+            HorizontalAlignment="Left" Margin="250,46,0,460" Grid.Row="1" Width="240" />
+        <ComboBox
+            materialDesign:HintAssist.Hint="Select Subject"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="1" HorizontalAlignment="Left" Margin="230,47,0,459" Grid.Row="1" Width="240" Height="33"/>
+        <ComboBox
+            materialDesign:HintAssist.Hint="Select Group ID"
+            materialDesign:HintAssist.HintOpacity=".26"
+            HorizontalAlignment="Left" Margin="250,118,0,388" Grid.Row="1" Width="240" Height="33" />
+        <ComboBox
+            materialDesign:HintAssist.Hint="Select Tag"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="1" HorizontalAlignment="Left" Margin="230,119,0,387" Grid.Row="1" Width="240" Height="33"/>
 
     </Grid>
 </Window>
