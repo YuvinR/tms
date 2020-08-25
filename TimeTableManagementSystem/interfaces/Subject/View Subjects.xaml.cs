@@ -214,7 +214,7 @@ namespace TimeTableManagementSystem.interfaces.Subject
             SQLiteCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "Select * from Subject where Subject_Name LIKE '%" + keyword + "' OR Subject_Code LIKE '%" + keyword + "%' OR Offered_Year Like '%" + keyword + "%'";
+            command.CommandText = "Select * from Subject where Subject_Name LIKE '%" + keyword + "%' OR Subject_Code LIKE '%" + keyword + "%' OR Offered_Year Like '%" + keyword + "%'";
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 

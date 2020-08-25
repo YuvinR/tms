@@ -206,7 +206,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             SQLiteCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "Select * from Lecturer where EmployeeID LIKE '%" + keyword + "' OR Name LIKE '%" + keyword + "%' OR Faculty Like '%" + keyword + "%'";
+            command.CommandText = "Select * from Lecturer where EmployeeID LIKE '%" + keyword + "%' OR Name LIKE '%" + keyword + "%' OR Faculty Like '%" + keyword + "%'";
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
