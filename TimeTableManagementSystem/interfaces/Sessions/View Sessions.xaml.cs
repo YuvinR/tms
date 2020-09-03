@@ -33,6 +33,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             loadComboBox();
         }
 
+        private void loadDataGrid()
+        {
+
+        }
+
         private void loadComboBox()
         {
             try

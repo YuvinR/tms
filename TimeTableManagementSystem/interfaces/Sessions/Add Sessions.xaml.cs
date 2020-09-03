@@ -45,8 +45,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
         private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
         {
+
             if (String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
-                && String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
+                || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
             }
@@ -67,9 +68,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     command.CommandType = CommandType.Text;
 
                     command.CommandText = "Select Subject_Code from Subject Where Subject_Name = @Subject_Name";
-                    command.Parameters.AddWithValue("@Subject", subject);
+                    command.Parameters.AddWithValue("@Subject_Name", subject);
 
-                    subCode = (string) command.ExecuteScalar();
+                    subCode = (string)command.ExecuteScalar();
 
                     command.CommandText = "Insert into Sessions " +
                                         "(Lecturers, Subject, Subject_Code, Tag, GroupID, Student_Count,Duration) " +
@@ -97,11 +98,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     }
 
 
-                }
-                catch (Exception ex)
+                }catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+               
                 finally
                 {
                     connection.Close();
@@ -113,8 +114,14 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void BtnSelectSessions_Click(object sender, RoutedEventArgs e)
         {
             selectedLec = LctComboBox.Text;
-
-            textListInput.Text = selectedLec + "\n" ;
+            if (String.IsNullOrEmpty(textListInput.Text))
+            {
+                textListInput.Text =selectedLec;
+            }
+            else
+            {
+                textListInput.Text = textListInput.Text + "\n" + selectedLec;
+            }
         }
 
         private void loadComboBox()

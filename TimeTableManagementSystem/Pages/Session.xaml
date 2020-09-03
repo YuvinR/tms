@@ -36,9 +36,9 @@
                 <StackPanel
                      Margin="8,18,8,46" Grid.RowSpan="4">
                     <TextBlock
-                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add  Year and Semester"/></TextBlock>
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add Sessions"/></TextBlock>
                     <TextBlock
-                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to Create Sessions."/></TextBlock>
                 </StackPanel>
 
 

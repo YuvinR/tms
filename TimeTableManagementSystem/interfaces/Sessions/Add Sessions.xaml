@@ -58,13 +58,14 @@
                   materialDesign:HintAssist.Hint="Select Subject"
                   materialDesign:HintAssist.HintOpacity=".26"
                   Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
-        <ComboBox x:Name="GrpIdComboBox"
+        <ComboBox x:Name="TagComboBox"
                   materialDesign:HintAssist.Hint="Select Tag"
                   materialDesign:HintAssist.HintOpacity=".26"
                   Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
-        <ComboBox x:Name="TagComboBox"
+        <ComboBox x:Name="GrpIdComboBox"
                   materialDesign:HintAssist.Hint="Select Group ID"
                   materialDesign:HintAssist.HintOpacity=".26"
+                  ItemsSource="{Binding}"
                   Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
         <TextBox x:Name="StdCountTxt"
                  
@@ -84,7 +85,7 @@
                   materialDesign:HintAssist.HintOpacity=".26"
                   Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5"/>-->
 
-        <TextBox x:Name="textListInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5" />
+        <TextBox x:Name="textListInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5" IsReadOnly="True" />
         <!--Buttons-->
         <Button x:Name="BtnViewSessions"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
