@@ -229,7 +229,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
         {
            
             if (String.IsNullOrEmpty(UpdEmpIdTxt.Text) || String.IsNullOrEmpty(UpdEmpNameTxt.Text) || String.IsNullOrEmpty(UpdFacultyCombo.Text) || String.IsNullOrEmpty(UpdEmpDepTxt.Text)
-                && String.IsNullOrEmpty(UpdCenterCombo.Text) || String.IsNullOrEmpty(UpdBuildingCombo.Text) || String.IsNullOrEmpty(UpdLevelCombo.Text) || String.IsNullOrEmpty(UpdRankTxt.Text))
+                || String.IsNullOrEmpty(UpdCenterCombo.Text) || String.IsNullOrEmpty(UpdBuildingCombo.Text) || String.IsNullOrEmpty(UpdLevelCombo.Text) || String.IsNullOrEmpty(UpdRankTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }
