@@ -11,7 +11,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="Add Lecturer" Height="500" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Add Lecturer" Height="550" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFA0A0A0" Offset="1"/>
@@ -21,17 +21,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -46,26 +46,29 @@
         <Label Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="28" Width="200" Height="45" >
             <TextBlock TextDecorations="Underline" FontWeight="Medium">Add Lecturers</TextBlock>
         </Label>
-        <Label Content="Employee ID" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Name" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Faculty" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Department" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Center" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Building" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Level" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Rank" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="18" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Employee ID" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Name" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Faculty" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Department" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Center" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Building" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Level" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Rank" FontWeight="SemiBold" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="17" Height="35" Width="120" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
 
         <!--ComboBoxes-->
         <ComboBox x:Name="FacultyCombo"
-                  materialDesign:HintAssist.Hint="Select Lecturers"
+                  materialDesign:HintAssist.Hint="Select Faculty"
                   materialDesign:HintAssist.HintOpacity=".26"
-                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="4" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18">
+                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="4" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="14">
             <ComboBoxItem x:Name="FacultyItem1" Content="Computing"/>
             <ComboBoxItem x:Name="FacultyItem2" Content="Engineering"/>
             <ComboBoxItem x:Name="FacultyItem3" Content="Business"/>
             <ComboBoxItem x:Name="FacultyItem4" Content="Humanities &amp; Sciences"/>
         </ComboBox>
-        <ComboBox x:Name="CenterCombo" Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="6" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18">
+        <ComboBox x:Name="CenterCombo"
+                  materialDesign:HintAssist.Hint="Select Center"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="6" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="14">
             <ComboBoxItem x:Name="CenterItem1" Content="Malabe"/>
             <ComboBoxItem x:Name="CenterItem2" Content="Metro"/>
             <ComboBoxItem x:Name="CenterItem3" Content="Matara"/>
@@ -73,8 +76,14 @@
             <ComboBoxItem x:Name="CenterItem5" Content="Kurunagala"/>
             <ComboBoxItem x:Name="CenterItem6" Content="Jaffna"/>
         </ComboBox>
-        <ComboBox x:Name="BuildingCombo" Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="7" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
-        <ComboBox x:Name="LevelCombo"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="8" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18" DropDownClosed="LevelCombo_DropDownClosed" >
+        <ComboBox x:Name="BuildingCombo"
+                  materialDesign:HintAssist.Hint="Select Building"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="7" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="14"/>
+        <ComboBox x:Name="LevelCombo"
+                  materialDesign:HintAssist.Hint="Select Level"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1.5"  Grid.Row="8" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="14" DropDownClosed="LevelCombo_DropDownClosed" >
             <ComboBoxItem x:Name="LevelItem1" Content="Professor"/>
             <ComboBoxItem x:Name="LevelItem2" Content="Assistant Professor"/>
             <ComboBoxItem x:Name="LevelItem3" Content="Senior Lecturer(HG)"/>
@@ -85,14 +94,44 @@
         </ComboBox>
 
         <!--TextBoxes-->
-        <TextBox x:Name="EmpIdTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
-        <TextBox x:Name="EmpNameTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
-        <TextBox x:Name="EmpDepTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18"/>
-        <TextBox x:Name="RankTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="33" FontSize="18" IsReadOnly="True"/>
+        <TextBox
+            x:Name="EmpIdTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            materialDesign:HintAssist.Hint="Employee ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+            Background="White"
+            Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14"
+            />
+        <TextBox x:Name="EmpNameTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Employee Name"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14"/>
+        <TextBox x:Name="EmpDepTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Department"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14"/>
+        <TextBox x:Name="RankTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Rank"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14" IsReadOnly="True"/>
 
         <!--Button-->
-        <Button x:Name="BtnViewLecturer" Content="View Lecturers" Background="#FF9802"  Foreground="White" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnViewLecturer_Click"/>
-        <Button x:Name="BtnAddLecturer" Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnAddLecturer_Click"/>
+        <Button x:Name="BtnViewLecturer"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
+                Content="View Lecturers" Background="#FF9802"  Foreground="White" Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="11" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" Click="BtnViewLecturer_Click" />
+        <Button x:Name="BtnAddLecturer"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
+                Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="2"  Grid.Row="11" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" Click="BtnAddLecturer_Click"/>
         <Image Grid.Column="1" HorizontalAlignment="Left" Height="284" Margin="32,21,0,0" Grid.RowSpan="8" Grid.Row="2" VerticalAlignment="Top" Width="286" Grid.ColumnSpan="2">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="400"  UriSource="/Images/LecturerPng.png"/>

@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Subject"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="Add_Subjects" Height="500" Width="900" ResizeMode="NoResize">
+        Title="Add_Subjects" Height="550" Width="900" ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="White"/>
@@ -15,16 +21,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="8"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="2"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -41,28 +47,76 @@
         </Label>
 
         <!-- Form Labels -->
-        <Label Content="Subject Code" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Subject Name" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Offered Year" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Offered Semester" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Number of Lecture Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Number of Tutorial Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Number of Lab Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="18" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
-        <Label Content="Number of Evaluation Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="18" Height="35" Width="240" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Subject Code" Grid.Column="3" FontWeight="SemiBold"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="17" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Subject Name" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Offered Year" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Offered Semester" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="170" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Lecture Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Tutorial Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Lab Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="220" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
+        <Label Content="Number of Evaluation Hours" Grid.Column="3"  HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" FontSize="17" FontWeight="SemiBold" Height="35" Width="240" Grid.ColumnSpan="2" Margin="0,3,0,3"/>
 
         <!-- Form Input -->
-        <TextBox x:Name="SbjCodeTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="SbjNameTxt"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="OffYearTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="OffSemTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="NumLecHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="NumTuteHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="NumLabHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
-        <TextBox x:Name="NumEvaHrTxt" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="33" FontSize="18"/>
+        <TextBox x:Name="SbjCodeTxt"
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                materialDesign:HintAssist.Hint="Subject Code"
+                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                Background="White"
+                Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="SbjNameTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Subject Name"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="OffYearTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Year"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="4"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="OffSemTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Semester"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="NumLecHrTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Lecture Hours"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="NumTuteHrTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Tutorial Hours"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="NumLabHrTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Lab Hours"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
+        <TextBox x:Name="NumEvaHrTxt"
+                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                 materialDesign:HintAssist.Hint="Evaluation Hours"
+                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                 Background="White"
+                 Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
 
         <!--Buttons-->
-        <Button x:Name="BtnviewSbj" Content="View Subjects" Background="#FF9802"  Foreground="White"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnviewSbj_Click"/>
-        <Button x:Name="BtnAddSbj" Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI" BorderThickness="3,3,3,3" Click="BtnAddSbj_Click"/>
+        <Button x:Name="BtnviewSbj"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
+                Content="View Subjects" Background="#FF9802"  Foreground="White"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="225" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI"  Click="BtnviewSbj_Click"/>
+        <Button x:Name="BtnAddSbj"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
+                Content="Add" Background="#009588" Foreground="White" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch" Width="125" Height="40" FontSize="22" FontWeight="DemiBold" FontFamily="Microsoft YaHei UI"  Click="BtnAddSbj_Click"/>
 
         <!--Image-->
         <Image Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="284" Margin="5,0,0,0" Grid.RowSpan="8" Grid.Row="2" Width="286" Grid.ColumnSpan="2">
