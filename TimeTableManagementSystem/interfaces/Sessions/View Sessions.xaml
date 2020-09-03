@@ -7,11 +7,11 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
+        TextElement.FontSize="14"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         mc:Ignorable="d"
-        Title="View_Sessions" Height="600" Width="1000">
+        Title="View_Sessions" Height="600" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,9 +27,10 @@
         </Label>
         <Button
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
             Content="Search" HorizontalAlignment="Left" Margin="422,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
-            " Width="152" FontSize="20" FontWeight="Bold" BorderBrush="Black" Grid.ColumnSpan="2" Background="#4DB5AB" Foreground="White"
+            " Width="152" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2" Background="#4DB5AB" Foreground="White"
             />
         <DataGrid
             Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"
@@ -60,23 +61,23 @@
         <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,121,0,0"/>
 
 
-        <ComboBox
+        <ComboBox x:Name="SearchLecCombo"
             materialDesign:HintAssist.Hint="Select Lecturer"
             materialDesign:HintAssist.HintOpacity=".26"
             
-            HorizontalAlignment="Left" Margin="250,46,0,460" Grid.Row="1" Width="240" />
-        <ComboBox
+            HorizontalAlignment="Left" Margin="244,43,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
+        <ComboBox x:Name="SearchSubCombo"
             materialDesign:HintAssist.Hint="Select Subject"
             materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="230,47,0,459" Grid.Row="1" Width="240" Height="33"/>
-        <ComboBox
+            Grid.Column="1" HorizontalAlignment="Left" Margin="228,47,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SearchGrpCombo"
             materialDesign:HintAssist.Hint="Select Group ID"
             materialDesign:HintAssist.HintOpacity=".26"
-            HorizontalAlignment="Left" Margin="250,118,0,388" Grid.Row="1" Width="240" Height="33" />
-        <ComboBox
+            HorizontalAlignment="Left" Margin="242,117,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
+        <ComboBox x:Name="SearchTagCombo"
             materialDesign:HintAssist.Hint="Select Tag"
             materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="230,119,0,387" Grid.Row="1" Width="240" Height="33"/>
+            Grid.Column="1" HorizontalAlignment="Left" Margin="226,118,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
