@@ -31,11 +31,37 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadComboBox();
+            loadDataGrid();
         }
 
         private void loadDataGrid()
         {
+            connection.Open();
 
+            try
+            {
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         private void loadComboBox()

@@ -12,7 +12,7 @@
             <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Session</TextBlock>
         </Label>
         
-        <materialDesign:Card Margin="21,142,615,171">
+        <materialDesign:Card Margin="21,66,615,247">
             <Grid Margin="0,0,-5,37">
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -40,9 +40,38 @@
                     <TextBlock
                         TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to Create Sessions."/></TextBlock>
                 </StackPanel>
+            </Grid>
+        </materialDesign:Card>
 
+        <materialDesign:Card Margin="217,66,418,247">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnViewSession"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AlphaPCircle" />
 
-
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="View Sessions"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to View the Session Related Details"/></TextBlock>
+                </StackPanel>
             </Grid>
         </materialDesign:Card>
     </Grid>

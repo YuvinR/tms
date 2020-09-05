@@ -105,7 +105,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {
