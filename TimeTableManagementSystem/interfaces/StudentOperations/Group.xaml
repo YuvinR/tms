@@ -1,0 +1,182 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.StudentOperations.Group"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.StudentOperations"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="Group" Height="600" Width="1000"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <Label RenderTransformOrigin="0.5,0.481">
+            <TextBlock FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Group</TextBlock>
+        </Label>
+        <TextBox
+            x:Name="idTxt"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="39"
+            Visibility="Hidden"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="85,92,0,0" HorizontalAlignment="Left" Width="62" />
+
+
+
+        <ComboBox
+            materialDesign:HintAssist.Hint="Academic Year and Semester"
+            materialDesign:HintAssist.HintOpacity=".26"
+            IsEditable="True" 
+            HorizontalAlignment="Left"
+            Width="200" 
+            Margin="180,96,0,0"
+            VerticalAlignment="Top"
+            x:Name="comboacys"
+            ItemsSource="{Binding}"
+            >
+
+        </ComboBox>
+
+        <ComboBox
+            materialDesign:HintAssist.Hint="Programme"
+            materialDesign:HintAssist.HintOpacity=".26"
+            IsEditable="True"
+            HorizontalAlignment="Left" 
+            Width="200" 
+            Margin="406,96,0,0" 
+            VerticalAlignment="Top"
+            x:Name="comboProgram"
+            ItemsSource="{Binding}"
+            >
+        </ComboBox>
+
+        <Button
+            x:Name="generate"
+            Click="Button_ClickGenerate" 
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Margin="523,150,0,0" 
+            Height="34" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" Width="180">
+            Generate Group ID
+        </Button>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Clear"
+            x:Name="ClearButton"
+            Click="Button_ClickClear" 
+            Margin="745,150,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="93" Background="#FF666C54" RenderTransformOrigin="0.2,0.648">
+
+        </Button>
+        <Button
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Content="Save"
+            Visibility="Hidden"
+            Click="Button_ClickSave"
+            x:Name="saveButton"
+            Margin="413,224,0,0" 
+            Height="34" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="93">
+
+        </Button>
+
+        <DataGrid 
+            x:Name="groupsGrid" 
+            AutoGenerateColumns="False" 
+            Margin="0,312,0,44" 
+            HorizontalAlignment="Center" 
+            Width="643" 
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="Year and Sem ID" Binding="{Binding yearSem}" />
+                <DataGridTextColumn Header="GroupCode" Binding="{Binding prgmID}" />
+                <DataGridTextColumn Header="GroupNo" Binding="{Binding groupNo}" />
+                <DataGridTextColumn Header="ProgrmID" Binding="{Binding groupId}" />
+
+                <DataGridTemplateColumn Header="Action Edit" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnEdit"
+                                Click="BtnEdit_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="CircleEditOutline"/>
+                            </Button>
+
+
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Action Delete" Width="110">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="BtnDelete"
+                                Click="BtnDelete_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="Delete"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="DeleteCircle" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox
+            x:Name="groupNo"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Group No"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="639,89,162,0" RenderTransformOrigin="0.524,0.843" />
+
+        <TextBox
+            x:Name="groupid"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            VerticalAlignment="Top"
+            Height="42"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+             Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Group ID"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" Margin="180,220,621,0" RenderTransformOrigin="0.524,0.843" />
+
+
+    </Grid>
+</Window>

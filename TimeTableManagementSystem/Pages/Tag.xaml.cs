@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,24 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TimeTableManagementSystem.interfaces.Sessions;
+using TimeTableManagementSystem.DB_Config;
+using TimeTableManagementSystem.interfaces.StudentOperations;
 
 namespace TimeTableManagementSystem.Pages
 {
     /// <summary>
-    /// Interaction logic for Session.xaml
+    /// Interaction logic for Tag.xaml
     /// </summary>
-    public partial class Session : UserControl
+    public partial class Tag : UserControl
     {
-        public Session()
+        public Tag()
         {
             InitializeComponent();
         }
 
-        private void BtnAddSession(object sender, RoutedEventArgs e)
+        private void BtnTag_Click(object sender, RoutedEventArgs e)
         {
-            Add_Sessions add_Sessions = new Add_Sessions();
-            add_Sessions.Show();
+            TagOp sub_Group = new TagOp();
+            sub_Group.Show();
         }
     }
+
+
 }

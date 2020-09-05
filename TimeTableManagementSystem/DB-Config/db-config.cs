@@ -37,29 +37,9 @@ namespace TimeTableManagementSystem.DB_Config
             conString.DataSource = dbFilePath;
 
             SQLiteConnection connection = new SQLiteConnection(conString.ConnectionString);
-
-            //var rablecmd = connection.CreateCommand();
-            //rablecmd.CommandText = "CREATE TABLER";
-
-
             return connection;
         }
-        //public string  createDbFile()
-        //{
-        //    if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
-        //    {
-        //        Directory.CreateDirectory(dbPath);
-        //        dbFilePath = dbPath + "\\yourDb.db";
-        //        return dbFilePath;
-        //    }
-              
-        //    if (!System.IO.File.Exists(dbFilePath))
-        //    {
-        //        SQLiteConnection.CreateFile(dbFilePath);
-        //        return null;
-        //    }
-        //    return null;
-        //}
+   
 
     }
 }

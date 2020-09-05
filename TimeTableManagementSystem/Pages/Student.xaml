@@ -4,14 +4,150 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TimeTableManagementSystem.Pages"
-             mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Height="auto" Width="auto">
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label>
-                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Student</TextBlock>
-            </Label>
-        </materialDesign:TransitioningContent>
+
+        <Label>
+            <TextBlock FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Student Operations</TextBlock>
+        </Label>
+
+        <materialDesign:Card Margin="21,142,615,171">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnYnSAdd_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add  Year and Semester"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
+
+
+        <materialDesign:Card Margin="217,142,418,171">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnProgAdd_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AlphaPCircle" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add Programme"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="417,142,217,171">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnGroup_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AccountMultiplePlus" HorizontalAlignment="Center" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Create Groups"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="617,142,21,171">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnSubGroup_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                   Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AccountMultiplePlusOutline" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Create Sub Groups"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

@@ -92,8 +92,8 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
         {
             
 
-            if (String.IsNullOrEmpty(EmpIdTxt.Text) || String.IsNullOrEmpty(EmpNameTxt.Text) || String.IsNullOrEmpty(FacultyCombo.Text) || String.IsNullOrEmpty(EmpDepTxt.Text)
-                && String.IsNullOrEmpty(CenterCombo.Text) || String.IsNullOrEmpty(BuildingCombo.Text) || String.IsNullOrEmpty(LevelCombo.Text) || String.IsNullOrEmpty(RankTxt.Text))
+            if (string.IsNullOrEmpty(EmpIdTxt.Text) || string.IsNullOrEmpty(EmpNameTxt.Text) || string.IsNullOrEmpty(FacultyCombo.Text) || string.IsNullOrEmpty(EmpDepTxt.Text)
+                || string.IsNullOrEmpty(CenterCombo.Text) || string.IsNullOrEmpty(BuildingCombo.Text) || string.IsNullOrEmpty(LevelCombo.Text) || string.IsNullOrEmpty(RankTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }

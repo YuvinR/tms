@@ -206,7 +206,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             SQLiteCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "Select * from Lecturer where EmployeeID LIKE '%" + keyword + "' OR Name LIKE '%" + keyword + "%' OR Faculty Like '%" + keyword + "%'";
+            command.CommandText = "Select * from Lecturer where EmployeeID LIKE '%" + keyword + "%' OR Name LIKE '%" + keyword + "%' OR Faculty Like '%" + keyword + "%'";
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -229,7 +229,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
         {
            
             if (String.IsNullOrEmpty(UpdEmpIdTxt.Text) || String.IsNullOrEmpty(UpdEmpNameTxt.Text) || String.IsNullOrEmpty(UpdFacultyCombo.Text) || String.IsNullOrEmpty(UpdEmpDepTxt.Text)
-                && String.IsNullOrEmpty(UpdCenterCombo.Text) || String.IsNullOrEmpty(UpdBuildingCombo.Text) || String.IsNullOrEmpty(UpdLevelCombo.Text) || String.IsNullOrEmpty(UpdRankTxt.Text))
+                || String.IsNullOrEmpty(UpdCenterCombo.Text) || String.IsNullOrEmpty(UpdBuildingCombo.Text) || String.IsNullOrEmpty(UpdLevelCombo.Text) || String.IsNullOrEmpty(UpdRankTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }
