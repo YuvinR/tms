@@ -17,6 +17,7 @@ using TimeTableManagementSystem.DB_Config;
 using TimeTableManagementSystem.Pages;
 using System.Data.SQLite;
 using TimeTableManagementSystem.interfaces.ManageTimeSlots;
+using TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours;
 
 namespace TimeTableManagementSystem
 {
@@ -31,8 +32,12 @@ namespace TimeTableManagementSystem
             StartupConfigurations stc = new StartupConfigurations();
             stc.initiate();
 
-            //ManageTimeSlots manageTimeSlots = new ManageTimeSlots();
+            //ManageTimeSlots manageTimeSlots = new ManageTimeSlots(); 
             //manageTimeSlots.Show();
+            //this.Hide();
+
+            //ManageWorkignDaysAndHours manageworkigndaysandhours = new ManageWorkignDaysAndHours();
+            //manageworkigndaysandhours.Show();
             //this.Hide();
 
 
