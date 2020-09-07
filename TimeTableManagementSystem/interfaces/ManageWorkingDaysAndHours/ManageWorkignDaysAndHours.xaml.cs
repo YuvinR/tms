@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -105,14 +106,14 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             this.workingDays = new List<string>();
             ComboBoxItem cmbInpuTStartTime = (ComboBoxItem)cmbStartTime.SelectedItem;
             ComboBoxItem cmbInputEndTime = (ComboBoxItem)cmbEndTime.SelectedItem;
-            ComboBoxItem cmbInputWorkingHours = (ComboBoxItem)cmbHours.SelectedItem;
-            ComboBoxItem cmbInputWorkingMinutes = (ComboBoxItem)cmbMin.SelectedItem;
+            //ComboBoxItem cmbInputWorkingHours = (ComboBoxItem)cmbHours.SelectedItem;
+            //ComboBoxItem cmbInputWorkingMinutes = (ComboBoxItem)cmbMin.SelectedItem;
             ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
 
             workingDaysFilter();
 
-            this.WorkingHours = int.Parse(cmbInputWorkingHours.Content.ToString());
-            this.WorkingMinutes = int.Parse(cmbInputWorkingMinutes.Content.ToString());
+            //this.WorkingHours = int.Parse(cmbInputWorkingHours.Content.ToString());
+            //this.WorkingMinutes = int.Parse(cmbInputWorkingMinutes.Content.ToString());
             this.NoOfWorkingDays = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
             this.startTime = cmbInpuTStartTime.Content.ToString();
             this.endTime = cmbInputEndTime.Content.ToString();
@@ -230,6 +231,29 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             {
                 this.workingDays.Add("Sunday");
             }
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void testMethod(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+            MessageBox.Show("sds");
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+            TimePicker sd = (TimePicker)timePerDayInput;
+            DateTime sdd = new DateTime();
+
+            //Console.WriteLine(sdd.Minute.ToString());
+            //System.Diagnostics.Debug.WriteLine(sdd.TimeOfDay.ToString()) ;
+            //sdd = (DateTime)sd.SelectedTime;
+                //MessageBox.Show(sdd.TimeOfDay.ToString());
         }
     }
 }

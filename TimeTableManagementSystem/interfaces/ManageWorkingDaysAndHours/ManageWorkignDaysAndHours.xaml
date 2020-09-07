@@ -33,7 +33,10 @@
         <Label x:Name="label1_Copy" Content="No of Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,9,0,0" Grid.Row="3"/>
         <Label x:Name="label1_Copy1" Content="Select Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,1,0,0" Grid.Row="4"/>
         <Label x:Name="label1_Copy2" Content="Working Time Per Day" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,158,0,0" Grid.Row="4" Grid.RowSpan="2"/>
-        <ComboBox x:Name="cmbWorkingDayNumber" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3">
+        <ComboBox x:Name="cmbWorkingDayNumber" 
+                  materialDesign:HintAssist.Hint="3"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
@@ -49,110 +52,24 @@
         <CheckBox x:Name="cmbFriday" Content="Friday" HorizontalAlignment="Left" Margin="25,116,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4"/>
         <CheckBox x:Name="cmbSaturday" Content="Saturday" HorizontalAlignment="Left" Margin="3,20,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="2" Grid.Row="4"/>
         <CheckBox x:Name="cmbSunday" Content="Sunday" HorizontalAlignment="Left" Margin="3,44,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="2" Grid.Row="4"/>
-        <ComboBox x:Name="cmbMin" HorizontalAlignment="Left" Margin="39,164,0,0" VerticalAlignment="Top" Width="46" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2">
-            <ComboBoxItem Content="00"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="30"/>
-            <ComboBoxItem Content="40"/>
-            <ComboBoxItem Content="50"/>
-            <ComboBoxItem Content="59"/>
-        </ComboBox>
-        <ComboBox x:Name="cmbHours" HorizontalAlignment="Left" Margin="64,164,0,0" VerticalAlignment="Top" Width="47" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2">
-            <ComboBoxItem Content="0"/>
-            <ComboBoxItem Content="1"/>
-            <ComboBoxItem Content="2"/>
-            <ComboBoxItem Content="3"/>
-            <ComboBoxItem Content="4"/>
-            <ComboBoxItem Content="5"/>
-            <ComboBoxItem Content="6"/>
-            <ComboBoxItem Content="7"/>
-            <ComboBoxItem Content="8"/>
-            <ComboBoxItem Content="9"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="11"/>
-            <ComboBoxItem Content="12"/>
-        </ComboBox>
-        <Label x:Name="label2" Content="Hours" HorizontalAlignment="Left" Margin="21,162,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2"/>
-        <Label x:Name="label2_Copy" Content="Min" HorizontalAlignment="Left" Margin="130,162,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2"/>
         <Label x:Name="label1_Copy3" Content="Starting Time" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,31,0,0" Grid.Row="5"/>
         <Label x:Name="label1_Copy4" Content="Ending Time" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,70,0,0" Grid.Row="5"/>
 
-        <ComboBox x:Name="cmbStartTime"
-                  HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" Width="189" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5">
-            <ComboBoxItem Content="08:30"/>
-            <ComboBoxItem Content="09:00"/>
-            <ComboBoxItem Content="09:30"/>
-            <ComboBoxItem Content="10:00"/>
-            <ComboBoxItem Content="10:30"/>
-            <ComboBoxItem Content="11:00"/>
-            <ComboBoxItem Content="11:30"/>
-            <ComboBoxItem Content="12:00"/>
-            <ComboBoxItem Content="12:30"/>
-            <ComboBoxItem Content="13:00"/>
-            <ComboBoxItem Content="13:30"/>
-            <ComboBoxItem Content="14:00"/>
-            <ComboBoxItem Content="14:30"/>
-            <ComboBoxItem Content="15:00"/>
-            <ComboBoxItem Content="15:30"/>
-            <ComboBoxItem Content="16:00"/>
-            <ComboBoxItem Content="16:30"/>
-            <ComboBoxItem Content="17:00"/>
-            <ComboBoxItem Content="17:30"/>
-            <ComboBoxItem Content="18:00"/>
-            <ComboBoxItem Content="18:30"/>
-            <ComboBoxItem Content="19:00"/>
-            <ComboBoxItem Content="19:30"/>
-            <ComboBoxItem Content="20:00"/>
-            <ComboBoxItem Content="20:30"/>
-        </ComboBox>
-        <ComboBox x:Name="cmbEndTime" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" Width="189" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5">
-            <ComboBoxItem Content="08:30"/>
-            <ComboBoxItem Content="09:00"/>
-            <ComboBoxItem Content="09:30"/>
-            <ComboBoxItem Content="10:00"/>
-            <ComboBoxItem Content="10:30"/>
-            <ComboBoxItem Content="11:00"/>
-            <ComboBoxItem Content="11:30"/>
-            <ComboBoxItem Content="12:00"/>
-            <ComboBoxItem Content="12:30"/>
-            <ComboBoxItem Content="13:00"/>
-            <ComboBoxItem Content="13:30"/>
-            <ComboBoxItem Content="14:00"/>
-            <ComboBoxItem Content="14:30"/>
-            <ComboBoxItem Content="15:00"/>
-            <ComboBoxItem Content="15:30"/>
-            <ComboBoxItem Content="16:00"/>
-            <ComboBoxItem Content="16:30"/>
-            <ComboBoxItem Content="17:00"/>
-            <ComboBoxItem Content="17:30"/>
-            <ComboBoxItem Content="18:00"/>
-            <ComboBoxItem Content="18:30"/>
-            <ComboBoxItem Content="19:00"/>
-            <ComboBoxItem Content="19:30"/>
-            <ComboBoxItem Content="20:00"/>
-            <ComboBoxItem Content="20:30"/>
-        </ComboBox>
-
-        <ComboBox Width="119" HorizontalAlignment="Left" 
-                  materialDesign:HintAssist.HintOpacity=".26"
-                  materialDesign:HintAssist.Hint="SElectsdsd" Margin="29,0,0,0" Grid.Row="4" Height="30">
-            <ComboBoxItem Content="09:00"/>
-            <ComboBoxItem Content="09:30"/>
-            <ComboBoxItem Content="10:00"/>
-            <ComboBoxItem Content="10:30"/>
-        </ComboBox>
-
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="100,21,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314" Grid.Column="5" Grid.Row="5"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="9,21,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="43,70,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF39ECD3" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="79,69,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="27" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="14,88,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="43,88,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF39ECD3" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5" Click="btnUpdate_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="79,87,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="27" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5" Click="btnCancel_Click"/>
         <CheckBox x:Name="cmbWeekday" Content="Weekday" HorizontalAlignment="Left" Margin="20,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekday" Unchecked="disableWeekday" Grid.Column="1" Grid.Row="2"/>
         <CheckBox x:Name="cmbWeekend" Content="Weekend" HorizontalAlignment="Left" Margin="3,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekEnd" Unchecked="disableWeekend" Grid.Column="2" Grid.Row="2"/>
         <Label x:Name="label1_Copy5" Content="No of Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="36,3,0,0" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3"/>
         <Label x:Name="label1_Copy6" Content="Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="36,21,0,0" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="4"/>
         <Label x:Name="label1_Copy7" Content="Working Time Per Day" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="198" FontSize="17" FontWeight="Bold" Margin="36,93,0,0" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="4"/>
+        <materialDesign:TimePicker x:Name="timePerDayInput" 
+                                   materialDesign:HintAssist.HintOpacity=".26"
+                                   HorizontalAlignment="Left" Margin="24,4,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="191">
+        </materialDesign:TimePicker>
+        <materialDesign:TimePicker Grid.Column="1" HorizontalAlignment="Left" Margin="25,40,0,0" Grid.Row="5" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

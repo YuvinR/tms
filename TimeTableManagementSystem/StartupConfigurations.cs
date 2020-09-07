@@ -136,6 +136,8 @@ namespace TimeTableManagementSystem
                     connection.Close();
                 }
 
+                //Wickramanayake T.R.D db scripts
+
                 if (!checkIfExist("working_days"))
                 {
                     connection.Open();
@@ -167,8 +169,10 @@ namespace TimeTableManagementSystem
                     connection.Close();
                 }
 
+                //Wickramanayake T.R.D db scripts
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
