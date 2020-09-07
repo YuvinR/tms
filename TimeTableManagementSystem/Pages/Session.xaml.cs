@@ -29,5 +29,11 @@ namespace TimeTableManagementSystem.Pages
             Add_Sessions add_Sessions = new Add_Sessions();
             add_Sessions.Show();
         }
+
+        private void BtnViewSession(object sender, RoutedEventArgs e)
+        {
+            View_Sessions view_Sessions = new View_Sessions();
+            view_Sessions.Show();
+        }
     }
 }
