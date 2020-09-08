@@ -19,6 +19,9 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
     /// <summary>
     /// Interaction logic for ManageWorkignDaysAndHours.xaml
     /// </summary>
+    /// 
+
+
     public partial class ManageWorkignDaysAndHours : Window
     {
         private SQLiteConnection connection = db_config.connect();
@@ -27,10 +30,17 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         int NoOfWorkingDays;
         int WorkingHours = 0;
         int WorkingMinutes = 0;
+        int errorCount = 0;
+
+        int weekID;
+
         List<string> workingDays;
+        List<Chip> chipList;
+
         String workingTimePerDay;
         String startTime;
         String endTime;
+        String[] CHECKING_DAYS = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         public ManageWorkignDaysAndHours()
         {
@@ -69,6 +79,12 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             cmbFriday.IsEnabled = false;
             cmbSaturday.IsEnabled = false;
             cmbSunday.IsEnabled = false;
+
+            fetchDataFromDB();
+
+
+
+
         }
 
         public void EnableWeekdays()
@@ -104,24 +120,32 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             this.workingDays = new List<string>();
-            ComboBoxItem cmbInpuTStartTime = (ComboBoxItem)cmbStartTime.SelectedItem;
-            ComboBoxItem cmbInputEndTime = (ComboBoxItem)cmbEndTime.SelectedItem;
-            //ComboBoxItem cmbInputWorkingHours = (ComboBoxItem)cmbHours.SelectedItem;
-            //ComboBoxItem cmbInputWorkingMinutes = (ComboBoxItem)cmbMin.SelectedItem;
             ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
 
             workingDaysFilter();
 
-            //this.WorkingHours = int.Parse(cmbInputWorkingHours.Content.ToString());
-            //this.WorkingMinutes = int.Parse(cmbInputWorkingMinutes.Content.ToString());
             this.NoOfWorkingDays = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
-            this.startTime = cmbInpuTStartTime.Content.ToString();
-            this.endTime = cmbInputEndTime.Content.ToString();
+
+            //TimePicker PerDayTime = (TimePicker)timePerDayInput;
+            TimePicker StartingTime = (TimePicker)timeStartingTime;
+            TimePicker EndingTime = (TimePicker)timeEndingTime;
+
+            //DateTime perDayTime = new DateTime();
+            DateTime startingTime = new DateTime();
+            DateTime endingTime = new DateTime();
+
+            //perDayTime = (DateTime)PerDayTime.SelectedTime;
+            startingTime = (DateTime)StartingTime.SelectedTime;
+            endingTime = (DateTime)EndingTime.SelectedTime;
+
+            this.workingTimePerDay = (endingTime - startingTime).ToString();
+            this.startTime = startingTime.TimeOfDay.ToString();
+            this.endTime = endingTime.TimeOfDay.ToString();
 
             Random random = new Random();
-            int id = random.Next(1258);
+            this.weekID = random.Next(2344);
 
-
+            
 
 
 
@@ -133,32 +157,18 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                 {
                     SQLiteCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO working_days_hours (week_id, type, no_working_days, working_hours, working_min, start_time, end_time, days) " +
-                                                                    "VALUES(@WEEKID,@TYPE,@NO_WORKING_DAYS,@WORKING_HOURS,@WORKING_MIN,@START_TIME,@END_TIME,@DAYS);";
+                    command.CommandText = "INSERT INTO working_week (week_id,week_type,per_day_time,starting_time,ending_time,day_name) " +
+                        "VALUES(@WEEK_ID, @WEEk_TYPE, @PER_DAY_TIME, @STARTING_TIME, @ENDING_TIME, @DAY_NAME);";
                     Console.WriteLine(command.CommandText);
 
-                    command.Parameters.AddWithValue("@WEEKID", id);
-                    command.Parameters.AddWithValue("@TYPE", this.weekType.ToString());
-                    command.Parameters.AddWithValue("@NO_WORKING_DAYS", this.NoOfWorkingDays);
-                    command.Parameters.AddWithValue("@WORKING_HOURS", this.WorkingHours);
-                    command.Parameters.AddWithValue("@WORKING_MIN", this.WorkingMinutes);
-                    command.Parameters.AddWithValue("@START_TIME", this.startTime);
-                    command.Parameters.AddWithValue("@END_TIME", this.endTime);
-                    command.Parameters.AddWithValue("@DAYS", day);
+                    command.Parameters.AddWithValue("@WEEK_ID", this.weekID);
+                    command.Parameters.AddWithValue("@WEEk_TYPE", this.weekType);
+                    command.Parameters.AddWithValue("@PER_DAY_TIME", this.workingTimePerDay);
+                    command.Parameters.AddWithValue("@STARTING_TIME", this.startTime);
+                    command.Parameters.AddWithValue("@ENDING_TIME", this.endTime);
+                    command.Parameters.AddWithValue("@DAY_NAME", day);
 
-
-                    int rows = command.ExecuteNonQuery();
-
-                    if (rows > 0)
-                    {
-                        MessageBox.Show("Data has been Inserted");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error");
-                    }
-
-
+                    this.errorCount = command.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -171,10 +181,100 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                 }
             }
 
+            if (this.errorCount > 0)
+            {
+                MessageBox.Show("Data has been Inserted");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+
         }
 
 
+        public void fetchDataFromDB()
+        {
 
+            this.chipList = new List<Chip>();
+            this.chipList.Add(chip_monday);
+            this.chipList.Add(chip_tuesday);
+            this.chipList.Add(chip_wednesday);
+            this.chipList.Add(chip_thursday);
+            this.chipList.Add(chip_friday);
+            this.chipList.Add(chip_saturday);
+            this.chipList.Add(chip_sunday);
+
+            for (int x = 0; x < this.chipList.Count; x++)
+            {
+                this.chipList[x].Opacity = 0.1;
+                this.chipList[x].IsEnabled = true;
+            }
+            List<string> workingDaysNew = new List<string>();
+
+            try
+            {
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from working_week;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    String WEEK_ID = ds.Tables[0].Rows[i].ItemArray[0].ToString();
+                    String WEEK_TYPE = ds.Tables[0].Rows[i].ItemArray[1].ToString();
+                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[2].ToString();
+                    String STARTING_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+                    String ENDING_TIME = ds.Tables[0].Rows[i].ItemArray[4].ToString();
+                    String DAYS = ds.Tables[0].Rows[i].ItemArray[5].ToString();
+
+                    workingDaysNew.Add(DAYS);
+                    chip_working_time_per_day.Content = PER_DAY_TIME;
+
+                }
+
+
+                int iew = 0;
+                for (iew = 0; iew < this.CHECKING_DAYS.Length; iew++)
+                {
+                    System.Diagnostics.Debug.WriteLine("Days " + this.CHECKING_DAYS[iew]);
+                }
+
+
+                foreach (var temp in workingDaysNew)
+                {
+                    
+                    for (int ie = 0; ie < this.CHECKING_DAYS.Length; ie++)
+                    {
+                        if(temp.Equals(CHECKING_DAYS[ie].ToString()))
+                        {
+
+                            System.Diagnostics.Debug.WriteLine("ie " + ie);
+                            this.chipList[ie].Opacity = 1.0;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
         public void workingDaysFilter()
         {
@@ -247,13 +347,29 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
 
-            TimePicker sd = (TimePicker)timePerDayInput;
-            DateTime sdd = new DateTime();
+            //TimePicker PerDayTime = (TimePicker)timePerDayInput;
+            TimePicker StartingTime = (TimePicker)timeStartingTime;
+            TimePicker EndingTime = (TimePicker)timeEndingTime;
 
-            //Console.WriteLine(sdd.Minute.ToString());
-            //System.Diagnostics.Debug.WriteLine(sdd.TimeOfDay.ToString()) ;
-            //sdd = (DateTime)sd.SelectedTime;
-                //MessageBox.Show(sdd.TimeOfDay.ToString());
+            //DateTime perDayTime = new DateTime();
+            DateTime startingTime = new DateTime();
+            DateTime endingTime = new DateTime();
+
+            //perDayTime = (DateTime)PerDayTime.SelectedTime;
+            startingTime = (DateTime)StartingTime.SelectedTime;
+            endingTime = (DateTime)EndingTime.SelectedTime;
+
+            //String time1 = perDayTime.TimeOfDay.ToString();
+            String time2 = startingTime.TimeOfDay.ToString();
+            String time3 = endingTime.TimeOfDay.ToString();
+            String ne = (startingTime.TimeOfDay - endingTime.TimeOfDay).ToString();
+
+            //System.Diagnostics.Debug.WriteLine("time 1 : " + time1);
+            System.Diagnostics.Debug.WriteLine("time 2 : " + time2);
+            System.Diagnostics.Debug.WriteLine("time 3 : " + time3);
+            System.Diagnostics.Debug.WriteLine("hours : " + ne);
+
         }
+
     }
 }

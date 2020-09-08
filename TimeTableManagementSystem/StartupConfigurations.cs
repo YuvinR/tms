@@ -138,17 +138,6 @@ namespace TimeTableManagementSystem
 
                 //Wickramanayake T.R.D db scripts
 
-                if (!checkIfExist("working_days"))
-                {
-                    connection.Open();
-                    SQLiteCommand cmd = connection.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "CREATE TABLE working_days ( week_id INTEGER NOT NULL, day_name TEXT);";
-
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
 
                 if (!checkIfExist("working_week"))
                 {
@@ -156,14 +145,12 @@ namespace TimeTableManagementSystem
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "CREATE TABLE working_week (week_id INTEGER NOT NULL UNIQUE, " +
+                    cmd.CommandText = "CREATE TABLE working_week (week_id INTEGER NOT NULL, " +
                                         "week_type TEXT NOT NULL, " +
                                         "per_day_time TEXT NOT NULL,	" +
                                         "starting_time TEXT NOT NULL, " +
                                         "ending_time TEXT NOT NULL,	" +
-                                        "day_id INTEGER NOT NULL, " +
-                                        "PRIMARY KEY(week_id), " +
-                                        "FOREIGN KEY(day_id) REFERENCES working_days(week_id)); ";
+                                        "day_name TEXT NOT NULL); ";
 
                     cmd.ExecuteNonQuery();
                     connection.Close();
