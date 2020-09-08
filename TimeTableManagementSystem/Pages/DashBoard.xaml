@@ -6,12 +6,23 @@
              xmlns:local="clr-namespace:TimeTableManagementSystem.Pages"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Height="auto" Width="auto">
-    <Grid>
+             Height="450" Width="800">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="350"/>
+        </Grid.RowDefinitions>
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-        <Label>
-            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Statistics</TextBlock>
-        </Label>
+            <Label Margin="0,0,98,50">
+                <TextBlock TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Statistics</TextBlock>
+            </Label>
         </materialDesign:TransitioningContent>
+
+        <!--Images-->
     </Grid>
 </UserControl>
