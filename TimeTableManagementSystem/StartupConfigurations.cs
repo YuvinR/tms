@@ -167,6 +167,22 @@ namespace TimeTableManagementSystem
                     connection.Close();
                 }
 
+                if (!checkIfExist("Location"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Location (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "BuildingName TEXT NOT NULL, " +
+                                        "RoomType TEXT NOT NULL,	" +
+                                        "RoomNumber TEXT NOT NULL, " +
+                                        "RoomCapacity INTEGER NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
             }
             catch(Exception ex)
             {
