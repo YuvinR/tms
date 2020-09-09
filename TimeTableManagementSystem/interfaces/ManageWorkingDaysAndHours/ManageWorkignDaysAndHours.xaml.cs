@@ -121,8 +121,8 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         {
             this.workingDays = new List<string>();
             ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
-
             workingDaysFilter();
+
 
             this.NoOfWorkingDays = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
 
@@ -157,12 +157,13 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                 {
                     SQLiteCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO working_week (week_id,week_type,per_day_time,starting_time,ending_time,day_name) " +
-                        "VALUES(@WEEK_ID, @WEEk_TYPE, @PER_DAY_TIME, @STARTING_TIME, @ENDING_TIME, @DAY_NAME);";
+                    command.CommandText = "INSERT INTO working_week (week_id,week_type,no_of_days,per_day_time,starting_time,ending_time,day_name) " +
+                        "VALUES(@WEEK_ID, @WEEk_TYPE,@NO_OF_DAYS,  @PER_DAY_TIME, @STARTING_TIME, @ENDING_TIME, @DAY_NAME);";
                     Console.WriteLine(command.CommandText);
 
                     command.Parameters.AddWithValue("@WEEK_ID", this.weekID);
                     command.Parameters.AddWithValue("@WEEk_TYPE", this.weekType);
+                    command.Parameters.AddWithValue("@NO_OF_DAYS", this.NoOfWorkingDays);
                     command.Parameters.AddWithValue("@PER_DAY_TIME", this.workingTimePerDay);
                     command.Parameters.AddWithValue("@STARTING_TIME", this.startTime);
                     command.Parameters.AddWithValue("@ENDING_TIME", this.endTime);
@@ -183,6 +184,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
             if (this.errorCount > 0)
             {
+                fetchDataFromDB();
                 MessageBox.Show("Data has been Inserted");
             }
             else
@@ -232,13 +234,15 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                 {
                     String WEEK_ID = ds.Tables[0].Rows[i].ItemArray[0].ToString();
                     String WEEK_TYPE = ds.Tables[0].Rows[i].ItemArray[1].ToString();
-                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[2].ToString();
-                    String STARTING_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
-                    String ENDING_TIME = ds.Tables[0].Rows[i].ItemArray[4].ToString();
-                    String DAYS = ds.Tables[0].Rows[i].ItemArray[5].ToString();
+                    String NO_OF_WORKING_DAYS = ds.Tables[0].Rows[i].ItemArray[2].ToString();
+                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+                    String STARTING_TIME = ds.Tables[0].Rows[i].ItemArray[4].ToString();
+                    String ENDING_TIME = ds.Tables[0].Rows[i].ItemArray[5].ToString();
+                    String DAYS = ds.Tables[0].Rows[i].ItemArray[6].ToString();
 
                     workingDaysNew.Add(DAYS);
                     chip_working_time_per_day.Content = PER_DAY_TIME;
+                    chip_no_of_working_days.Content = NO_OF_WORKING_DAYS;
 
                 }
 

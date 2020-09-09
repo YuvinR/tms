@@ -147,6 +147,7 @@ namespace TimeTableManagementSystem
 
                     cmd.CommandText = "CREATE TABLE working_week (week_id INTEGER NOT NULL, " +
                                         "week_type TEXT NOT NULL, " +
+                                        "no_of_days INTEGER NOT NULL, "+
                                         "per_day_time TEXT NOT NULL,	" +
                                         "starting_time TEXT NOT NULL, " +
                                         "ending_time TEXT NOT NULL,	" +
