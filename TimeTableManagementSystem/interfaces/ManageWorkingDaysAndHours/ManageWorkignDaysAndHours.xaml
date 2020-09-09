@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours.ManageWorkignDaysAndHours"
         mc:Ignorable="d"
-        Title="ManageWorkignDaysAndHours" Height="483" Width="1255" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="ManageWorkignDaysAndHours" Height="483" Width="1114" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="51*"/>
@@ -17,26 +17,26 @@
             <RowDefinition Height="141*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="216*"/>
-            <ColumnDefinition Width="223*"/>
-            <ColumnDefinition Width="29*"/>
-            <ColumnDefinition Width="239*"/>
-            <ColumnDefinition Width="262*"/>
-            <ColumnDefinition Width="287*"/>
+            <ColumnDefinition Width="192*"/>
+            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="212*"/>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="255*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="301" Margin="5,4,0,0" Stroke="Black" VerticalAlignment="Top" Width="742" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4"/>
+        <Rectangle HorizontalAlignment="Left" Height="301" Margin="5,4,0,0" Stroke="Black" VerticalAlignment="Top" Width="674" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4"/>
 
         <Rectangle HorizontalAlignment="Left" Height="133" Margin="21,11,0,0" Stroke="Black" VerticalAlignment="Top" Width="195" Grid.Column="1" Grid.Row="4"/>
 
-        <Label x:Name="label" Content="Manage Time Slots" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="265" FontWeight="Bold" FontSize="28" Margin="10,10,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Label x:Name="label" Content="Manage Working Days And Hours" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="507" FontWeight="Bold" FontSize="28" Margin="10,10,0,0" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
         <Label x:Name="label1" Content="Type" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="120" FontSize="17" FontWeight="Bold" Margin="10,4,0,0" Grid.Row="2" Grid.RowSpan="2"/>
         <Label x:Name="label1_Copy" Content="No of Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,9,0,0" Grid.Row="3"/>
         <Label x:Name="label1_Copy1" Content="Select Working Days" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="10,1,0,0" Grid.Row="4"/>
-        <Label x:Name="label1_Copy2" Content="Working Time Per Day" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,158,0,0" Grid.Row="4" Grid.RowSpan="2"/>
+        <Label x:Name="label1_Copy2" Content="Working Time Per Day" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="192" FontSize="17" FontWeight="Bold" Margin="4,158,0,0" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="cmbWorkingDayNumber" 
                   materialDesign:HintAssist.Hint="3"
                   materialDesign:HintAssist.HintOpacity=".26"
-                  HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1" Grid.Row="3" Height="28">
+                  HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1" Grid.Row="3" Height="28" SelectionChanged="dontKnow">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
@@ -45,38 +45,38 @@
             <ComboBoxItem Content="6"/>
             <ComboBoxItem Content="7"/>
         </ComboBox>
-        <CheckBox x:Name="cmbMonday" Content="Monday" HorizontalAlignment="Left" Margin="25,20,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="76"/>
-        <CheckBox x:Name="cmbTuesday" Content="Tuesday" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="76"/>
-        <CheckBox x:Name="cmbWednesday" Content="Wednesday" HorizontalAlignment="Left" Margin="25,68,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="98"/>
-        <CheckBox x:Name="cmbThursday" Content="Thursday" HorizontalAlignment="Left" Margin="25,92,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="82"/>
-        <CheckBox x:Name="cmbFriday" Content="Friday" HorizontalAlignment="Left" Margin="25,116,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="62"/>
-        <CheckBox x:Name="cmbSaturday" Content="Saturday" HorizontalAlignment="Left" Margin="128,20,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="80"/>
-        <CheckBox x:Name="cmbSunday" Content="Sunday" HorizontalAlignment="Left" Margin="128,44,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="70"/>
-        <Label x:Name="label1_Copy3" Content="Starting Time" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,31,0,0" Grid.Row="5"/>
-        <Label x:Name="label1_Copy4" Content="Ending Time" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="191" FontSize="17" FontWeight="Bold" Margin="0,70,0,0" Grid.Row="5"/>
+        <CheckBox x:Name="cmbMonday" Content="Monday" HorizontalAlignment="Left" Margin="25,20,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="76" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbTuesday" Content="Tuesday" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="76" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbWednesday" Content="Wednesday" HorizontalAlignment="Left" Margin="25,68,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="98" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbThursday" Content="Thursday" HorizontalAlignment="Left" Margin="25,92,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="82" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbFriday" Content="Friday" HorizontalAlignment="Left" Margin="25,116,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="62" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbSaturday" Content="Saturday" HorizontalAlignment="Left" Margin="128,20,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="80" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <CheckBox x:Name="cmbSunday" Content="Sunday" HorizontalAlignment="Left" Margin="128,44,0,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Grid.Row="4" Height="22" Width="70" Checked="checkedTotalCounter" Unchecked="reduceCheckedCounter"/>
+        <Label x:Name="label1_Copy3" Content="Starting Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="140" FontSize="17" FontWeight="Bold" Margin="72,31,0,0" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1_Copy4" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="140" FontSize="17" FontWeight="Bold" Margin="72,70,0,0" Grid.Row="5" Grid.ColumnSpan="2"/>
 
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="144,10,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314" Grid.Column="5" Grid.Row="5" Height="32"/>
-        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="28,9,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5" Height="32"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="14,88,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" Margin="0,88,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="26" Background="#FF39ECD3" Grid.Column="4" Grid.Row="5" Click="btnUpdate_Click"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="79,87,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="27" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5" Click="btnCancel_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="143,9,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314" Grid.Column="5" Grid.Row="5" Height="32" Click="btnDelete_Click" Visibility="Visible"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="38,8,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5" Height="32"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="22,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="83,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF39ECD3" Grid.Column="4" Grid.Row="5" Click="btnUpdate_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="120,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5" Click="btnCancel_Click"/>
         <CheckBox x:Name="cmbWeekday" Content="Weekday" HorizontalAlignment="Left" Margin="20,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekday" Unchecked="disableWeekday" Grid.Column="1" Grid.Row="2" Height="22" Width="82"/>
         <CheckBox x:Name="cmbWeekend" Content="Weekend" HorizontalAlignment="Left" Margin="128,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekEnd" Unchecked="disableWeekend" Grid.Column="1" Grid.Row="2" Height="22" Width="83"/>
-        <Label x:Name="label1_Copy5" Content="No of Working Days" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="0,3,0,0" Grid.Column="3" Grid.Row="3"/>
-        <Label x:Name="label1_Copy6" Content="Working Days" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="0,22,0,0" Grid.Column="3" Grid.Row="4"/>
-        <Label x:Name="label1_Copy7" Content="Working Time Per Day" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="198" FontSize="17" FontWeight="Bold" Margin="31,110,0,0" Grid.Column="3" Grid.Row="4"/>
+        <Label x:Name="lbl_no_working" Content="No of Working Days" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="0,3,0,0" Grid.Column="3" Grid.Row="3" Visibility="Visible"/>
+        <Label x:Name="lbl_days" Content="Working Days" HorizontalAlignment="Center" Height="34" VerticalAlignment="Top" Width="176" FontSize="17" FontWeight="Bold" Margin="0,22,0,0" Grid.Column="3" Grid.Row="4"/>
+        <Label x:Name="lbl_time_per_day" Content="Working Time Per Day" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="198" FontSize="17" FontWeight="Bold" Margin="18,110,0,0" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2"/>
         <materialDesign:TimePicker x:Name="timePerDayInput" 
                                    materialDesign:HintAssist.HintOpacity=".26"
-                                   HorizontalAlignment="Left" Margin="24,4,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Width="191" Height="25"/>
+                                   HorizontalAlignment="Left" Margin="24,4,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Width="191" Height="25" Visibility="Hidden"/>
         <materialDesign:TimePicker x:Name="timeStartingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,40,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25"/>
         <materialDesign:TimePicker x:Name="timeEndingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,76,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25"/>
         <materialDesign:Chip x:Name="chip_monday" Content="Monday" Grid.Column="4" Margin="10,22,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Foreground="#FF2D2D88" BorderBrush="Black" Background="#FF23B1E6" Visibility="Visible" Height="32" RenderTransformOrigin="-0.399,0.61"/>
-        <materialDesign:Chip x:Name="chip_tuesday" Content="Tuesday" Grid.Column="4" Margin="90,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFC162F7" Visibility="Visible" Height="32"/>
-        <materialDesign:Chip x:Name="chip_wednesday" Content="Wednesday" Grid.Column="4" Margin="170,22,0,0" Grid.Row="4" VerticalAlignment="Top" Width="94" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFA0E211" Visibility="Visible" Height="32" Grid.ColumnSpan="2"/>
-        <materialDesign:Chip x:Name="chip_thursday" Content="Thursday" Grid.Column="5" Margin="7,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="78" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFFB8829" Visibility="Visible" Height="32"/>
-        <materialDesign:Chip x:Name="chip_friday" Content="Friday" Grid.Column="5" Margin="90,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FF24ECAC" Visibility="Visible" Height="32"/>
+        <materialDesign:Chip x:Name="chip_tuesday" Content="Tuesday" Grid.Column="4" Margin="101,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFC162F7" Visibility="Visible" Height="32"/>
+        <materialDesign:Chip x:Name="chip_wednesday" Content="Wednesday" Grid.Column="4" Margin="188,22,0,0" Grid.Row="4" VerticalAlignment="Top" Width="94" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFA0E211" Visibility="Visible" Height="32" Grid.ColumnSpan="2"/>
+        <materialDesign:Chip x:Name="chip_thursday" Content="Thursday" Grid.Column="5" Margin="63,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="78" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFFB8829" Visibility="Visible" Height="32"/>
+        <materialDesign:Chip x:Name="chip_friday" Content="Friday" Grid.Column="5" Margin="153,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FF24ECAC" Visibility="Visible" Height="32"/>
         <materialDesign:Chip x:Name="chip_saturday" Content="Saturday" Grid.Column="4" Margin="10,60,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFF07458" Visibility="Visible" Height="32"/>
-        <materialDesign:Chip x:Name="chip_sunday" Content="Sunday" Grid.Column="4" Margin="90,61,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FF33D4B0" Visibility="Visible" Height="32"/>
+        <materialDesign:Chip x:Name="chip_sunday" Content="Sunday" Grid.Column="4" Margin="101,60,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FF33D4B0" Visibility="Visible" Height="32"/>
         <materialDesign:Chip x:Name="chip_no_of_working_days" Content="" Grid.Column="4" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="75" Foreground="#FF2D2D88" BorderBrush="Black" Background="#FF70F562" Visibility="Visible" Height="32" RenderTransformOrigin="-0.399,0.61"/>
         <materialDesign:Chip x:Name="chip_working_time_per_day" Content="" Grid.Column="4" Margin="10,111,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Foreground="#FF2D2D88" BorderBrush="Black" Background="#FFAB51F5" Visibility="Visible" Height="32" RenderTransformOrigin="-0.399,0.61"/>
 

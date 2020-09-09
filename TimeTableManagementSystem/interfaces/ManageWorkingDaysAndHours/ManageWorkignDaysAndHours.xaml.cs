@@ -28,9 +28,9 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
         String weekType;
         int NoOfWorkingDays;
-        int WorkingHours = 0;
-        int WorkingMinutes = 0;
+        int day_count = 0;
         int errorCount = 0;
+        int checkBoxCounter = 0;
 
         int weekID;
 
@@ -46,6 +46,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         {
             InitializeComponent();
             initialLoad();
+            fetchDataFromDB();
         }
 
         private void toggleWeekday(object sender, RoutedEventArgs e)
@@ -79,12 +80,6 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             cmbFriday.IsEnabled = false;
             cmbSaturday.IsEnabled = false;
             cmbSunday.IsEnabled = false;
-
-            fetchDataFromDB();
-
-
-
-
         }
 
         public void EnableWeekdays()
@@ -119,22 +114,42 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "DELETE FROM working_week;";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
             this.workingDays = new List<string>();
             ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
             workingDaysFilter();
 
-
             this.NoOfWorkingDays = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
 
-            //TimePicker PerDayTime = (TimePicker)timePerDayInput;
+
             TimePicker StartingTime = (TimePicker)timeStartingTime;
             TimePicker EndingTime = (TimePicker)timeEndingTime;
 
-            //DateTime perDayTime = new DateTime();
+
             DateTime startingTime = new DateTime();
             DateTime endingTime = new DateTime();
 
-            //perDayTime = (DateTime)PerDayTime.SelectedTime;
+
             startingTime = (DateTime)StartingTime.SelectedTime;
             endingTime = (DateTime)EndingTime.SelectedTime;
 
@@ -184,6 +199,8 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
             if (this.errorCount > 0)
             {
+                clearFields();
+                initialLoad();
                 fetchDataFromDB();
                 MessageBox.Show("Data has been Inserted");
             }
@@ -240,6 +257,8 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                     String ENDING_TIME = ds.Tables[0].Rows[i].ItemArray[5].ToString();
                     String DAYS = ds.Tables[0].Rows[i].ItemArray[6].ToString();
 
+                    //timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+
                     workingDaysNew.Add(DAYS);
                     chip_working_time_per_day.Content = PER_DAY_TIME;
                     chip_no_of_working_days.Content = NO_OF_WORKING_DAYS;
@@ -266,6 +285,15 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                             this.chipList[ie].Opacity = 1.0;
                         }
                     }
+                }
+
+                if(workingDaysNew.Count != 0)
+                {
+                    enableViewPanel();
+                }
+                else
+                {
+                    disableViewPanel();
                 }
 
 
@@ -302,7 +330,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
             if (cmbMonday.IsChecked == true)
             {
-                this.workingDays.Add("Monday");
+               this.workingDays.Add("Monday");
             }
 
 
@@ -350,30 +378,147 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            clearFields();
 
-            //TimePicker PerDayTime = (TimePicker)timePerDayInput;
-            TimePicker StartingTime = (TimePicker)timeStartingTime;
-            TimePicker EndingTime = (TimePicker)timeEndingTime;
 
-            //DateTime perDayTime = new DateTime();
-            DateTime startingTime = new DateTime();
-            DateTime endingTime = new DateTime();
 
-            //perDayTime = (DateTime)PerDayTime.SelectedTime;
-            startingTime = (DateTime)StartingTime.SelectedTime;
-            endingTime = (DateTime)EndingTime.SelectedTime;
-
-            //String time1 = perDayTime.TimeOfDay.ToString();
-            String time2 = startingTime.TimeOfDay.ToString();
-            String time3 = endingTime.TimeOfDay.ToString();
-            String ne = (startingTime.TimeOfDay - endingTime.TimeOfDay).ToString();
-
-            //System.Diagnostics.Debug.WriteLine("time 1 : " + time1);
-            System.Diagnostics.Debug.WriteLine("time 2 : " + time2);
-            System.Diagnostics.Debug.WriteLine("time 3 : " + time3);
-            System.Diagnostics.Debug.WriteLine("hours : " + ne);
 
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "DELETE FROM working_week;";
+                this.errorCount = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            if (this.errorCount > 0)
+            {
+                chip_no_of_working_days.Content = "";
+                chip_working_time_per_day.Content = "";
+                fetchDataFromDB();
+                MessageBox.Show("Data has been Removed");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+        }
+
+        public void disableViewPanel()
+        {
+            btnDelete.IsEnabled = false;
+            btnEdit.IsEnabled = false;
+
+            lbl_days.Opacity = 0.1;
+            lbl_time_per_day.Opacity = 0.1;
+            lbl_no_working.Opacity = 0.1;
+
+            chip_no_of_working_days.Opacity = 0.1;
+            chip_no_of_working_days.IsEnabled = false;
+
+
+            chip_working_time_per_day.Opacity = 0.1;
+            chip_working_time_per_day.IsEnabled = false;
+
+        }
+
+        public void enableViewPanel()
+        {
+            btnDelete.IsEnabled = true;
+            btnEdit.IsEnabled = true;
+
+            chip_no_of_working_days.Opacity = 1.0;
+            chip_no_of_working_days.IsEnabled = false;
+
+            lbl_days.Opacity = 1.0;
+            lbl_time_per_day.Opacity = 1.0;
+            lbl_no_working.Opacity = 1.0;
+
+            chip_working_time_per_day.Opacity = 1.0;
+            chip_working_time_per_day.IsEnabled = false;
+        }
+
+        public void clearFields()
+        {
+            cmbWeekday.IsChecked = false;
+            cmbWeekend.IsChecked = false;
+            cmbWorkingDayNumber.SelectedIndex = -1;
+
+            cmbMonday.IsChecked = false;
+            cmbTuesday.IsChecked = false;
+            cmbWednesday.IsChecked = false;
+            cmbThursday.IsChecked = false;
+            cmbFriday.IsChecked = false;
+            cmbSaturday.IsChecked = false;
+            cmbSunday.IsChecked = false;
+
+            timeStartingTime.SelectedTime = null;
+            timeEndingTime.SelectedTime = null;
+
+        }
+
+        private void checkedTotalCounter(object sender, RoutedEventArgs e)
+        {
+            this.checkBoxCounter = checkBoxCounter + 1;
+            System.Diagnostics.Debug.WriteLine("clicked " + this.checkBoxCounter);
+
+            if(checkBoxCounter > day_count)
+            {
+                MessageBox.Show("Your Maximum day count is " + day_count +". Please select correct no of days");
+                cmbMonday.IsChecked = false;
+                cmbTuesday.IsChecked = false;
+                cmbWednesday.IsChecked = false;
+                cmbThursday.IsChecked = false;
+                cmbFriday.IsChecked = false;
+                cmbSaturday.IsChecked = false;
+                cmbSunday.IsChecked = false;
+            }
+        }
+
+        private void reduceCheckedCounter(object sender, RoutedEventArgs e)
+        {
+            this.checkBoxCounter = checkBoxCounter - 1;
+            System.Diagnostics.Debug.WriteLine("clicked " + this.checkBoxCounter);
+        }
+
+        private void dontKnow(object sender, SelectionChangedEventArgs e)
+        {
+
+            ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
+            this.day_count = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
+
+
+            if (checkBoxCounter > day_count)
+            {
+                MessageBox.Show("Your Maximum day count is " + day_count + ". Please select correct no of days");
+                cmbMonday.IsChecked = false;
+                cmbTuesday.IsChecked = false;
+                cmbWednesday.IsChecked = false;
+                cmbThursday.IsChecked = false;
+                cmbFriday.IsChecked = false;
+                cmbSaturday.IsChecked = false;
+                cmbSunday.IsChecked = false;
+            }
+
+            System.Diagnostics.Debug.WriteLine("count "+ this.day_count);
+        }
+
 
     }
 }
