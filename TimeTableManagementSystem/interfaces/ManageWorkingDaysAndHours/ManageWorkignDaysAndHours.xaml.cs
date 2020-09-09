@@ -500,8 +500,11 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
         private void dontKnow(object sender, SelectionChangedEventArgs e)
         {
 
-            ComboBoxItem cmbInputNoOfWorkingDays = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
-            this.day_count = int.Parse(cmbInputNoOfWorkingDays.Content.ToString());
+            ComboBoxItem cmbInputNoOfWorkingDays1 = (ComboBoxItem)cmbWorkingDayNumber.SelectedItem;
+            if(cmbInputNoOfWorkingDays1 != null)
+            {
+                this.day_count = int.Parse(cmbInputNoOfWorkingDays1.Content.ToString());
+            }
 
 
             if (checkBoxCounter > day_count)
