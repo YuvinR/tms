@@ -132,13 +132,13 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             {
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Select * from Building";
+                command.CommandText = "Select * from Location";
 
                 SQLiteDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    UpdBuildingCombo.Items.Add(reader.GetString("name"));
+                    UpdBuildingCombo.Items.Add(reader.GetString("BuildingName"));
                 }
             }
             catch (Exception ex)
