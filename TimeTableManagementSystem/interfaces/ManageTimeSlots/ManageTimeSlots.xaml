@@ -112,6 +112,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Image x:Name="image" HorizontalAlignment="Left" Height="338" Margin="10,66,0,0" VerticalAlignment="Top"  Width="300" Source="/interfaces/ManageTimeSlots/clock2.jpg" Stretch="Fill" IsEnabled="False"/>
+        <materialDesign:TimePicker x:Name="TimePickerStartingTime" HorizontalAlignment="Left" Margin="435,36,0,0" VerticalAlignment="Top"/>
+        <materialDesign:TimePicker x:Name="TimePickerEndingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="109,36,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

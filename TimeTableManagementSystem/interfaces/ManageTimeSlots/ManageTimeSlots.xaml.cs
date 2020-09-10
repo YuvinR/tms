@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -43,18 +44,42 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         private void addTimeSlots(object sender, RoutedEventArgs e)
         {
+
             Random random = new Random();
             int id = random.Next(1258);
 
-            ComboBoxItem cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
-            ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
+            TimePicker StartingTime = (TimePicker)TimePickerStartingTime;
+            TimePicker EndingTime = (TimePicker)TimePickerEndingTime;
 
-            this.startTime = cmbStartTimeInput.Content.ToString();
-            this.endTime = cmbEndTimeInput.Content.ToString();
+            DateTime startingTime = new DateTime();
+            DateTime endingTime = new DateTime();
 
-            TimeSpan time = DateTime.Parse(this.endTime).Subtract(DateTime.Parse(this.startTime));
 
-            this.timeDuration = time.ToString(@"hh\:mm");
+            if (StartingTime.SelectedTime != null)
+            {
+                startingTime = (DateTime)StartingTime.SelectedTime;
+            }
+
+            if (EndingTime.SelectedTime != null)
+            {
+                endingTime = (DateTime)EndingTime.SelectedTime;
+            }
+
+            this.startTime = startingTime.TimeOfDay.ToString();
+            this.endTime = endingTime.TimeOfDay.ToString();
+            this.timeDuration = (endingTime - startingTime).ToString();
+
+
+            // cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
+            //ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
+
+            //this.startTime = cmbStartTimeInput.Content.ToString();
+            //this.endTime = cmbEndTimeInput.Content.ToString();
+
+            //TimeSpan time = DateTime.Parse(this.endTime).Subtract(DateTime.Parse(this.startTime));
+
+            //this.timeDuration = time.ToString(@"hh\:mm");
+            
 
 
             connection.Open();
