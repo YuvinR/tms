@@ -174,6 +174,19 @@ namespace TimeTableManagementSystem
                     connection.Close();
                 }
 
+                //Wickramanayake T.R.D db scripts
+                if (!checkIfExist("time_slots"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE time_slots ( id INTEGER NOT NULL UNIQUE, start_time TEXT NOT NULL, end_time TEXT NOT NULL, time_duration TEXT, PRIMARY KEY(id)); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                //Wickramanayake T.R.D db scripts
             }
             catch (Exception ex)
             {
