@@ -9,10 +9,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label>
-            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Session</TextBlock>
+            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Session Operation</TextBlock>
         </Label>
-        
-        <materialDesign:Card Margin="21,66,615,247">
+
+        <materialDesign:Card Margin="253,66,382,247">
             <Grid Margin="0,0,-5,37">
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -30,20 +30,20 @@
                     Click="BtnAddSession"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
-                    <materialDesign:PackIcon Kind="CalendarEdit" />
+                    <materialDesign:PackIcon Kind="PlaylistPlus" />
 
                 </Button>
                 <StackPanel
                      Margin="8,18,8,46" Grid.RowSpan="4">
                     <TextBlock
-                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add Sessions"/></TextBlock>
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Create Sessions"/></TextBlock>
                     <TextBlock
                         TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to Create Sessions."/></TextBlock>
                 </StackPanel>
             </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Margin="217,66,418,247">
+        <materialDesign:Card Margin="21,66,615,247">
             <Grid Margin="0,0,-5,37">
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -62,7 +62,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
-                    <materialDesign:PackIcon Kind="AlphaPCircle" />
+                    <materialDesign:PackIcon Kind="FormatListText" />
 
                 </Button>
                 <StackPanel

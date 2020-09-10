@@ -100,7 +100,7 @@
             materialDesign:HintAssist.Hint="Employee ID"
             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
             Background="White"
-            Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14"
+            Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="2"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="215" Height="40" FontSize="14" TextChanged="EmpIdTxt_TextChanged"
             />
         <TextBox x:Name="EmpNameTxt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"

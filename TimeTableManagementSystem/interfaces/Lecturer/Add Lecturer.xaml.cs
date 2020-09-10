@@ -57,13 +57,13 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             {
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Select * from Building";
+                command.CommandText = "Select * from Location";
 
                 SQLiteDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    BuildingCombo.Items.Add(reader.GetString("name"));
+                    BuildingCombo.Items.Add(reader.GetString("BuildingName"));
                 }
             }
             catch (Exception ex)
@@ -182,6 +182,42 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             else if (LevelCombo.Text.Equals("Instructors") && EmpIdTxt.Text != null)
             {
                 RankTxt.Text = $"7.{EmpIdTxt.Text}";
+            }
+        }
+
+        private void EmpIdTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (LevelCombo.Text.Equals("Professor") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"1.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Assistant Professor") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"2.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Senior Lecturer(HG)") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"3.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Senior Lecturer") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"4.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Lecturer") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"5.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Assistant Lecturer") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"6.{EmpIdTxt.Text}";
+            }
+            else if (LevelCombo.Text.Equals("Instructors") && EmpIdTxt.Text != null)
+            {
+                RankTxt.Text = $"7.{EmpIdTxt.Text}";
+            }
+            else
+            {
+                RankTxt.Text = $"{EmpIdTxt.Text}";
             }
         }
     }
