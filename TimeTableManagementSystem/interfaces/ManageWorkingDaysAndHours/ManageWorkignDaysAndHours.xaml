@@ -58,7 +58,7 @@
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="143,9,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314" Grid.Column="5" Grid.Row="5" Height="32" Click="btnDelete_Click" Visibility="Visible"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="38,8,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5" Height="32" Click="btnEdit_Click"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="22,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="83,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF39ECD3" Grid.Column="4" Grid.Row="5" Click="btnUpdate_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="83,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF39ECD3" Grid.Column="4" Grid.Row="5" Click="btnUpdate_Click" IsEnabled="False"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="120,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5" Click="btnCancel_Click"/>
         <CheckBox x:Name="cmbWeekday" Content="Weekday" HorizontalAlignment="Left" Margin="20,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekday" Unchecked="disableWeekday" Grid.Column="1" Grid.Row="2" Height="22" Width="82"/>
         <CheckBox x:Name="cmbWeekend" Content="Weekend" HorizontalAlignment="Left" Margin="128,12,0,0" VerticalAlignment="Top" FontSize="15" Checked="toggleWeekEnd" Unchecked="disableWeekend" Grid.Column="1" Grid.Row="2" Height="22" Width="83"/>
@@ -68,8 +68,8 @@
         <materialDesign:TimePicker x:Name="timePerDayInput" 
                                    materialDesign:HintAssist.HintOpacity=".26"
                                    HorizontalAlignment="Left" Margin="24,4,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Width="191" Height="25" Visibility="Hidden"/>
-        <materialDesign:TimePicker x:Name="timeStartingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,40,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25"/>
-        <materialDesign:TimePicker x:Name="timeEndingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,76,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25"/>
+        <materialDesign:TimePicker x:Name="timeStartingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,40,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25" SelectedTimeChanged="timeValidator"/>
+        <materialDesign:TimePicker x:Name="timeEndingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="25,76,0,0" Grid.Row="5" VerticalAlignment="Top" Width="189" Height="25" SelectedTimeChanged="timeValidator"/>
         <materialDesign:Chip x:Name="chip_monday" Content="Monday" Grid.Column="4" Margin="10,22,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Foreground="#FF2D2D88" BorderBrush="Black" Background="#FF23B1E6" Visibility="Visible" Height="32" RenderTransformOrigin="-0.399,0.61"/>
         <materialDesign:Chip x:Name="chip_tuesday" Content="Tuesday" Grid.Column="4" Margin="101,23,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFC162F7" Visibility="Visible" Height="32"/>
         <materialDesign:Chip x:Name="chip_wednesday" Content="Wednesday" Grid.Column="4" Margin="188,22,0,0" Grid.Row="4" VerticalAlignment="Top" Width="94" IconForeground="#FF381576" IconBackground="#FF381576" Background="#FFA0E211" Visibility="Visible" Height="32" Grid.ColumnSpan="2"/>
