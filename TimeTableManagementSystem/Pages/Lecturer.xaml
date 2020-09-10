@@ -8,36 +8,78 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="400*"/>
+        <Label>
+            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Employee Operation</TextBlock>
+        </Label>
+        
+        <materialDesign:Card Margin="21,66,615,246">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnViewLec_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="AccountEdit" />
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="185*"/>
-            <RowDefinition Height="185*"/>
-        </Grid.RowDefinitions>
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="0" x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label Grid.Column="0" Grid.Row="0" >
-                <TextBlock Grid.Column="0" Grid.Row="0"  TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Lecturer</TextBlock>
-            </Label>
-        </materialDesign:TransitioningContent>
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="View Employee"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to view the Employees and do the modifications."/></TextBlock>
+                </StackPanel>
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
-            <Button Grid.Column="1"  x:Name="BtnViewLec" Content="   View&#xa;Lecturers" FontWeight="Medium" FontSize ="25" Height="80" Width="200"  Click="BtnViewLec_Click" Margin="100,6,100,99"/>
-        </materialDesign:TransitioningContent>
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Button Grid.Column="1" x:Name="BtnAddLec" Content="    Add&#xa;Lecturers" FontWeight="Medium"  FontSize ="25" Height="80" Width="200"  Click="BtnAddLec_Click" Margin="100,28,100,77" />
-        </materialDesign:TransitioningContent>
 
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image  Height="266" Grid.Column="0"  Grid.RowSpan="2" Grid.Row="1"  Width="286" Margin="57,18,57,86" >
-                <Image.Source>
-                    <BitmapImage DecodePixelWidth="400"  UriSource="/Images/LecturerPng.png"/>
-                </Image.Source>
-            </Image>
-        </materialDesign:TransitioningContent>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="252,66,382,246">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnAddLec_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AccountMultiplePlus" HorizontalAlignment="Center" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add Employee"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to add Employee Details."/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
+
     </Grid>
 </UserControl>
