@@ -34,13 +34,23 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
         int weekID;
 
-        List<string> workingDays;
+        
         List<Chip> chipList;
+        List<CheckBox> checkBoxList;
 
         String workingTimePerDay;
         String startTime;
         String endTime;
         String[] CHECKING_DAYS = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+        int WEEK_ID = 0;
+        String WEEK_TYPE = "";
+        int NO_OF_WORKING_DAYS = 0;
+        DateTime PER_DAY_TIME;
+        DateTime STARATING_TIME;
+        DateTime ENDING_TIME;
+        List<string> workingDays;
+
 
         public ManageWorkignDaysAndHours()
         {
@@ -522,6 +532,85 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             System.Diagnostics.Debug.WriteLine("count "+ this.day_count);
         }
 
+        public void fillFormDetails()
+        {
 
+            this.checkBoxList = new List<CheckBox>();
+            this.checkBoxList.Add(cmbMonday);
+            this.checkBoxList.Add(cmbTuesday);
+            this.checkBoxList.Add(cmbWednesday);
+            this.checkBoxList.Add(cmbThursday);
+            this.checkBoxList.Add(cmbFriday);
+            this.checkBoxList.Add(cmbSaturday);
+            this.checkBoxList.Add(cmbSunday);
+
+            List<string> workingDaysNew = new List<string>();
+
+            try
+            {
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from working_week;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    String WEEK_ID = ds.Tables[0].Rows[i].ItemArray[0].ToString();
+                    String WEEK_TYPE = ds.Tables[0].Rows[i].ItemArray[1].ToString();
+                    String NO_OF_WORKING_DAYS = ds.Tables[0].Rows[i].ItemArray[2].ToString();
+                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+                    String STARTING_TIME = ds.Tables[0].Rows[i].ItemArray[4].ToString();
+                    String ENDING_TIME = ds.Tables[0].Rows[i].ItemArray[5].ToString();
+                    String DAYS = ds.Tables[0].Rows[i].ItemArray[6].ToString();
+
+                    
+                    // NEed to edit here1!@!@!!@!@!@!!@!@!@@!!!@!@@!@!!!@!!!@!@!@!@!@!!@!@!@!!@!@!@!!!@!@!@!@!@!!@!!!@!@@@@@@@
+                    workingDaysNew.Add(DAYS);
+                    cmbWorkingDayNumber.SelectedItem = NO_OF_WORKING_DAYS;
+                    timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+                    timeEndingTime.SelectedTime = Convert.ToDateTime(ENDING_TIME);
+
+                }
+
+
+
+                foreach (var temp in workingDaysNew)
+                {
+
+                    for (int ie = 0; ie < this.CHECKING_DAYS.Length; ie++)
+                    {
+                        if (temp.Equals(CHECKING_DAYS[ie].ToString()))
+                        {
+
+                            System.Diagnostics.Debug.WriteLine("ie " + ie);
+                            this.checkBoxList[ie].IsChecked = true;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            fillFormDetails();
+        }
     }
 }

@@ -56,7 +56,7 @@
         <Label x:Name="label1_Copy4" Content="Ending Time" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="140" FontSize="17" FontWeight="Bold" Margin="72,70,0,0" Grid.Row="5" Grid.ColumnSpan="2"/>
 
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="143,9,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFD5314" Grid.Column="5" Grid.Row="5" Height="32" Click="btnDelete_Click" Visibility="Visible"/>
-        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="38,8,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5" Height="32"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="38,8,0,0" VerticalAlignment="Top" FontSize="15" Width="77" Background="#FFFFDC00" Grid.Column="5" Grid.Row="5" Height="32" Click="btnEdit_Click"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="22,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF4EE607" Click="btnAdd_Click" Grid.Column="3" Grid.Row="5"/>
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="83,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FF39ECD3" Grid.Column="4" Grid.Row="5" Click="btnUpdate_Click"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="120,89,0,0" VerticalAlignment="Top" FontSize="15" Width="108" Height="33" Background="#FFAA2DF1" Grid.Column="5" Grid.Row="5" Click="btnCancel_Click"/>
