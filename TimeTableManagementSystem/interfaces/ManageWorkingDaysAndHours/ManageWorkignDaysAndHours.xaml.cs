@@ -505,6 +505,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                     initialLoad();
                     fetchDataFromDB();
                     MessageBox.Show("Data has been Updated");
+                    btnAdd.IsEnabled = false;
                 }
                 else
                 {
@@ -512,7 +513,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
                 }
 
                 btnUpdate.IsEnabled = false;
-                btnAdd.IsEnabled = true;
+
 
             }
             else
