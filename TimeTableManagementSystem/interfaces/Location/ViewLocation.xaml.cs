@@ -125,45 +125,56 @@ namespace TimeTableManagementSystem.interfaces.Location
             rType = UpdRoomTypeCombo.Text;
             roomNo = UpdRoomNoTxt.Text;
             rCapacity = int.Parse(UpdCapacityTxt.Text);
-     
-            connection.Open();
 
-            try
+
+            if (String.IsNullOrEmpty(roomNo) || String.IsNullOrEmpty(bName) || String.IsNullOrEmpty(rType) || String.IsNullOrEmpty(rCapacity.ToString()))
+
             {
-
-                SQLiteCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "Update Location " +
-                        "set BuildingName = @BuildingName, RoomType = @RoomType, RoomNumber = @RoomNumber, RoomCapacity = @RoomCapacity " +
-                        "Where ID = @ID";
-
-                cmd.Parameters.AddWithValue("@BuildingName", bName);
-                cmd.Parameters.AddWithValue("@RoomType", rType);
-                cmd.Parameters.AddWithValue("@RoomNumber", roomNo);
-                cmd.Parameters.AddWithValue("@RoomCapacity", rCapacity);
-                cmd.Parameters.AddWithValue("@ID", bID);
-
-                int rows = cmd.ExecuteNonQuery();
-
-
-                if (rows > 0)
-                {
-                    MessageBox.Show("Record has been Updated Successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Error Occured");
-                }
-
+                MessageBox.Show("Please fill in all the fields before proceeding!");
             }
-            catch (Exception ex)
+
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
+
+                connection.Open();
+
+                try
+                {
+
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "Update Location " +
+                            "set BuildingName = @BuildingName, RoomType = @RoomType, RoomNumber = @RoomNumber, RoomCapacity = @RoomCapacity " +
+                            "Where ID = @ID";
+
+                    cmd.Parameters.AddWithValue("@BuildingName", bName);
+                    cmd.Parameters.AddWithValue("@RoomType", rType);
+                    cmd.Parameters.AddWithValue("@RoomNumber", roomNo);
+                    cmd.Parameters.AddWithValue("@RoomCapacity", rCapacity);
+                    cmd.Parameters.AddWithValue("@ID", bID);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show("Record has been Updated Successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occured");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
 
             loadDataGrid();

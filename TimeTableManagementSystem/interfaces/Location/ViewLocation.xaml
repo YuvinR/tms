@@ -35,10 +35,10 @@
 
         <!--DataGrid-->
         <DataGrid x:Name="LocDataGrid" Grid.Row="2" Margin="160,3,160,4" Grid.ColumnSpan="4"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
-                  CanUserReorderColumns="False" CanUserResizeColumns="False" RowHeight="30">
+                  CanUserReorderColumns="False" CanUserResizeColumns="False" RowHeight="40">
             <DataGrid.Columns >
                 <DataGridTextColumn  Header="ID" Binding="{Binding ID}" Width="40" />
-                <DataGridTextColumn  Header="Building Name" Binding="{Binding BuildingName}" Width="150" />
+                <DataGridTextColumn  Header="Building Name" Binding="{Binding BuildingName}" Width="150"  />
                 <DataGridTextColumn Header="Room Type" Binding="{Binding RoomType}" Width="150"/>
                 <DataGridTextColumn Header="Room Number" Width="110" Binding="{Binding RoomNumber}"  />
                 <DataGridTextColumn Header="Capacity" Width="99" Binding="{Binding RoomCapacity}" />
@@ -47,7 +47,7 @@
                 <DataGridTemplateColumn Header="Edit" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnEdit" Click="BtnEdit_Click">
+                            <Button x:Name="BtnEdit" Click="BtnEdit_Click" Height="20" Width="20">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/Images/edit.png" Stretch="Uniform"/>
                                 </Button.Background>
@@ -59,7 +59,7 @@
                 <DataGridTemplateColumn Header="Delete" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnDelete" Click="BtnDelete_Click">
+                            <Button x:Name="BtnDelete" Click="BtnDelete_Click" Height="20" Width="20">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/Images/delete.png" Stretch="Uniform"/>
                                 </Button.Background>

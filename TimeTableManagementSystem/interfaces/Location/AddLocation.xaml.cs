@@ -36,10 +36,21 @@ namespace TimeTableManagementSystem.interfaces.Location
 
         private void BtnAddLocation_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(buildnameTxt.Text) && String.IsNullOrEmpty(roomtypComboBox.Text) && String.IsNullOrEmpty(roomnoTxt.Text) && String.IsNullOrEmpty(capacityTxt.Text))
+            int outcap;
+            int outbname;
+            if (String.IsNullOrEmpty(buildnameTxt.Text) || String.IsNullOrEmpty(roomtypComboBox.Text) || String.IsNullOrEmpty(roomnoTxt.Text) || String.IsNullOrEmpty(capacityTxt.Text))
             
             {
                 MessageBox.Show("Please fill in all the fields before proceeding!");
+            }
+
+            else if (!int.TryParse(capacityTxt.Text, out outcap))
+            {
+                MessageBox.Show("Room Capacity should contain only numeric values!");
+            }
+            else if (int.TryParse(buildnameTxt.Text, out outbname))
+            {
+                MessageBox.Show("Building Name cannot contain numeric values!");
             }
             else
             {

@@ -281,10 +281,11 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
                 finally
                 {
                     connection.Close();
+                    clearFields();
                 }
             }
             loadDataGrid();
-            clearFields();
+            
         }
     }
 }

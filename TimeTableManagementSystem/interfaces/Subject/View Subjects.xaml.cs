@@ -127,11 +127,31 @@ namespace TimeTableManagementSystem.interfaces.Subject
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            int lecOut;
+            int tuteOut;
+            int labOut;
+            int evalOut;
 
             if (string.IsNullOrEmpty(UptSubCodeTxt.Text) || string.IsNullOrEmpty(UptSubNameTxt.Text) || string.IsNullOrEmpty(UptOffYearTxt.Text) || string.IsNullOrEmpty(UptOffSemTxt.Text)
                 || string.IsNullOrEmpty(UptNumLecHrTxt.Text) || string.IsNullOrEmpty(UptNumTuteHrTxt.Text) || string.IsNullOrEmpty(UptNumLabTxt.Text) || string.IsNullOrEmpty(UptNumEvaTxt.Text))
             {
                 MessageBox.Show("Please fill the Required Fields Before Inserting Data!");
+            }
+            else if (!int.TryParse(UptNumLecHrTxt.Text, out lecOut))
+            {
+                MessageBox.Show("Number Of Lecture Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(UptNumTuteHrTxt.Text, out tuteOut))
+            {
+                MessageBox.Show("Number Of Tutorial Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(UptNumLabTxt.Text, out labOut))
+            {
+                MessageBox.Show("Number Of Lab Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(UptNumEvaTxt.Text, out evalOut))
+            {
+                MessageBox.Show("Number Of Evaluation Hours should contain only numeric values!");
             }
             else
             {
