@@ -181,7 +181,7 @@ namespace TimeTableManagementSystem
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "CREATE TABLE time_slots ( id INTEGER NOT NULL UNIQUE, start_time TEXT NOT NULL, end_time TEXT NOT NULL, time_duration TEXT, PRIMARY KEY(id)); ";
+                    cmd.CommandText = "CREATE TABLE time_slots ( id INTEGER, start_time TEXT NOT NULL, end_time TEXT NOT NULL, time_duration TEXT, PRIMARY KEY(id AUTOINCREMENT)); ";
 
                     cmd.ExecuteNonQuery();
                     connection.Close();

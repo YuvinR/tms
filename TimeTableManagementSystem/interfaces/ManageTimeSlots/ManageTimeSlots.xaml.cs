@@ -94,10 +94,10 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
                 {
                     SQLiteCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO time_slots (id,start_time,end_time,time_duration) VALUES(@id,@StartTime,@EndTime,@TimeDuration);";
+                    command.CommandText = "INSERT INTO time_slots (start_time,end_time,time_duration) VALUES(@StartTime,@EndTime,@TimeDuration);";
                     Console.WriteLine(command.CommandText);
 
-                    command.Parameters.AddWithValue("@id", id);
+                    //command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@StartTime", this.startTime);
                     command.Parameters.AddWithValue("@EndTime", this.endTime);
                     command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
