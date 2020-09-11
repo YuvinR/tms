@@ -31,6 +31,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         private String timeDuration;
         private String recordID;
 
+        private int error_count = 0;
         
 
         public ManageTimeSlots()
@@ -79,84 +80,128 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             //TimeSpan time = DateTime.Parse(this.endTime).Subtract(DateTime.Parse(this.startTime));
 
             //this.timeDuration = time.ToString(@"hh\:mm");
-            
+
+            String sdsd = (this.timeDuration).ToString();
+            var xds = sdsd.Length;
+
+            if (startingTime != endingTime  && xds == 8) 
+            { 
 
 
-            connection.Open();
+                connection.Open();
 
-            try
-            {
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "INSERT INTO time_slots (id,start_time,end_time,time_duration) VALUES(@id,@StartTime,@EndTime,@TimeDuration);";
-                Console.WriteLine(command.CommandText);
+                try
+                {
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "INSERT INTO time_slots (id,start_time,end_time,time_duration) VALUES(@id,@StartTime,@EndTime,@TimeDuration);";
+                    Console.WriteLine(command.CommandText);
 
-                command.Parameters.AddWithValue("@id", id);
-                command.Parameters.AddWithValue("@StartTime", this.startTime);
-                command.Parameters.AddWithValue("@EndTime", this.endTime);
-                command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@StartTime", this.startTime);
+                    command.Parameters.AddWithValue("@EndTime", this.endTime);
+                    command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
 
-                int rows = command.ExecuteNonQuery();
+                    this.error_count = command.ExecuteNonQuery();
 
-                if (rows > 0)
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                populateGrid();
+                clearFields();
+
+                if (this.error_count > 0)
                 {
                     MessageBox.Show("Data has been Inserted");
+
                 }
                 else
                 {
                     MessageBox.Show("Error");
                 }
 
-                
+                this.error_count = 0;
 
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Starting Time Or Ending time not in correct format, Please Check!");
             }
-            finally
-            {
-                connection.Close();
-            }
-
-            populateGrid();
-
 
         }
 
         private void UpdateTimeSlots(object sender, RoutedEventArgs e)
         {
-            
-            ComboBoxItem cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
-            ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
 
-            this.startTime = cmbStartTimeInput.Content.ToString();
-            this.endTime = cmbEndTimeInput.Content.ToString();
+            TimePicker StartingTime = (TimePicker)TimePickerStartingTime;
+            TimePicker EndingTime = (TimePicker)TimePickerEndingTime;
 
-            TimeSpan time = DateTime.Parse(this.endTime).Subtract(DateTime.Parse(this.startTime));
+            DateTime startingTime = new DateTime();
+            DateTime endingTime = new DateTime();
 
-            this.timeDuration = time.ToString(@"hh\:mm");
 
-            connection.Open();
+            if (StartingTime.SelectedTime != null)
+            {
+                startingTime = (DateTime)StartingTime.SelectedTime;
+            }
 
-            try
+            if (EndingTime.SelectedTime != null)
+            {
+                endingTime = (DateTime)EndingTime.SelectedTime;
+            }
+
+            this.startTime = startingTime.TimeOfDay.ToString();
+            this.endTime = endingTime.TimeOfDay.ToString();
+            this.timeDuration = (endingTime - startingTime).ToString();
+
+            String sdsd = (this.timeDuration).ToString();
+            var xds = sdsd.Length;
+
+            if (startingTime != endingTime && xds == 8)
             {
 
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
+                connection.Open();
 
-                command.CommandText = "UPDATE time_slots SET start_time = @StartTime, end_time = @EndTime, time_duration = @TimeDuration WHERE id = @RecordID;";
+                try
+                {
 
-                command.Parameters.AddWithValue("@RecordID", this.recordID);
-                command.Parameters.AddWithValue("@StartTime", this.startTime );
-                command.Parameters.AddWithValue("@EndTime", this.endTime);
-                command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = "UPDATE time_slots SET start_time = @StartTime, end_time = @EndTime, time_duration = @TimeDuration WHERE id = @RecordID;";
+
+                    command.Parameters.AddWithValue("@RecordID", this.recordID);
+                    command.Parameters.AddWithValue("@StartTime", this.startTime);
+                    command.Parameters.AddWithValue("@EndTime", this.endTime);
+                    command.Parameters.AddWithValue("@TimeDuration", this.timeDuration);
 
 
-                int rows = command.ExecuteNonQuery();
+                    this.error_count = command.ExecuteNonQuery();
 
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
 
-                if (rows > 0)
+                populateGrid();
+                clearFields();
+
+                btnUpdate.IsEnabled = false;
+                btnAdd.IsEnabled = true;
+
+                if (this.error_count > 0)
                 {
                     MessageBox.Show("Record has been Updated");
                 }
@@ -166,19 +211,11 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
                 }
 
             }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Starting Time Or Ending time not in correct format, Please Check!");
             }
-            finally
-            {
-                connection.Close();
-            }
-            cmbStartTime.SelectedIndex = -1;
-            cmbEndTime.SelectedIndex = -1;
-            populateGrid();
-            btnUpdate.IsEnabled = false;
-            btnAdd.IsEnabled = true;
+
         }
 
         private void populateGrid()
@@ -219,6 +256,9 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         private void editFields(object sender, RoutedEventArgs e)
         {
+
+            clearFields();
+
             string startTime;
             string endTime;
 
@@ -228,7 +268,10 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             endTime = selectedRow.Row["end_time"].ToString();
             this.recordID = selectedRow.Row["id"].ToString();
 
-            filterTimeWhenEdit(startTime, endTime);
+            TimePickerStartingTime.SelectedTime = Convert.ToDateTime(startTime);
+            TimePickerEndingTime.SelectedTime = Convert.ToDateTime(endTime);
+
+            //filterTimeWhenEdit(startTime, endTime);
 
             btnUpdate.IsEnabled = true;
             btnAdd.IsEnabled = false;
@@ -248,16 +291,9 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
                 command.CommandText = "DELETE FROM time_slots WHERE id = @RecordID";
                 command.Parameters.AddWithValue("@RecordID", recordID);
 
-                int rows = command.ExecuteNonQuery();
+                this.error_count = command.ExecuteNonQuery();
 
-                if (rows > 0)
-                {
-                    MessageBox.Show("Data has been Deleted!");
-                }
-                else
-                {
-                    MessageBox.Show("Error Occured");
-                }
+
             }
             catch (Exception ex)
             {
@@ -270,37 +306,28 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
             populateGrid();
 
-        }
-
-
-
-
-
-        //Filtering method to time
-        public void filterTimeWhenEdit(string StartTime, string EndTime)
-        {
-
-            string startTimeObj = StartTime;
-            string endTimeObj = EndTime;
-
-            string[] cmbTimes = { "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00",
-                                  "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00",
-                                  "18:30", "19:00", "19:30", "20:00", "20:30" };
-
-            for (int i = 0; i < cmbTimes.Length; i++)
+            if (this.error_count > 0)
             {
-                if (startTimeObj.ToString() == cmbTimes[i].ToString())
-                {
-                    cmbStartTime.SelectedIndex = i;
-                }
-
-                if (endTimeObj.ToString() == cmbTimes[i].ToString())
-                {
-                    cmbEndTime.SelectedIndex = i;
-                }
-
+                MessageBox.Show("Data has been Deleted!");
             }
+            else
+            {
+                MessageBox.Show("Error Occured");
+            }
+
+            this.error_count = 0;
+
         }
+
+
+
+        public void clearFields()
+        {
+            TimePickerEndingTime.SelectedTime = null;
+            TimePickerStartingTime.SelectedTime = null;
+        }
+
+
 
     }
 }
