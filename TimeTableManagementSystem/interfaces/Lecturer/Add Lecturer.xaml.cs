@@ -90,8 +90,6 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
 
         private void BtnAddLecturer_Click(object sender, RoutedEventArgs e)
         {
-            
-
             if (string.IsNullOrEmpty(EmpIdTxt.Text) || string.IsNullOrEmpty(EmpNameTxt.Text) || string.IsNullOrEmpty(FacultyCombo.Text) || string.IsNullOrEmpty(EmpDepTxt.Text)
                 || string.IsNullOrEmpty(CenterCombo.Text) || string.IsNullOrEmpty(BuildingCombo.Text) || string.IsNullOrEmpty(LevelCombo.Text) || string.IsNullOrEmpty(RankTxt.Text))
             {
@@ -148,8 +146,9 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
                 finally
                 {
                     connection.Close();
+                    clearFields();
                 }
-                clearFields();
+                
             }
         }
 

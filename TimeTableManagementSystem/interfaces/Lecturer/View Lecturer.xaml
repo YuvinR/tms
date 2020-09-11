@@ -45,7 +45,7 @@
                   Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                    materialDesign:HintAssist.Hint="Department"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
-                  HorizontalAlignment="Left" Margin="213,7,0,0" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="3" Height="40" FontSize="14" TextChanged="SearchTxt_TextChanged"/>
+                  HorizontalAlignment="Left" Margin="213,7,0,0" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="3" Height="40" FontSize="13" TextChanged="SearchTxt_TextChanged"/>
         <Button x:Name="BtnSearch"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton"

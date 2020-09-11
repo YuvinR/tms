@@ -45,12 +45,30 @@ namespace TimeTableManagementSystem.interfaces.Subject
 
         private void BtnAddSbj_Click(object sender, RoutedEventArgs e)
         {
-            
+            int lecOut;
+            int tuteOut;
+            int labOut;
+            int evalOut;
             
             if (string.IsNullOrEmpty(SbjCodeTxt.Text) || string.IsNullOrEmpty(SbjNameTxt.Text) || string.IsNullOrEmpty(OffYearTxt.Text) || string.IsNullOrEmpty(OffSemTxt.Text)
                 || string.IsNullOrEmpty(NumLecHrTxt.Text) || string.IsNullOrEmpty(NumTuteHrTxt.Text) || string.IsNullOrEmpty(NumLabHrTxt.Text) || string.IsNullOrEmpty(NumEvaHrTxt.Text))
             {
                 MessageBox.Show("Please fill the Required Fields Before Inserting Data!");
+            }else if (!int.TryParse(NumLecHrTxt.Text , out lecOut))
+            {
+                MessageBox.Show("Number Of Lecture Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(NumTuteHrTxt.Text, out tuteOut))
+            {
+                MessageBox.Show("Number Of Tutorial Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(NumLabHrTxt.Text, out labOut))
+            {
+                MessageBox.Show("Number Of Lab Hours should contain only numeric values!");
+            }
+            else if (!int.TryParse(NumEvaHrTxt.Text, out evalOut))
+            {
+                MessageBox.Show("Number Of Evaluation Hours should contain only numeric values!");
             }
             else {
 
@@ -104,10 +122,11 @@ namespace TimeTableManagementSystem.interfaces.Subject
                 finally
                 {
                     connection.Close();
+                    clearFields();
                 }
             }
 
-            clearFields();
+            
         }
 
         private void clearFields()
