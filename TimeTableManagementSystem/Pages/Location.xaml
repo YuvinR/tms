@@ -7,39 +7,72 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="400*"/>
+    <Grid>
+        <Label>
+            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Location Operation</TextBlock>
+        </Label>
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="185*"/>
-            <RowDefinition Height="185*"/>
-        </Grid.RowDefinitions>
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="0" x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label Grid.Column="0" Grid.Row="0" >
-                <TextBlock Grid.Column="0" Grid.Row="0"  TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Locations</TextBlock>
-            </Label>
-        </materialDesign:TransitioningContent>
+        <materialDesign:Card Margin="253,66,382,247">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnViewLocation_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="PlaylistPlus" />
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
-            <Button Grid.Column="1"  x:Name="BtnViewLoc" Content="View Locations" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117" Click="BtnViewLocation_Click" />
-        </materialDesign:TransitioningContent>
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="View Location"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to view the location related Details and modify it."/></TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Button Grid.Column="1" x:Name="BtnAddLoc" Content="Add Location" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,47,50,88" Click="BtnAddLocation_Click"/>
-        </materialDesign:TransitioningContent>
+        <materialDesign:Card Margin="21,66,615,247">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnAddLocation_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="FormatListText" />
 
-        <!--Image-->
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image HorizontalAlignment="Left" Height="236" Margin="28,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="332" Grid.RowSpan="2">
-                <Image.Source>
-                    <ImageSource>/Images/pointer.png</ImageSource>
-                </Image.Source>
-            </Image>
-        </materialDesign:TransitioningContent>
-
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add Location"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to add the location related Details"/></TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

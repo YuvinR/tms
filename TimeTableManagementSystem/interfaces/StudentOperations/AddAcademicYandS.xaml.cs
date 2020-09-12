@@ -35,7 +35,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
         private void Button_ClickSave(object sender, RoutedEventArgs e)
         {
             
-                if (String.IsNullOrEmpty(AcademicYearTxt.Text) && String.IsNullOrEmpty(AcademicSemTxt.Text))
+                if (String.IsNullOrEmpty(AcademicYearTxt.Text) || string.IsNullOrEmpty(AcademicSemTxt.Text))
                 {
                     MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
                 }
