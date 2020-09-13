@@ -32,7 +32,9 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         private String recordID;
 
         private int error_count = 0;
-        
+
+        private TimeSpan AVAILABLE_TIME_FOR_THE_WEEK = new TimeSpan();
+        private TimeSpan TOTAL_ADDED_TIME_COUNT = new TimeSpan();
 
         public ManageTimeSlots()
         {
