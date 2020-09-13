@@ -8,10 +8,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+        
             <Label>
-                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Location</TextBlock>
+                <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Time Table Operations</TextBlock>
             </Label>
-        </materialDesign:TransitioningContent>
+
+        <!--<DataGrid x:Name="CountDataGrid"
+            Height="300"
+            AutoGenerateColumns="False" 
+            HorizontalAlignment="Center" 
+            HorizontalContentAlignment="Center"
+            Width="400"
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Year" Binding="{Binding Offered_Year}" />
+                <DataGridTextColumn Header="Count" Width="150" Binding="{Binding Sub_Count}" />
+                
+            </DataGrid.Columns>
+        </DataGrid>-->
+
+
     </Grid>
 </UserControl>
