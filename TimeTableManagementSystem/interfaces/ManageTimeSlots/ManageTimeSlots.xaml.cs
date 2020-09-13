@@ -32,7 +32,9 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         private String recordID;
 
         private int error_count = 0;
-        
+
+        private TimeSpan AVAILABLE_TIME_FOR_THE_WEEK = new TimeSpan();
+        private TimeSpan TOTAL_ADDED_TIME_COUNT = new TimeSpan();
 
         public ManageTimeSlots()
         {
@@ -69,7 +71,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             this.startTime = startingTime.TimeOfDay.ToString();
             this.endTime = endingTime.TimeOfDay.ToString();
             this.timeDuration = (endingTime - startingTime).ToString();
-
+            
 
             // cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
             //ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
@@ -119,6 +121,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
                 if (this.error_count > 0)
                 {
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = this.AVAILABLE_TIME_FOR_THE_WEEK - (endingTime - startingTime);
+                    chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
                     MessageBox.Show("Data has been Inserted");
 
                 }
@@ -252,6 +256,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         {
             populateGrid();
             btnUpdate.IsEnabled = false;
+            getInitiaterTimeForTheWeek();
+
         }
 
         private void editFields(object sender, RoutedEventArgs e)
@@ -327,6 +333,96 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             TimePickerStartingTime.SelectedTime = null;
         }
 
+
+        public void getInitiaterTimeForTheWeek()
+        {
+            connection.Open();
+
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from working_week;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+
+                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+
+
+                    //timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse(PER_DAY_TIME);
+
+                }
+
+                chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+
+
+            connection.Open();
+
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from time_slots;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+
+                    String PER_DAY_TIME_FOR_TOTAL = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+
+
+                    //timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+
+                    this.TOTAL_ADDED_TIME_COUNT = this.TOTAL_ADDED_TIME_COUNT + TimeSpan.Parse(PER_DAY_TIME_FOR_TOTAL);
+
+                }
+
+                chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            chip_available_time.Content = (this.AVAILABLE_TIME_FOR_THE_WEEK - this.TOTAL_ADDED_TIME_COUNT).ToString();
+
+
+        }
 
 
     }

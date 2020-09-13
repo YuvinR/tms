@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.ManageTimeSlots"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TimeTableManagementSystem.interfaces.ManageTimeSlots.ManageTimeSlots"
         mc:Ignorable="d"
-        Title="ManageTimeSlots" Height="525" Width="1058" WindowStartupLocation="CenterScreen" SizeToContent="Manual" ResizeMode="NoResize">
+        Title="ManageTimeSlots" Height="555" Width="1058" WindowStartupLocation="CenterScreen" SizeToContent="Manual" ResizeMode="NoResize">
     <Grid Margin="0,0,0,-6">
         <Grid.RowDefinitions>
             <RowDefinition Height="415*"/>
@@ -78,8 +78,8 @@
             <ComboBoxItem>20:00</ComboBoxItem>
             <ComboBoxItem>20:30</ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="manageTimeSlotGrid" HorizontalAlignment="Left" Height="348" Margin="325,137,0,0" VerticalAlignment="Top" Width="707" Grid.ColumnSpan="3"
-                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+        <DataGrid x:Name="manageTimeSlotGrid" HorizontalAlignment="Left" Height="348" Margin="325,186,0,0" VerticalAlignment="Top" Width="707" Grid.ColumnSpan="3"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Starting Time" Binding="{Binding start_time}" Width="150"/>
                 <DataGridTextColumn Header="Ending Time" Binding="{Binding end_time}" Width="150"/>
@@ -111,9 +111,11 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="419" Margin="10,66,0,0" VerticalAlignment="Top"  Width="300" Source="/interfaces/ManageTimeSlots/clock2.jpg" Stretch="Fill" IsEnabled="False"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="453" Margin="10,66,0,0" VerticalAlignment="Top"  Width="300" Source="/interfaces/ManageTimeSlots/clock2.jpg" Stretch="Fill" IsEnabled="False"/>
         <materialDesign:TimePicker x:Name="TimePickerStartingTime" HorizontalAlignment="Left" Margin="449,88,0,0" VerticalAlignment="Top" Width="84" Height="25"/>
         <materialDesign:TimePicker x:Name="TimePickerEndingTime" Grid.Column="1" HorizontalAlignment="Left" Margin="39,88,0,0" VerticalAlignment="Top" Width="84" Height="25"/>
+        <materialDesign:Chip x:Name="chip_available_time" Content="" Grid.Column="1" Margin="39,142,0,0" VerticalAlignment="Top" Width="119"/>
+        <Label x:Name="label1_Copy1" Content="Available Time For Slots" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="216" FontSize="17" FontWeight="Bold" Margin="449,140,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
