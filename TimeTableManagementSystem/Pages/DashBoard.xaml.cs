@@ -26,6 +26,8 @@ namespace TimeTableManagementSystem.Pages
     /// </summary>
     public partial class DashBoard : UserControl
     {
+
+
         public DashBoard()
         {
             InitializeComponent();
@@ -36,28 +38,37 @@ namespace TimeTableManagementSystem.Pages
 
         public void PieChartExample()
         {
-
-            /* SQLiteConnection connection = db_config.connect();
-            SQLiteCommand command = connection.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "Select Count(Subject_Code), Offered_Year from Subject group by Offered_Year";
-            var dataSet = new DataSet();
-            SQLiteDataAdapter sqliteAdapter = new SQLiteDataAdapter(command);
-            sqliteAdapter.Fill(dataSet);
-            SeriesCollection series = new SeriesCollection();
-            int i = 0;
-            for (i=0; i <= dataSet.Tables[0].Rows.Count - 1; i++)
-            {
-                int subcount = (int)dataSet.Tables[0].Rows[i].ItemArray[0];
-                String years = dataSet.Tables[0].Rows[i].ItemArray[1].ToString();
-                series.Add(new PieSeries() { Title = years, Values = new ChartValues<int> { subcount }, DataLabels = true, LabelPoint = labelPoint });
-          
-
-            } */
-
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
             DataContext = this;
+
+            SQLiteConnection connection = db_config.connect();
+            SQLiteCommand command = connection.CreateCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "Select  Offered_Year, Count(Subject_Code) as Sub_Count From Subject Group by Offered_Year";
+
+            SQLiteDataAdapter sqliteAdapter = new SQLiteDataAdapter(command);
+
+            DataSet dataSet = new DataSet();
+
+            sqliteAdapter.Fill(dataSet);
+            //SQLiteDataReader reader = command.ExecuteReader();
+
+            
+            
+            SeriesCollection series = new SeriesCollection();
+            int i = 0;
+            for (i = 0; i <= dataSet.Tables[0].Rows.Count - 1; i++)
+            {
+                String years = dataSet.Tables[0].Rows[i].ItemArray[0].ToString();
+                int subcount = (int)(long)(dataSet.Tables[0].Rows[i].ItemArray[1]);
+
+                series.Add(new PieSeries() { Title =  years, Values = new ChartValues<int> { subcount }, DataLabels = true, LabelPoint = PointLabel });
+                SubPieChart.Series = series;
+            }
+
+
+           
         }
 
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
