@@ -376,6 +376,52 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
                 connection.Close();
             }
 
+
+
+
+            connection.Open();
+
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from time_slots;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+
+                    String PER_DAY_TIME_FOR_TOTAL = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+
+
+                    //timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+
+                    this.TOTAL_ADDED_TIME_COUNT = this.TOTAL_ADDED_TIME_COUNT + TimeSpan.Parse(PER_DAY_TIME_FOR_TOTAL);
+
+                }
+
+                chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            chip_available_time.Content = (this.AVAILABLE_TIME_FOR_THE_WEEK - this.TOTAL_ADDED_TIME_COUNT).ToString();
+
+
         }
 
 
