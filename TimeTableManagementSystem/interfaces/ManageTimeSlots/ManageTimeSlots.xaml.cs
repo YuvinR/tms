@@ -254,6 +254,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         {
             populateGrid();
             btnUpdate.IsEnabled = false;
+            getInitiaterTimeForTheWeek();
+
         }
 
         private void editFields(object sender, RoutedEventArgs e)
@@ -329,6 +331,50 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             TimePickerStartingTime.SelectedTime = null;
         }
 
+
+        public void getInitiaterTimeForTheWeek()
+        {
+            connection.Open();
+
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "select * from working_week;";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet ds = new DataSet();
+
+                dataAdapter.Fill(ds);
+                int i = 0;
+                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+
+                    String PER_DAY_TIME = ds.Tables[0].Rows[i].ItemArray[3].ToString();
+
+
+                    //timeStartingTime.SelectedTime = Convert.ToDateTime(STARTING_TIME);
+
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse(PER_DAY_TIME);
+
+                }
+
+                chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
 
 
     }
