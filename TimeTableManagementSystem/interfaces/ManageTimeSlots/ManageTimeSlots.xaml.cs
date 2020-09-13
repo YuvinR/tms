@@ -71,7 +71,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             this.startTime = startingTime.TimeOfDay.ToString();
             this.endTime = endingTime.TimeOfDay.ToString();
             this.timeDuration = (endingTime - startingTime).ToString();
-
+            
 
             // cmbEndTimeInput = (ComboBoxItem)cmbEndTime.SelectedItem;
             //ComboBoxItem cmbStartTimeInput = (ComboBoxItem)cmbStartTime.SelectedItem;
@@ -121,6 +121,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
                 if (this.error_count > 0)
                 {
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = this.AVAILABLE_TIME_FOR_THE_WEEK - (endingTime - startingTime);
+                    chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
                     MessageBox.Show("Data has been Inserted");
 
                 }
