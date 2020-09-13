@@ -48,6 +48,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
         private void addTimeSlots(object sender, RoutedEventArgs e)
         {
 
+
+
             Random random = new Random();
             int id = random.Next(1258);
 
@@ -121,8 +123,11 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
                 if (this.error_count > 0)
                 {
-                    this.AVAILABLE_TIME_FOR_THE_WEEK = this.AVAILABLE_TIME_FOR_THE_WEEK - (endingTime - startingTime);
-                    chip_available_time.Content = this.AVAILABLE_TIME_FOR_THE_WEEK.ToString();
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse("00:00:00");
+                    this.TOTAL_ADDED_TIME_COUNT = TimeSpan.Parse("00:00:00");
+
+                    getInitiaterTimeForTheWeek();
+
                     MessageBox.Show("Data has been Inserted");
 
                 }
@@ -207,6 +212,10 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
                 if (this.error_count > 0)
                 {
+                    this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse("00:00:00");
+                    this.TOTAL_ADDED_TIME_COUNT = TimeSpan.Parse("00:00:00");
+
+                    getInitiaterTimeForTheWeek();
                     MessageBox.Show("Record has been Updated");
                 }
                 else
@@ -219,6 +228,8 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             {
                 MessageBox.Show("Starting Time Or Ending time not in correct format, Please Check!");
             }
+
+
 
         }
 
@@ -314,6 +325,11 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
             if (this.error_count > 0)
             {
+                this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse("00:00:00");
+                this.TOTAL_ADDED_TIME_COUNT = TimeSpan.Parse("00:00:00");
+
+                getInitiaterTimeForTheWeek();
+
                 MessageBox.Show("Data has been Deleted!");
             }
             else
