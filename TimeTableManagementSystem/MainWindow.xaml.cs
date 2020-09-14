@@ -18,6 +18,9 @@ using TimeTableManagementSystem.Pages;
 using System.Data.SQLite;
 using TimeTableManagementSystem.interfaces.ManageTimeSlots;
 using TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours;
+using TimeTableManagementSystem.interfaces.LectureHallTimeTable;
+using TimeTableManagementSystem.interfaces.LecturerTimeTable;
+using TimeTableManagementSystem.interfaces.StudentTimeTable;
 
 namespace TimeTableManagementSystem
 {
@@ -39,6 +42,18 @@ namespace TimeTableManagementSystem
             //ManageWorkignDaysAndHours manageworkigndaysandhours = new ManageWorkignDaysAndHours();
             //manageworkigndaysandhours.Show();
             //this.Hide();
+
+            //LecturerTimeTable lecturerTimeTable = new LecturerTimeTable();
+            //lecturerTimeTable.Show();
+            //this.Hide();
+
+            //LectureHallTimeTable lectureHallTimeTable = new LectureHallTimeTable();
+            //lectureHallTimeTable.Show();
+            //this.Hide();
+
+            StudentTimeTable studentTimeTable = new StudentTimeTable();
+            studentTimeTable.Show();
+            this.Hide();
 
 
         }

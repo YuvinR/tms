@@ -52,13 +52,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                 DataSet ds = new DataSet();
 
-                dataAdapter.Fill(ds, "Lecturer");
+                dataAdapter.Fill(ds);
 
-                //foreach(DataRow dr in dataTable.Rows)
-                //{
-
-                //    comboacys.Items.Add(dr["Year"].ToString());
-                //}
                 cmbLecturerName.ItemsSource = ds.Tables[0].DefaultView;
                 cmbLecturerName.DisplayMemberPath = ds.Tables[0].Columns["Name"].ToString();
                 cmbLecturerName.SelectedValuePath = ds.Tables[0].Columns["EmployeeID"].ToString();
