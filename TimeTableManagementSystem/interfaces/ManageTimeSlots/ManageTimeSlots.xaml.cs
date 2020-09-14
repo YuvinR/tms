@@ -47,7 +47,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         private void addTimeSlots(object sender, RoutedEventArgs e)
         {
-
+            getInitiaterTimeForTheWeek();
 
 
             Random random = new Random();
@@ -88,9 +88,17 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
             String sdsd = (this.timeDuration).ToString();
             var xds = sdsd.Length;
 
-            if (startingTime != endingTime  && xds == 8) 
-            { 
+            Boolean sdss = this.AVAILABLE_TIME_FOR_THE_WEEK == this.TOTAL_ADDED_TIME_COUNT + (endingTime - startingTime);
+            Boolean sdss2 = this.AVAILABLE_TIME_FOR_THE_WEEK >= this.TOTAL_ADDED_TIME_COUNT + (endingTime - startingTime);
 
+            if (startingTime != endingTime  && xds == 8 && sdss2) 
+            {
+                //System.Diagnostics.Debug.WriteLine("add " + (this.AVAILABLE_TIME_FOR_THE_WEEK  this.TOTAL_ADDED_TIME_COUNT).ToString());
+
+
+
+                System.Diagnostics.Debug.WriteLine("bool " + sdss);
+                System.Diagnostics.Debug.WriteLine("bool2 " + sdss2);
 
                 connection.Open();
 
@@ -148,6 +156,7 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         private void UpdateTimeSlots(object sender, RoutedEventArgs e)
         {
+            //getInitiaterTimeForTheWeek();
 
             TimePicker StartingTime = (TimePicker)TimePickerStartingTime;
             TimePicker EndingTime = (TimePicker)TimePickerEndingTime;
@@ -172,6 +181,9 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
             String sdsd = (this.timeDuration).ToString();
             var xds = sdsd.Length;
+
+            //Boolean sdss = this.AVAILABLE_TIME_FOR_THE_WEEK == this.TOTAL_ADDED_TIME_COUNT + (endingTime - startingTime);
+            //Boolean sdss2 = this.AVAILABLE_TIME_FOR_THE_WEEK >= this.TOTAL_ADDED_TIME_COUNT + (endingTime - startingTime);
 
             if (startingTime != endingTime && xds == 8)
             {
@@ -352,6 +364,10 @@ namespace TimeTableManagementSystem.interfaces.ManageTimeSlots
 
         public void getInitiaterTimeForTheWeek()
         {
+
+            this.AVAILABLE_TIME_FOR_THE_WEEK = TimeSpan.Parse("00:00:00");
+            this.TOTAL_ADDED_TIME_COUNT = TimeSpan.Parse("00:00:00");
+
             connection.Open();
 
 
