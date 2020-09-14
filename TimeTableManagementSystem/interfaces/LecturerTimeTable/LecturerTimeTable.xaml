@@ -1,12 +1,52 @@
-﻿<Window x:Class="TimeTableManagementSystem.interfaces.LecturerTimeTable.LecturerTimeTable"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.LecturerTimeTable"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TimeTableManagementSystem.interfaces.LecturerTimeTable.LecturerTimeTable"
         mc:Ignorable="d"
-        Title="LecturerTimeTable" Height="450" Width="800">
-    <Grid>
-        
+        Title="Lecturer Time Table" Height="640" Width="1213" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="117*"/>
+            <ColumnDefinition Width="120*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="96*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="43*"/>
+
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Lecturer Time Table" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="507" FontWeight="Bold" FontSize="28" Margin="10,10,0,0" Grid.RowSpan="2" Grid.ColumnSpan="5"/>
+        <Label x:Name="label1" Content="Time Table Category" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="199" FontSize="17" FontWeight="Bold" Margin="35,26,0,0" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ComboBox 
+            materialDesign:HintAssist.Hint="Lecturer" 
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="46,26,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Grid.RowSpan="2"/>
+        <Label x:Name="label1_Copy" Content="Lecturer Name" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="148" FontSize="17" FontWeight="Bold" Margin="96,26,0,0" Grid.RowSpan="2" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <ComboBox x:Name="cmbLecturerName"
+                  ItemsSource="{Binding}"
+            materialDesign:HintAssist.Hint="Select Lecturer Name" materialDesign:HintAssist.HintOpacity=".26" Grid.Column="3" HorizontalAlignment="Left" Margin="86,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="204" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+        <Button x:Name="btn_generate" Content="Generate" Grid.Column="6" HorizontalAlignment="Left" Margin="33,24,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_generate_Click"/>
+
     </Grid>
 </Window>
