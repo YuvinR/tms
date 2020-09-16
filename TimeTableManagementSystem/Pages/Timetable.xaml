@@ -13,23 +13,104 @@
                 <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Time Table Operations</TextBlock>
             </Label>
 
-        <!--<DataGrid x:Name="CountDataGrid"
-            Height="300"
-            AutoGenerateColumns="False" 
-            HorizontalAlignment="Center" 
-            HorizontalContentAlignment="Center"
-            Width="400"
-            CanUserAddRows="False" 
-            IsReadOnly="True"
-            CanUserReorderColumns="False" 
-            CanUserResizeColumns="False">
+        <materialDesign:Card Margin="21,74,615,239">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnLecTime_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Year" Binding="{Binding Offered_Year}" />
-                <DataGridTextColumn Header="Count" Width="150" Binding="{Binding Sub_Count}" />
-                
-            </DataGrid.Columns>
-        </DataGrid>-->
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Lecturer Timetable"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for creating the Lecturer Time table"/></TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+
+
+        <materialDesign:Card Margin="217,74,418,239">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnStdTime_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AlphaPCircle" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Student Timetable"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is used to create the Student Time tables."/></TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="417,74,217,239">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnLecHallTime_Click"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="AccountMultiplePlus" HorizontalAlignment="Center" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Lecture Hall Timetable"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to create Lecture Hall Time table."/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
 
 
     </Grid>

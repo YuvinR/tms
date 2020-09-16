@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeTableManagementSystem.DB_Config;
+using TimeTableManagementSystem.interfaces.LectureHallTimeTable;
+using TimeTableManagementSystem.interfaces.LecturerTimeTable;
+using TimeTableManagementSystem.interfaces.StudentTimeTable;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -30,34 +33,26 @@ namespace TimeTableManagementSystem.Pages
             //loadDataGrid();
         }
 
-       /* private void loadDataGrid()
+
+        private void BtnLecTime_Click(object sender, RoutedEventArgs e)
         {
-            connection.Open();
+            LecturerTimeTable lecturer_Time = new LecturerTimeTable();
+            lecturer_Time.Show();
+        }
 
-            try
-            {
-                DataTable dataTable = new DataTable();
 
-                SQLiteCommand command = connection.CreateCommand();
+        private void BtnStdTime_Click(object sender, RoutedEventArgs e)
+        {
+            StudentTimeTable student_Time = new StudentTimeTable();
+            student_Time.Show();
+        }
 
-                command.CommandType = CommandType.Text;
+        private void BtnLecHallTime_Click(object sender, RoutedEventArgs e)
+        {
+            LectureHallTimeTable lectureHall_Time = new LectureHallTimeTable();
+            lectureHall_Time.Show();
+        }
 
-                command.CommandText = "Select  Offered_Year, Count(Subject_Code) as Sub_Count From Subject Group by Offered_Year";
-
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-
-                dataAdapter.Fill(dataTable);
-
-                CountDataGrid.ItemsSource = dataTable.DefaultView;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }*/
+       
     }
 }
