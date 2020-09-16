@@ -45,11 +45,16 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
         private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
         {
+            
+            bool returnExsits = checkDBValues();
 
             if (String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
                 || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
+            }else if(returnExsits == true)
+            {
+                MessageBox.Show("Same Session Details are Already Added to DB!");
             }
             else
             {
@@ -109,6 +114,57 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 }
                 clearFields();
             }
+        }
+
+        private bool checkDBValues()
+        {
+            bool exsits = false;
+            lecturers = textListInput.Text;
+            subject = SbjComboBox.Text;
+            groupID = GrpIdComboBox.Text;
+            tag = TagComboBox.Text;
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select Lecturers, Subject, Tag, GroupID from Sessions";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                DataSet dataSet = new DataSet();
+
+                dataAdapter.Fill(dataSet);
+
+                int i = 0;
+                for (i = 0; i <= dataSet.Tables[0].Rows.Count - 1; i++)
+                {
+                    String dbLec = dataSet.Tables[0].Rows[i].ItemArray[0].ToString();
+                    String dbSub = dataSet.Tables[0].Rows[i].ItemArray[1].ToString();
+                    String dbGrp = dataSet.Tables[0].Rows[i].ItemArray[2].ToString();
+                    String dbTag = dataSet.Tables[0].Rows[i].ItemArray[3].ToString();
+
+                    if(lecturers.Equals(dbLec) && subject.Equals(dbSub) && groupID.Equals(dbGrp) && tag.Equals(dbTag))
+                    {
+                        exsits = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return exsits;
         }
 
         private void BtnSelectSessions_Click(object sender, RoutedEventArgs e)

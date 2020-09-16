@@ -52,6 +52,17 @@
                 <DataGridTextColumn Header="Group ID" Width="100" Binding="{Binding GroupID}" />
                 <DataGridTextColumn Header="Student Count" Binding="{Binding Student_Count}" />
                 <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+                <DataGridTemplateColumn Header="Delete" Width="70">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnDelete" Height="20" Width="20" Click="BtnDelete_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/delete.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

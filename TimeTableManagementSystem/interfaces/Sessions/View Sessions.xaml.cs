@@ -162,5 +162,41 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 connection.Close();
             }
         }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView row = SessionDataGrid.SelectedItem as DataRowView;
+            int sesID = int.Parse(row.Row["Session_ID"].ToString());
+
+            connection.Open();
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Delete from Sessions where Session_ID = @Session_ID";
+                command.Parameters.AddWithValue("@Session_ID", sesID);
+
+                int rows = command.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Session Data has been Deleted!");
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            loadDataGrid();
+        }
     }
 }
