@@ -29,8 +29,16 @@
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                 BorderBrush="Black" BorderThickness="3,3,3,3"
-            Content="Search" HorizontalAlignment="Left" Margin="422,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
-            " Width="152" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2" Background="#4DB5AB" Foreground="White"
+            Content="Search" HorizontalAlignment="Left" Margin="314,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+            " Width="152" FontSize="20" FontWeight="Bold" Background="#4DB5AB" Foreground="White" Click="BtnSearchFields_Click"
+            />
+
+        <Button x:Name="BtnClearFields"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                BorderBrush="Black" BorderThickness="3,3,3,3"
+            Content="Clear" HorizontalAlignment="Left" Margin="30,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+            " Width="152" FontSize="20" FontWeight="Bold" Background="#F54337" Foreground="White" Grid.Column="1" Click="BtnClearFields_Click"
             />
         <DataGrid x:Name="SessionDataGrid"
             Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"
