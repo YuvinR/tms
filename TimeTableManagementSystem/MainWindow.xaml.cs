@@ -31,9 +31,10 @@ namespace TimeTableManagementSystem
     {
         public MainWindow()
         {
-            InitializeComponent();
             StartupConfigurations stc = new StartupConfigurations();
             stc.initiate();
+            InitializeComponent();
+            
 
             //ManageTimeSlots manageTimeSlots = new ManageTimeSlots(); 
             //manageTimeSlots.Show();
