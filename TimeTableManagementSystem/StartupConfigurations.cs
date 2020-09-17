@@ -187,6 +187,110 @@ namespace TimeTableManagementSystem
                     connection.Close();
                 }
                 //Wickramanayake T.R.D db scripts
+
+                //Room Allocation Tables
+                if (!checkIfExist("Room_Tag"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Tag (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "TagID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Sub_Tag"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Sub_Tag (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "SubID TEXT NOT NULL, " +
+                                        "TagID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Lec"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Lec (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "LecID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Group"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Group (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "GroupID TEXT NOT NULL, " +
+                                        "SubGroupID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Session"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Session (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "SessionID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Con_Session"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Con_Session (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "ConSessionID TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                if (!checkIfExist("Room_Reserve"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "CREATE TABLE Room_Reserve (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                                        "RoomID TEXT NOT NULL, " +
+                                        "ResDate TEXT NOT NULL, " +
+                                        "STime TEXT NOT NULL, " +
+                                        "ETime TEXT NOT NULL ); ";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
             }
             catch (Exception ex)
             {
