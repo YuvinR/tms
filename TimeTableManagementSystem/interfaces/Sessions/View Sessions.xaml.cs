@@ -161,6 +161,31 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             {
                 connection.Close();
             }
+
+            try
+            {
+                connection.Open();
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                //Get Groups and Add it to combobox
+                command.CommandText = "Select * from SubGroup";
+
+                SQLiteDataReader reader5 = command.ExecuteReader();
+
+                while (reader5.Read())
+                {
+                    SearchGrpCombo.Items.Add(reader5.GetString("subgroupId"));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
