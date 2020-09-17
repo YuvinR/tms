@@ -34,10 +34,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         public Add_Sessions()
         {
             InitializeComponent();
+            
         }
 
         private void BtnViewSessions_Click(object sender, RoutedEventArgs e)
-        {
+        {          
             View_Sessions view = new View_Sessions();
             this.Close();
             view.Show();
@@ -48,7 +49,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             
             bool returnExsits = checkDBValues();
 
-            if (String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
+            if (String.IsNullOrEmpty(textListInput.Text) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
                 || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
@@ -78,9 +79,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     subCode = (string)command.ExecuteScalar();
 
                     command.CommandText = "Insert into Sessions " +
-                                        "(Lecturers, Subject, Subject_Code, Tag, GroupID, Student_Count,Duration) " +
+                                        "(Lecturers, Subject, Subject_Code, Tag, GroupID, Student_Count,Duration,isDeAllocated) " +
                                         "Values " +
-                                        "(@Lecturers, @Subject, @Subject_Code, @Tag, @GroupID, @Student_Count, @Duration)";
+                                        "(@Lecturers, @Subject, @Subject_Code, @Tag, @GroupID, @Student_Count, @Duration,0)";
 
                     command.Parameters.AddWithValue("@Lecturers",lecturers);
                     command.Parameters.AddWithValue("@Subject", subject);
@@ -128,6 +129,8 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
             try
             {
+
+                
                 SQLiteCommand command = connection.CreateCommand();
 
                 command.CommandType = CommandType.Text;
@@ -145,8 +148,8 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 {
                     String dbLec = dataSet.Tables[0].Rows[i].ItemArray[0].ToString();
                     String dbSub = dataSet.Tables[0].Rows[i].ItemArray[1].ToString();
-                    String dbGrp = dataSet.Tables[0].Rows[i].ItemArray[2].ToString();
-                    String dbTag = dataSet.Tables[0].Rows[i].ItemArray[3].ToString();
+                    String dbTag = dataSet.Tables[0].Rows[i].ItemArray[2].ToString();
+                    String dbGrp = dataSet.Tables[0].Rows[i].ItemArray[3].ToString();
 
                     if(lecturers.Equals(dbLec) && subject.Equals(dbSub) && groupID.Equals(dbGrp) && tag.Equals(dbTag))
                     {
@@ -187,7 +190,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 connection.Open();
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Select * from Lecturer";
+                command.CommandText = "Select * from Lecturer Where isDeAllocated = 0";
 
                 SQLiteDataReader reader1 = command.ExecuteReader();
 
@@ -252,36 +255,12 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             {
                 connection.Close();
             }
-
-            try {
-                connection.Open();
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                //Get Groups and Add it to combobox
-                command.CommandText = "Select * from Groups";
-
-                SQLiteDataReader reader4 = command.ExecuteReader();
-
-                while (reader4.Read())
-                {
-                    GrpIdComboBox.Items.Add(reader4.GetString("groupId"));
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+           
         }
 
         private void clearFields()
         {
             LctComboBox.Text = "";
-            //listViewInput.Items.Clear();
             textListInput.Text = "";
             SbjComboBox.Text = "";
             GrpIdComboBox.Text = "";
@@ -293,6 +272,71 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadComboBox();
+        }
+
+        private void BtnClearLecturers_Click(object sender, RoutedEventArgs e)
+        {
+            textListInput.Text = "";
+        }
+
+        private void TagComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (TagComboBox.Text.ToLower() == "lecture" || TagComboBox.Text.ToLower() == "tutorial")
+            {
+                GrpIdComboBox.Items.Clear();
+                try
+                {
+                    connection.Open();
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    //Get Groups and Add it to combobox
+                    command.CommandText = "Select * from Groups Where isDeAllocated = 0";
+
+                    SQLiteDataReader reader4 = command.ExecuteReader();
+
+                    while (reader4.Read())
+                    {
+                        GrpIdComboBox.Items.Add(reader4.GetString("groupId"));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else if (TagComboBox.Text.ToLower() == "practical")
+            {
+                GrpIdComboBox.Items.Clear();
+                try
+                {
+                    connection.Open();
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    //Get Groups and Add it to combobox
+                    command.CommandText = "Select * from SubGroup Where isDeAllocated = 0";
+
+                    SQLiteDataReader reader4 = command.ExecuteReader();
+
+                    while (reader4.Read())
+                    {
+                        GrpIdComboBox.Items.Add(reader4.GetString("subgroupId"));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

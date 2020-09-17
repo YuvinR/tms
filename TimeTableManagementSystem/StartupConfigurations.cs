@@ -44,7 +44,7 @@ namespace TimeTableManagementSystem
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "CREATE TABLE Groups(id Integer Primary Key Autoincrement,yearSem Integer,groupNo Integer,groupId varchar(100),prgmID Integer);";
+                    cmd.CommandText = "CREATE TABLE Groups(id Integer Primary Key Autoincrement,yearSem Integer,groupNo Integer,groupId varchar(100),prgmID Integer, isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1));";
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
@@ -54,7 +54,7 @@ namespace TimeTableManagementSystem
                     connection.Open();
                     SQLiteCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "CREATE TABLE SubGroup(id Integer Primary Key Autoincrement,groupId varchar(100),subgroupNo Integer,subgroupId varchar(100));";
+                    cmd.CommandText = "CREATE TABLE SubGroup(id Integer Primary Key Autoincrement,groupId varchar(100),subgroupNo Integer,subgroupId varchar(100), isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1));";
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
@@ -85,7 +85,7 @@ namespace TimeTableManagementSystem
                                         "Rank  REAL, " +
                                         "PRIMARY KEY(EmployeeID));";*/
 
-                    cmd.CommandText = "CREATE TABLE Lecturer (EmployeeID TEXT Primay Key, Name  TEXT, Faculty TEXT, Department TEXT, Center TEXT, Building  TEXT, Level TEXT, Rank REAL);";
+                    cmd.CommandText = "CREATE TABLE Lecturer (EmployeeID TEXT Primay Key, Name  TEXT, Faculty TEXT, Department TEXT, Center TEXT, Building  TEXT, Level TEXT, Rank REAL, isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1));";
                                       
 
                     cmd.ExecuteNonQuery();
@@ -129,7 +129,7 @@ namespace TimeTableManagementSystem
                                         "Duration  INTEGER, " +
                                         "PRIMARY KEY(Session_ID));";*/
 
-                    cmd.CommandText = "CREATE TABLE Sessions(Session_ID INTEGER Primary Key Autoincrement, Lecturers TEXT, Subject TEXT, Subject_Code TEXT, Tag TEXT, GroupID TEXT, Student_Count INTEGER,Duration  INTEGER);";
+                    cmd.CommandText = "CREATE TABLE Sessions(Session_ID INTEGER Primary Key Autoincrement, Lecturers TEXT, Subject TEXT, Subject_Code TEXT, Tag TEXT, GroupID TEXT, Student_Count INTEGER,Duration  INTEGER, isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1));";
 
 
                     cmd.ExecuteNonQuery();

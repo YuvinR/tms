@@ -113,9 +113,9 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
                     SQLiteCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "Insert into Lecturer " +
-                                        "(EmployeeID, Name, Faculty, Department, Center, Building, Level, Rank) " +
+                                        "(EmployeeID, Name, Faculty, Department, Center, Building, Level, Rank, isDeAllocated) " +
                                         "Values " +
-                                        "(@EmployeeID, @Name, @Faculty, @Department, @Center, @Building, @Level, @Rank)";
+                                        "(@EmployeeID, @Name, @Faculty, @Department, @Center, @Building, @Level, @Rank, 0)";
 
                     command.Parameters.AddWithValue("@EmployeeID", empID);
                     command.Parameters.AddWithValue("@Name", empName);

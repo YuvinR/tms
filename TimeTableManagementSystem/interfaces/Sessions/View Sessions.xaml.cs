@@ -161,6 +161,31 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             {
                 connection.Close();
             }
+
+            try
+            {
+                connection.Open();
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                //Get Groups and Add it to combobox
+                command.CommandText = "Select * from SubGroup";
+
+                SQLiteDataReader reader5 = command.ExecuteReader();
+
+                while (reader5.Read())
+                {
+                    SearchGrpCombo.Items.Add(reader5.GetString("subgroupId"));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -196,6 +221,284 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             {
                 connection.Close();
             }
+            loadDataGrid();
+        }
+
+        private void BtnSearchFields_Click(object sender, RoutedEventArgs e)
+        {
+            string lec = SearchLecCombo.Text;
+            string tag = SearchTagCombo.Text;
+            string grp = SearchGrpCombo.Text;
+            string sub = SearchSubCombo.Text;
+
+            if (!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(grp) && !String.IsNullOrEmpty(tag))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if(!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(grp))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if(!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(tag))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if(!String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(grp) && !String.IsNullOrEmpty(tag))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if(!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(sub))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if(!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(grp))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR GroupID LIKE '%" + grp + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if (!String.IsNullOrEmpty(lec) && !String.IsNullOrEmpty(tag))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+            else if (!String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(grp))
+            {
+           
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(tag))
+            {       
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(grp) && !String.IsNullOrEmpty(tag))
+            {               
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(lec))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(sub))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(grp))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where GroupID LIKE '%" + grp + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+
+            else if (!String.IsNullOrEmpty(tag))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select * from Sessions where Tag LIKE '%" + tag + "%'";
+
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                dataAdapter.Fill(dataTable);
+
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
+
+                connection.Close();
+            }
+        }
+
+        private void BtnClearFields_Click(object sender, RoutedEventArgs e)
+        {
+            SearchLecCombo.Text = "";
+            SearchTagCombo.Text = "";
+            SearchGrpCombo.Text = "";
+            SearchSubCombo.Text = "";
+
             loadDataGrid();
         }
     }
