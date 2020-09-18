@@ -239,8 +239,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND Subject = @Subject AND GroupID = @GroupID AND Tag = @Tag";
 
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@GroupID", grp);
+                command.Parameters.AddWithValue("@Tag", tag);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -257,8 +260,10 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND Subject = @Subject AND GroupID = @GroupID";
 
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@GroupID", grp);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -275,8 +280,10 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND Subject = @Subject AND Tag = @Tag";
 
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@Tag", tag);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -293,8 +300,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Subject =@Subject AND GroupID = @GroupID AND Tag = @Tag";
 
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@GroupID", grp);
+                command.Parameters.AddWithValue("@Tag", tag);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -311,8 +321,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Subject LIKE '%" + sub + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND Subject = @Subject";
 
+                command.Parameters.AddWithValue("@Subject", sub);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -329,8 +340,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR GroupID LIKE '%" + grp + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND GroupID = @GroupID";
 
+                command.Parameters.AddWithValue("@GroupID", grp);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -347,8 +359,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lec + "%' AND Tag = @Tag";
 
+                command.Parameters.AddWithValue("@Tag", tag);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -359,14 +372,17 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             }
             else if (!String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(grp))
             {
-           
+
                 connection.Open();
                 DataTable dataTable = new DataTable();
 
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR GroupID LIKE '%" + grp + "%'";
+                command.CommandText = "Select * from Sessions where Subject = @Subject AND GroupID = @GroupID";
+
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@GroupID", grp);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -378,14 +394,17 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             }
 
             else if (!String.IsNullOrEmpty(sub) && !String.IsNullOrEmpty(tag))
-            {       
+            {
                 connection.Open();
                 DataTable dataTable = new DataTable();
 
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Subject = @Subject AND Tag = @Tag";
+
+                command.Parameters.AddWithValue("@Subject", sub);
+                command.Parameters.AddWithValue("@Tag", tag);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -397,14 +416,17 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             }
 
             else if (!String.IsNullOrEmpty(grp) && !String.IsNullOrEmpty(tag))
-            {               
+            {
                 connection.Open();
                 DataTable dataTable = new DataTable();
 
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where GroupID LIKE '%" + grp + "%' OR Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where GroupID = @GroupID AND Tag = @Tag";
+
+                command.Parameters.AddWithValue("@GroupID", grp);
+                command.Parameters.AddWithValue("@Tag", tag);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -442,8 +464,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Subject LIKE '%" + sub + "%'";
+                command.CommandText = "Select * from Sessions where Subject = @Subject";
 
+                command.Parameters.AddWithValue("@Subject", sub);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -461,8 +484,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where GroupID LIKE '%" + grp + "%'";
+                command.CommandText = "Select * from Sessions where GroupID = @GroupID";
 
+                command.Parameters.AddWithValue("@GroupID", grp);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
@@ -480,8 +504,9 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Tag LIKE '%" + tag + "%'";
+                command.CommandText = "Select * from Sessions where Tag = @Tag";
 
+                command.Parameters.AddWithValue("@Tag", tag);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
