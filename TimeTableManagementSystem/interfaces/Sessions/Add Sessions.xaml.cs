@@ -149,7 +149,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 for (int i = 0; i < listViewInput.Items.Count; i++)
                 {
                     Sellec = (string)listViewInput.Items[i];
-                    command.CommandText = "Insert into Subject_Lecturers " +
+                    command.CommandText = "Insert into Session_Lecturers " +
                                         "(sessionID, Lecturers ) " +
                                         "Values " +
                                         "(@sessionID, @Lecturers )";

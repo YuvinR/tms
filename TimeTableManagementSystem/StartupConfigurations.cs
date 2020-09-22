@@ -108,7 +108,7 @@ namespace TimeTableManagementSystem
                                         "Evaluation_Hours  INTEGER, " +
                                         "PRIMARY KEY(Subject_Code));";*/
 
-                    cmd.CommandText = "CREATE TABLE Subject_Lecturers (id INTEGER Primary Key Autoincrement, sessionID INTEGER, Lecturers TEXT);";
+                    cmd.CommandText = "CREATE TABLE Session_Lecturers (id INTEGER Primary Key Autoincrement, sessionID INTEGER, Lecturers TEXT);";
 
                     cmd.ExecuteNonQuery();
                     connection.Close();
