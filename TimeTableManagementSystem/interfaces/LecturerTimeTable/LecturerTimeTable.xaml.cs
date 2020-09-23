@@ -70,6 +70,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         int columnCount;
 
         List<SessionDetails> sessionDetails = new List<SessionDetails>();
+        List<String> columnNames = new List<string>();
 
         public LecturerTimeTable()
         {
@@ -157,6 +158,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                     DAY = ds.Tables[0].Rows[i].ItemArray[6].ToString();
                     dayName[i] = DAY;
+                    this.columnNames.Add(DAY);
 
                 }
 
@@ -285,6 +287,12 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             this.finalSlotArray = new string[this.rowCount, this.columnCount];
 
+            this.finalSlotArray[4, 0] = "XXXX";
+            this.finalSlotArray[4, 1] = "XXXX";
+            this.finalSlotArray[4, 2] = "XXXX";
+            this.finalSlotArray[4, 3] = "XXXX";
+            this.finalSlotArray[4, 4] = "XXXX";
+
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
 
 
@@ -335,13 +343,13 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                         if(sesionObj.Duration == 2)
                         {
-                            this.finalSlotArray[mdRandom1, randomNumber] = duration1Session1.SessionID;
-                            this.finalSlotArray[mdRandom1 + 1, randomNumber] = duration1Session1.SessionID;
+                            this.finalSlotArray[mdRandom1, randomNumber] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-"+ duration1Session1.Subject + "("+ duration1Session1.Tag +")"+"\n"+duration1Session1.GroupID;
+                            this.finalSlotArray[mdRandom1 + 1, randomNumber] = duration1Session2.SessionID + " : " + duration1Session2.SubjectCode + "-" + duration1Session2.Subject + "(" + duration1Session2.Tag + ")" + "\n" + duration1Session2.GroupID;
                         }
 
                         if (sesionObj.Duration == 1)
                         {
-                            this.finalSlotArray[mdRandom1, randomNumber] = defaultDurationSession.SessionID;
+                            this.finalSlotArray[mdRandom1, randomNumber] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
                         }
 
                         //this.finalSlotArray[mdRandom1, randomNumber] = sesionObj.SessionID;
@@ -490,9 +498,22 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
 
 
+            var dg = new DataGrid();
+            this.MainGrid.Children.Add(dg);
+
+            var column1 = new DataGridTextColumn();
+            column1.Header = "Time";
+            column1.Binding = new Binding("Time");
+            dg.Columns.Add(column1);
 
 
-
+            foreach (var day in this.columnNames)
+            {
+                var column = new DataGridTextColumn();
+                column.Header = day;
+                column.Binding = new Binding(day);
+                dg.Columns.Add(column);
+            }
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
@@ -533,6 +554,16 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
 
+
+            for (int row = 0; row < 9; row++)
+            {
+                //for (int col = 0; col < 5; col++)
+                //{
+                    dg.Items.Add(new DataItem { Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], });
+                //}
+            }
+
+
         }
 
 
@@ -547,7 +578,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             {
                 rNumber = r.Next(min, max);
                 temp = rNumber;
-            } while (rNumber == exclude);
+            } while (rNumber == 4);
 
             return rNumber;
 
