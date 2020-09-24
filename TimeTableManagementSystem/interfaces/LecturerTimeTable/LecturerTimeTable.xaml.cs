@@ -64,6 +64,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         int noOfSessions = 0;
         int noOfDays = 0;
 
+        int loopbreak = 0;
+
         string[,] finalSlotArray;
 
         int rowCount;
@@ -75,15 +77,21 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         //Testting
         List<string> ABCD = new List<string>();
+        List<string> NEW_LIST = new List<string>();
 
         public LecturerTimeTable()
         {
+            loadFull();
+
+            this.NEW_LIST.Add("Monday");
+            this.NEW_LIST.Add("Tuesday");
+            this.NEW_LIST.Add("Wednesday");
+            this.NEW_LIST.Add("Thursday");
+            this.NEW_LIST.Add("Friday");
             InitializeComponent();
             fetchDataToComboBox();
-            loadFull();
-            System.Diagnostics.Debug.WriteLine("bool " + (4 != 4));
-            System.Diagnostics.Debug.WriteLine("bool " + ((4 != 4) || (4 != 9)));
-            System.Diagnostics.Debug.WriteLine("bool " + ((4 != 4) && (4 != 9)));
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -199,11 +207,11 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             Random random = new Random();
 
-            this.finalSlotArray = new string[this.rowCount, this.columnCount];
+            this.finalSlotArray = new string[9, 5];
 
-            for (int row = 0; row<this.rowCount; row++)
+            for (int row = 0; row<9; row++)
             {
-                for (int col = 0;  col<this.columnCount; col++)
+                for (int col = 0;  col<5; col++)
                 {
                     if(row == 4)
                     {
@@ -217,12 +225,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 }
             }
 
-            //this.finalSlotArray[4, 0] = "XXXXXXXX";
-            //this.finalSlotArray[4, 1] = "XXXXXXXX";
-            //this.finalSlotArray[4, 2] = "XXXXXXXX";
-            //this.finalSlotArray[4, 3] = "XXXXXXXX";
-            //this.finalSlotArray[4, 4] = "XXXXXXXX";
-
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
 
 
@@ -232,8 +234,13 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             Random thursdayRandom = new Random();
             Random fridayRandom = new Random();
 
-            while (this.sessionDetails.Count != 0)
+            while (this.sessionDetails.Count > 0)
             {
+                this.loopbreak++;
+
+
+                System.Diagnostics.Debug.WriteLine("<<<000000000000000000>>> ");
+                
                 this.noOfDays = this.columnCount;
                 foreach (var sesionObj in this.sessionDetails.ToList())
                 {
@@ -268,7 +275,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         case "Monday":
                             System.Diagnostics.Debug.WriteLine("Switch value " + randomNumber);
 
-                            this.noOfDays = this.noOfDays - 1;
+                            //this.noOfDays = this.noOfDays - 1;
 
                             int mdRandom1 = RandomFilter(0, (this.mondayTime.Length - 1), 4);
 
@@ -313,7 +320,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         case "Tuesday":
                             System.Diagnostics.Debug.WriteLine("Switch value " + randomNumber);
 
-                            this.noOfDays = this.noOfDays - 1;
+                            //this.noOfDays = this.noOfDays - 1;
 
                             int mdRandom2 = RandomFilter(0, (this.tuesdayTime.Length - 1), 4);
 
@@ -324,8 +331,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     this.finalSlotArray[mdRandom2, randomNumber] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                     this.tuesdayTime = this.tuesdayTime.Where((source, index) => index != mdRandom2).ToArray();
                                     mdRandom2++;
-                                    this.tuesdayTime = this.tuesdayTime.Where((source, index) => index != mdRandom2).ToArray();
                                     this.finalSlotArray[mdRandom2, randomNumber] = duration1Session2.SessionID + " : " + duration1Session2.SubjectCode + "-" + duration1Session2.Subject + "(" + duration1Session2.Tag + ")" + "\n" + duration1Session2.GroupID;
+                                    this.tuesdayTime = this.tuesdayTime.Where((source, index) => index != mdRandom2).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -339,7 +346,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                 if ((this.finalSlotArray[mdRandom2, randomNumber] == "x"))
                                 {
                                     this.finalSlotArray[mdRandom2, randomNumber] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
-                                    this.tuesdayTime = this.mondayTime.Where((source, index) => index != mdRandom2).ToArray();
+                                    this.tuesdayTime = this.tuesdayTime.Where((source, index) => index != mdRandom2).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -357,7 +364,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         case "Wednesday":
                             System.Diagnostics.Debug.WriteLine("Switch value " + randomNumber);
 
-                            this.noOfDays = this.noOfDays - 1;
+                            //this.noOfDays = this.noOfDays - 1;
 
                             int mdRandom3 = RandomFilter(0, (this.wednesdayTime.Length - 1), 4);
 
@@ -368,8 +375,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     this.finalSlotArray[mdRandom3, randomNumber] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                     this.wednesdayTime = this.wednesdayTime.Where((source, index) => index != mdRandom3).ToArray();
                                     mdRandom3++;
-                                    this.wednesdayTime = this.wednesdayTime.Where((source, index) => index != mdRandom3).ToArray();
                                     this.finalSlotArray[mdRandom3, randomNumber] = duration1Session2.SessionID + " : " + duration1Session2.SubjectCode + "-" + duration1Session2.Subject + "(" + duration1Session2.Tag + ")" + "\n" + duration1Session2.GroupID;
+                                    this.wednesdayTime = this.wednesdayTime.Where((source, index) => index != mdRandom3).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -383,7 +390,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                 if ((this.finalSlotArray[mdRandom3, randomNumber] == "x"))
                                 {
                                     this.finalSlotArray[mdRandom3, randomNumber] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
-                                    this.wednesdayTime = this.mondayTime.Where((source, index) => index != mdRandom3).ToArray();
+                                    this.wednesdayTime = this.wednesdayTime.Where((source, index) => index != mdRandom3).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -401,7 +408,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         case "Thursday":
                             System.Diagnostics.Debug.WriteLine("Switch value " + randomNumber);
 
-                            this.noOfDays = this.noOfDays - 1;
+                            //this.noOfDays = this.noOfDays - 1;
 
                             int mdRandom4 = RandomFilter(0, (this.thursdayTimme.Length - 1), 4);
 
@@ -412,8 +419,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     this.finalSlotArray[mdRandom4, randomNumber] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                     this.thursdayTimme = this.thursdayTimme.Where((source, index) => index != mdRandom4).ToArray();
                                     mdRandom4++;
-                                    this.thursdayTimme = this.thursdayTimme.Where((source, index) => index != mdRandom4).ToArray();
                                     this.finalSlotArray[mdRandom4, randomNumber] = duration1Session2.SessionID + " : " + duration1Session2.SubjectCode + "-" + duration1Session2.Subject + "(" + duration1Session2.Tag + ")" + "\n" + duration1Session2.GroupID;
+                                    this.thursdayTimme = this.thursdayTimme.Where((source, index) => index != mdRandom4).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -427,7 +434,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                 if ((this.finalSlotArray[mdRandom4, randomNumber] == "x"))
                                 {
                                     this.finalSlotArray[mdRandom4, randomNumber] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
-                                    this.thursdayTimme = this.mondayTime.Where((source, index) => index != mdRandom4).ToArray();
+                                    this.thursdayTimme = this.thursdayTimme.Where((source, index) => index != mdRandom4).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -445,7 +452,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         case "Friday":
                             System.Diagnostics.Debug.WriteLine("Switch value " + randomNumber);
 
-                            this.noOfDays = this.noOfDays - 1;
+                            //this.noOfDays = this.noOfDays - 1;
 
                             int mdRandom5 = RandomFilter(0, (this.fridayTime.Length - 1), 4);
 
@@ -456,8 +463,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     this.finalSlotArray[mdRandom5, randomNumber] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                     this.fridayTime = this.fridayTime.Where((source, index) => index != mdRandom5).ToArray();
                                     mdRandom5++;
-                                    this.fridayTime = this.fridayTime.Where((source, index) => index != mdRandom5).ToArray();
                                     this.finalSlotArray[mdRandom5, randomNumber] = duration1Session2.SessionID + " : " + duration1Session2.SubjectCode + "-" + duration1Session2.Subject + "(" + duration1Session2.Tag + ")" + "\n" + duration1Session2.GroupID;
+                                    this.fridayTime = this.fridayTime.Where((source, index) => index != mdRandom5).ToArray();
                                     this.sessionDetails.Remove(sesionObj);
                                 }
                                 else
@@ -471,7 +478,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                 if ((this.finalSlotArray[mdRandom5, randomNumber] == "x"))
                                 {
                                     this.finalSlotArray[mdRandom5, randomNumber] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
-                                    this.fridayTime = this.mondayTime.Where((source, index) => index != mdRandom5).ToArray();
+                                    this.fridayTime = this.fridayTime.Where((source, index) => index != mdRandom5).ToArray();
                                     this.sessionDetails.Remove(defaultDurationSession);
                                 }
                                 else
@@ -488,24 +495,24 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                         default:
                             System.Diagnostics.Debug.WriteLine("Random Number " + randomNumber);
-
                             break;
                     }
 
                 }
+
+                if (loopbreak > 50)
+                {
+                    MessageBox.Show("Infinite");
+                    break;
+
+                }
+
+                System.Diagnostics.Debug.WriteLine("while loop count " + this.sessionDetails.Count);
+
             } 
 
 
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
-
-
-
-
-
-
-
-
-
 
             var dg = new DataGrid();
             this.MainGrid.Children.Add(dg);
@@ -516,7 +523,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             dg.Columns.Add(column1);
 
 
-            foreach (var day in this.columnNames)
+            foreach (var day in this.NEW_LIST)
             {
                 var column = new DataGridTextColumn();
                 column.Header = day;
@@ -529,40 +536,24 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             for (int row = 0; row < 9; row++)
             { 
-                /*
-                DataItem dataItem1 = new DataItem();
-                dataItem1.Time = this.timeSlots[row];
-                for (int date = 0; date < this.dayName.Length; date++)
-                {
-                    //dataItem1.MyDates["Monday"] = finalSlotArray[row, date];
-                    this.ABCD.IndexOf(this.dayName[date]);
-                    dataItem1.MyDates[this.ABCD.IndexOf(this.dayName[date])] = finalSlotArray[row, date];
-                    System.Diagnostics.Debug.WriteLine("date iteme &&&&&&&&&&&& " + dataItem1.MyDates[date]);
-                    dg.Items.Add(dataItem1);
-                }
-                System.Diagnostics.Debug.WriteLine("ABCD(Old):- " + dataItem);
-                System.Diagnostics.Debug.WriteLine("ABCDEFGH(New):- " + dataItem1);
-                dg.Items.Add(dataItem1);*/
-                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3] });
+                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4]});
             }
 
 
-
+/*
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
-            //Previeing method
             for (int x=0; x < dayName.Length; x++)
             {
                 System.Diagnostics.Debug.WriteLine("Day " + x + dayName[x]);
             }
-
+            
             for (int x = 0; x < timeSlots.Length; x++)
             {
                 System.Diagnostics.Debug.WriteLine("Tiem " + x + timeSlots[x]);
             }
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
-
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
@@ -575,14 +566,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             }
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
-
-
-
-
-
-            
-
-
 
             System.Diagnostics.Debug.WriteLine("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 
@@ -602,14 +585,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             foreach (var secondTurn in this.sessionDetailsSecondTurnFiltering)
             {
                 System.Diagnostics.Debug.WriteLine("*>>>>>>*" + secondTurn.SessionID);
-
-                ///////////////////////////////////
-
-                //////////////////////////////////
-
             }
-
-            System.Diagnostics.Debug.WriteLine("******************************************************************");
+            System.Diagnostics.Debug.WriteLine("******************************************************************"); */
 
         }
 
