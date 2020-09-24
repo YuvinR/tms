@@ -44,9 +44,9 @@ namespace TimeTableManagementSystem
             //manageworkigndaysandhours.Show();
             //this.Hide();
 
-            LecturerTimeTable lecturerTimeTable = new LecturerTimeTable();
-            lecturerTimeTable.Show();
-            this.Hide();
+            //LecturerTimeTable lecturerTimeTable = new LecturerTimeTable();
+            //lecturerTimeTable.Show();
+            //this.Hide();
 
             //LectureHallTimeTable lectureHallTimeTable = new LectureHallTimeTable();
             //lectureHallTimeTable.Show();
