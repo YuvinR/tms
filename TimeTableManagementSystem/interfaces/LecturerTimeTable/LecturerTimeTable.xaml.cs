@@ -75,15 +75,13 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         //Testting
         List<string> ABCD = new List<string>();
+        List<string> NEW_ = new List<string>();
 
         public LecturerTimeTable()
         {
             InitializeComponent();
             fetchDataToComboBox();
             loadFull();
-            System.Diagnostics.Debug.WriteLine("bool " + (4 != 4));
-            System.Diagnostics.Debug.WriteLine("bool " + ((4 != 4) || (4 != 9)));
-            System.Diagnostics.Debug.WriteLine("bool " + ((4 != 4) && (4 != 9)));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -199,11 +197,11 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             Random random = new Random();
 
-            this.finalSlotArray = new string[this.rowCount, this.columnCount];
+            this.finalSlotArray = new string[9, 5];
 
-            for (int row = 0; row<this.rowCount; row++)
+            for (int row = 0; row<9; row++)
             {
-                for (int col = 0;  col<this.columnCount; col++)
+                for (int col = 0;  col<5; col++)
                 {
                     if(row == 4)
                     {
@@ -216,12 +214,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                     
                 }
             }
-
-            //this.finalSlotArray[4, 0] = "XXXXXXXX";
-            //this.finalSlotArray[4, 1] = "XXXXXXXX";
-            //this.finalSlotArray[4, 2] = "XXXXXXXX";
-            //this.finalSlotArray[4, 3] = "XXXXXXXX";
-            //this.finalSlotArray[4, 4] = "XXXXXXXX";
 
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
 
@@ -498,15 +490,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
 
-
-
-
-
-
-
-
-
-
             var dg = new DataGrid();
             this.MainGrid.Children.Add(dg);
 
@@ -529,40 +512,24 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             for (int row = 0; row < 9; row++)
             { 
-                /*
-                DataItem dataItem1 = new DataItem();
-                dataItem1.Time = this.timeSlots[row];
-                for (int date = 0; date < this.dayName.Length; date++)
-                {
-                    //dataItem1.MyDates["Monday"] = finalSlotArray[row, date];
-                    this.ABCD.IndexOf(this.dayName[date]);
-                    dataItem1.MyDates[this.ABCD.IndexOf(this.dayName[date])] = finalSlotArray[row, date];
-                    System.Diagnostics.Debug.WriteLine("date iteme &&&&&&&&&&&& " + dataItem1.MyDates[date]);
-                    dg.Items.Add(dataItem1);
-                }
-                System.Diagnostics.Debug.WriteLine("ABCD(Old):- " + dataItem);
-                System.Diagnostics.Debug.WriteLine("ABCDEFGH(New):- " + dataItem1);
-                dg.Items.Add(dataItem1);*/
-                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3] });
+                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4]});
             }
 
 
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
-            //Previeing method
             for (int x=0; x < dayName.Length; x++)
             {
                 System.Diagnostics.Debug.WriteLine("Day " + x + dayName[x]);
             }
-
+            
             for (int x = 0; x < timeSlots.Length; x++)
             {
                 System.Diagnostics.Debug.WriteLine("Tiem " + x + timeSlots[x]);
             }
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
-
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
@@ -575,14 +542,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             }
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
-
-
-
-
-
-            
-
-
 
             System.Diagnostics.Debug.WriteLine("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 
@@ -602,13 +561,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             foreach (var secondTurn in this.sessionDetailsSecondTurnFiltering)
             {
                 System.Diagnostics.Debug.WriteLine("*>>>>>>*" + secondTurn.SessionID);
-
-                ///////////////////////////////////
-
-                //////////////////////////////////
-
             }
-
             System.Diagnostics.Debug.WriteLine("******************************************************************");
 
         }
