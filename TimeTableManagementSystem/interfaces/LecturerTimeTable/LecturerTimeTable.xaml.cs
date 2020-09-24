@@ -52,7 +52,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         private SQLiteConnection connection = db_config.connect();
 
 
-
+        String[] CHECKING_DAYS = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         string[] timeSlots;
         string[] mondayTime;
@@ -72,6 +72,9 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         List<SessionDetails> sessionDetails = new List<SessionDetails>();
         List<SessionDetails> sessionDetailsSecondTurnFiltering = new List<SessionDetails>();
         List<String> columnNames = new List<string>();
+
+        //Testting
+        List<string> ABCD = new List<string>();
 
         public LecturerTimeTable()
         {
@@ -130,7 +133,14 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         public void generateTable(string lecturerName)
         {
+            DataItem dataItem = new DataItem();
 
+            for(int xd = 0; xd < this.dayName.Length; xd++)
+            {
+                dataItem.MyDates[xd] = this.dayName[xd];
+                System.Diagnostics.Debug.WriteLine("Date Item ##################" + dataItem.MyDates[xd]);
+                ABCD.Add(this.dayName[xd]);
+            }
 
 
             //Session Details
@@ -191,19 +201,27 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             this.finalSlotArray = new string[this.rowCount, this.columnCount];
 
-            for (int row = 0; row < 9; row++)
+            for (int row = 0; row<this.rowCount; row++)
             {
-                for (int col = 0; col < 5; col++)
+                for (int col = 0;  col<this.columnCount; col++)
                 {
-                    finalSlotArray[row, col] = "x";
+                    if(row == 4)
+                    {
+                        finalSlotArray[row, col] = "XXXXXXXX";
+                    }
+                    else
+                    {
+                        finalSlotArray[row, col] = "x";
+                    }
+                    
                 }
             }
 
-            this.finalSlotArray[4, 0] = "XXXXXXXX";
-            this.finalSlotArray[4, 1] = "XXXXXXXX";
-            this.finalSlotArray[4, 2] = "XXXXXXXX";
-            this.finalSlotArray[4, 3] = "XXXXXXXX";
-            this.finalSlotArray[4, 4] = "XXXXXXXX";
+            //this.finalSlotArray[4, 0] = "XXXXXXXX";
+            //this.finalSlotArray[4, 1] = "XXXXXXXX";
+            //this.finalSlotArray[4, 2] = "XXXXXXXX";
+            //this.finalSlotArray[4, 3] = "XXXXXXXX";
+            //this.finalSlotArray[4, 4] = "XXXXXXXX";
 
             System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
 
@@ -506,9 +524,26 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 dg.Columns.Add(column);
             }
 
+            string[,] abcd = new string[1,this.columnCount];
+
+
             for (int row = 0; row < 9; row++)
-            {
-                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], });
+            { 
+                /*
+                DataItem dataItem1 = new DataItem();
+                dataItem1.Time = this.timeSlots[row];
+                for (int date = 0; date < this.dayName.Length; date++)
+                {
+                    //dataItem1.MyDates["Monday"] = finalSlotArray[row, date];
+                    this.ABCD.IndexOf(this.dayName[date]);
+                    dataItem1.MyDates[this.ABCD.IndexOf(this.dayName[date])] = finalSlotArray[row, date];
+                    System.Diagnostics.Debug.WriteLine("date iteme &&&&&&&&&&&& " + dataItem1.MyDates[date]);
+                    dg.Items.Add(dataItem1);
+                }
+                System.Diagnostics.Debug.WriteLine("ABCD(Old):- " + dataItem);
+                System.Diagnostics.Debug.WriteLine("ABCDEFGH(New):- " + dataItem1);
+                dg.Items.Add(dataItem1);*/
+                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3] });
             }
 
 
@@ -531,9 +566,9 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             System.Diagnostics.Debug.WriteLine("#################################################################");
 
-            for(int row = 0; row < 9; row++)
+            for(int row = 0; row < this.rowCount; row++)
             {
-                for(int col = 0; col < 5; col++)
+                for(int col = 0; col < this.columnCount; col++)
                 {
                     System.Diagnostics.Debug.WriteLine(row + " " +col+"  >"+finalSlotArray[row,col]);
                 }
@@ -551,9 +586,9 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             System.Diagnostics.Debug.WriteLine("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 
-            for (int row = 0; row < 9; row++)
+            for (int row = 0; row < this.rowCount; row++)
             {
-                for (int col = 0; col < 5; col++)
+                for (int col = 0; col < this.columnCount; col++)
                 {
                     System.Diagnostics.Debug.WriteLine(row + " " + col + "  >" + finalSlotArray[row, col]);
                 }

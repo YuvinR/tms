@@ -14,5 +14,14 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         public string Thursday { get; set; }
         public string Friday { get; set; }
 
+        public string[] MyDates = new string[7];
+
+        public string this[int index]
+        {
+            get => MyDates[index];
+            set => MyDates[index] = value;
+        }
+
+
     }
 }
