@@ -122,7 +122,7 @@ namespace TimeTableManagementSystem
                                         "Session_ID  INTEGER Autoincrement, " +
                                         "Lecturers TEXT, " +
                                         "Subject  TEXT, " +
-                                        "Subject_Code   TEXT, " +
+                                        "Subject_Code   TEXT, "+
                                         "Tag  TEXT, " +
                                         "GroupID TEXT, " +
                                         "Student_Count INTEGER, " +
