@@ -129,7 +129,7 @@ namespace TimeTableManagementSystem
                                         "Duration  INTEGER, " +
                                         "PRIMARY KEY(Session_ID));";*/
 
-                    cmd.CommandText = "CREATE TABLE Sessions(Session_ID INTEGER Primary Key Autoincrement, Lecturers TEXT, Subject TEXT, Subject_Code TEXT, Tag TEXT, GroupID TEXT, Student_Count INTEGER,Duration  INTEGER, isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1));";
+                    cmd.CommandText = "CREATE TABLE Sessions(Session_ID INTEGER Primary Key Autoincrement, Lecturers TEXT, Subject TEXT, Subject_Code TEXT, Tag TEXT, GroupID TEXT, Student_Count INTEGER,Duration  INTEGER, isDeAllocated INTEGER CHECK(isDeAllocated = 0 OR isDeAllocated = 1), NonOverLapCat varchar(100),ConsecutiveCat varchar(100),ParallelCat varchar(100));";
 
 
                     cmd.ExecuteNonQuery();
