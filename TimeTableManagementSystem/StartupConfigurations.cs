@@ -290,24 +290,24 @@ namespace TimeTableManagementSystem
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
-                if (!checkIfExist("Paralel_Session"))
-                {
-                    connection.Open();
-                    SQLiteCommand cmd = connection.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "CREATE TABLE Paralel_Session(id Integer Primary Key Autoincrement,sessionId Integer,sessionCategory Integer);";
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
-                if (!checkIfExist("Non_Overlapped_Session"))
-                {
-                    connection.Open();
-                    SQLiteCommand cmd = connection.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "CREATE TABLE Non_Overlapped_Session(id Integer Primary Key Autoincrement,sessionId Integer,sessionCategory Integer);";
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
+                //if (!checkIfExist("Paralel_Session"))
+                //{
+                //    connection.Open();
+                //    SQLiteCommand cmd = connection.CreateCommand();
+                //    cmd.CommandType = CommandType.Text;
+                //    cmd.CommandText = "CREATE TABLE Paralel_Session(id Integer Primary Key Autoincrement,sessionId Integer,sessionCategory Integer);";
+                //    cmd.ExecuteNonQuery();
+                //    connection.Close();
+                //}
+                //if (!checkIfExist("Non_Overlapped_Session"))
+                //{
+                //    connection.Open();
+                //    SQLiteCommand cmd = connection.CreateCommand();
+                //    cmd.CommandType = CommandType.Text;
+                //    cmd.CommandText = "CREATE TABLE Non_Overlapped_Session(id Integer Primary Key Autoincrement,sessionId Integer,sessionCategory Integer);";
+                //    cmd.ExecuteNonQuery();
+                //    connection.Close();
+                //}
 
 
             }
