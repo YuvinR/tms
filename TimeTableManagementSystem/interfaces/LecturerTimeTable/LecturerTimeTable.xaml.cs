@@ -149,7 +149,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             for(int xd = 0; xd < this.dayName.Length; xd++)
             {
                 dataItem.MyDates[xd] = this.dayName[xd];
-                System.Diagnostics.Debug.WriteLine("Date Item ##################" + dataItem.MyDates[xd]);
                 ABCD.Add(this.dayName[xd]);
             }
 
@@ -173,8 +172,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 dataAdapter.Fill(ds);
 
                 this.noOfSessions = ds.Tables[0].Rows.Count;
-                System.Diagnostics.Debug.WriteLine("Number Of Sessions " + ds.Tables[0].Rows.Count);
-
 
                 int i = 0;
                 for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
@@ -228,9 +225,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 }
             }
 
-            System.Diagnostics.Debug.WriteLine("----------------------------------------------------------------------");
-
-
             Random mondayRandom = new Random();
             Random tuesdayRandom = new Random();
             Random wednesdayRandom = new Random();
@@ -247,9 +241,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                     int randomNumber = random.Next(0, this.noOfDays);
 
-                    System.Diagnostics.Debug.WriteLine("Random Number " + randomNumber);
-                    System.Diagnostics.Debug.WriteLine("Day Name For Random " + this.dayName[randomNumber]);
-
                     SessionDetails duration1Session1 = new SessionDetails();
                     SessionDetails duration1Session2 = new SessionDetails();
                     SessionDetails defaultDurationSession = new SessionDetails();
@@ -258,14 +249,11 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                     {
                         duration1Session1 = sesionObj;
                         duration1Session2 = sesionObj;
-
-                        System.Diagnostics.Debug.WriteLine("DUration 2 " + duration1Session1.Duration + " " + duration1Session2.Duration);
                     }
 
                     if (sesionObj.Duration == 1)
                     {
                         defaultDurationSession = sesionObj;
-                        System.Diagnostics.Debug.WriteLine("DUration 1 " + defaultDurationSession.Duration);
                     }
 
 
@@ -501,7 +489,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                             break;
 
                         default:
-                            System.Diagnostics.Debug.WriteLine("Random Number " + randomNumber);
                             break;
                     }
 
@@ -544,14 +531,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4] });
             }
 
-            //PopulateGridViewWithTimeTable();
-
-        }
-
-        
-        public void PopulateGridViewWithTimeTable()
-        {
-
         }
 
         Random r = new Random();
@@ -592,7 +571,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                 dataAdapter.Fill(ds);
 
-                System.Diagnostics.Debug.WriteLine("Day Count " + ds.Tables[0].Rows.Count);
                 this.noOfDays = ds.Tables[0].Rows.Count;
                 this.dayName = new string[ds.Tables[0].Rows.Count];
 
@@ -639,7 +617,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                 dataAdapter.Fill(ds);
 
-                System.Diagnostics.Debug.WriteLine("TiemRow Count " + ds.Tables[0].Rows.Count);
                 this.timeSlots = new string[ds.Tables[0].Rows.Count];
                 this.mondayTime = new string[ds.Tables[0].Rows.Count];
                 this.tuesdayTime = new string[ds.Tables[0].Rows.Count];
@@ -675,8 +652,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             }
 
 
-
-            
         }
 
     }

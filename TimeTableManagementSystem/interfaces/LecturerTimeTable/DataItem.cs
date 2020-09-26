@@ -13,6 +13,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         public string Wednesday { get; set; }
         public string Thursday { get; set; }
         public string Friday { get; set; }
+        public string Saturday { get; set; }
+        public string Sunday { get; set; }
 
         public string[] MyDates = new string[7];
 
