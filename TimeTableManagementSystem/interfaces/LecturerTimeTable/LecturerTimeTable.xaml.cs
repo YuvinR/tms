@@ -68,6 +68,8 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         string[,] finalSlotArray;
 
+        Boolean IsFullWeek = false;
+
         int rowCount;
         int columnCount;
 
@@ -82,15 +84,38 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         public LecturerTimeTable()
         {
             loadFull();
+            DatHeaddersaddingToTheTable();
 
-            this.NEW_LIST.Add("Monday");
-            this.NEW_LIST.Add("Tuesday");
-            this.NEW_LIST.Add("Wednesday");
-            this.NEW_LIST.Add("Thursday");
-            this.NEW_LIST.Add("Friday");
             InitializeComponent();
             fetchDataToComboBox();
 
+
+        }
+
+
+        public void DatHeaddersaddingToTheTable()
+        {
+
+            if (this.IsFullWeek)
+            {
+                System.Diagnostics.Debug.WriteLine("Full Week " + this.IsFullWeek);
+                this.NEW_LIST.Add("Monday");
+                this.NEW_LIST.Add("Tuesday");
+                this.NEW_LIST.Add("Wednesday");
+                this.NEW_LIST.Add("Thursday");
+                this.NEW_LIST.Add("Friday");
+                this.NEW_LIST.Add("Saturday");
+                this.NEW_LIST.Add("Sunday");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Full Week " + this.IsFullWeek);
+                this.NEW_LIST.Add("Monday");
+                this.NEW_LIST.Add("Tuesday");
+                this.NEW_LIST.Add("Wednesday");
+                this.NEW_LIST.Add("Thursday");
+                this.NEW_LIST.Add("Friday");
+            }
 
         }
 
@@ -101,7 +126,6 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         private void btn_generate_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(cmbLecturerName.SelectedValue.ToString());
             generateTable(cmbLecturerName.SelectedValue.ToString());
         }
 
@@ -581,6 +605,16 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 {
 
                     DAY = ds.Tables[0].Rows[i].ItemArray[6].ToString();
+
+                    if(DAY == "Saturday" || DAY == "Sunday")
+                    {
+                        this.IsFullWeek = true;
+                    }
+                    else
+                    {
+                        this.IsFullWeek = false;
+                    }
+
                     dayName[i] = DAY;
                     this.columnNames.Add(DAY);
 
