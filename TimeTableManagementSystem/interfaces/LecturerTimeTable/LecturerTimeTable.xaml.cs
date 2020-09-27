@@ -667,6 +667,12 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                 this.rowCount = ds.Tables[0].Rows.Count;
 
+                if (this.rowCount == 0)
+                {
+                    MessageBox.Show("Before Proceed To Time Table Creation Please Initiate Time Slots!");
+                    //this.Close();
+                }
+
                 int i = 0;
                 for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
                 {
