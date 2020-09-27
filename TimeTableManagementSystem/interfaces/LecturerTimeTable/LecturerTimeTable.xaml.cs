@@ -573,11 +573,21 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             string[,] abcd = new string[1, this.columnCount];
 
-
-            for (int row = 0; row < 9; row++)
+            if (this.IsFullWeek)
             {
-                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], Saturday = finalSlotArray[row, 5], Sunday = finalSlotArray[row, 6] });
+                for (int row = 0; row < 9; row++)
+                {
+                    dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], Saturday = finalSlotArray[row, 5], Sunday = finalSlotArray[row, 6] });
+                }
             }
+            else
+            {
+                for (int row = 0; row < 9; row++)
+                {
+                    dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4]});
+                }
+            }
+
 
         }
 
