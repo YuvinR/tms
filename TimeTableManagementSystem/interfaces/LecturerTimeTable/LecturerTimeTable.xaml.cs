@@ -231,23 +231,47 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             Random random = new Random();
 
-            this.finalSlotArray = new string[9, 5];
-
-            for (int row = 0; row<9; row++)
+            if (this.IsFullWeek)
             {
-                for (int col = 0;  col<5; col++)
+                this.finalSlotArray = new string[12, 7];
+                for (int row = 0; row < 12; row++)
                 {
-                    if(row == 4)
+                    for (int col = 0; col < 7; col++)
                     {
-                        finalSlotArray[row, col] = "XXXXXXXX";
+                        if (row == 4)
+                        {
+                            finalSlotArray[row, col] = "XXXXXXXX";
+                        }
+                        else
+                        {
+                            finalSlotArray[row, col] = "x";
+                        }
+
                     }
-                    else
-                    {
-                        finalSlotArray[row, col] = "x";
-                    }
-                    
                 }
             }
+            else
+            {
+                this.finalSlotArray = new string[9, 5];
+                for (int row = 0; row < 9; row++)
+                {
+                    for (int col = 0; col < 5; col++)
+                    {
+                        if (row == 4)
+                        {
+                            finalSlotArray[row, col] = "XXXXXXXX";
+                        }
+                        else
+                        {
+                            finalSlotArray[row, col] = "x";
+                        }
+
+                    }
+                }
+            }
+            
+
+
 
             Random mondayRandom = new Random();
             Random tuesdayRandom = new Random();
@@ -552,7 +576,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
             for (int row = 0; row < 9; row++)
             {
-                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4] });
+                dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], Saturday = finalSlotArray[row, 5], Sunday = finalSlotArray[row, 6] });
             }
 
         }
