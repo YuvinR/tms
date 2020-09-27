@@ -600,26 +600,33 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                 this.columnCount = ds.Tables[0].Rows.Count;
 
-                int i = 0;
-                for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                if(this.columnCount == 0)
                 {
-
-                    DAY = ds.Tables[0].Rows[i].ItemArray[6].ToString();
-
-                    if(DAY == "Saturday" || DAY == "Sunday")
-                    {
-                        this.IsFullWeek = true;
-                    }
-                    else
-                    {
-                        this.IsFullWeek = false;
-                    }
-
-                    dayName[i] = DAY;
-                    this.columnNames.Add(DAY);
-
+                    MessageBox.Show("Before Proceed To Time Table Creation Please Initiate a Working Week!");
+                    //this.Close();
                 }
+                else
+                {
+                    int i = 0;
+                    for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                    {
 
+                        DAY = ds.Tables[0].Rows[i].ItemArray[6].ToString();
+
+                        if (DAY == "Saturday" || DAY == "Sunday")
+                        {
+                            this.IsFullWeek = true;
+                        }
+                        else
+                        {
+                            this.IsFullWeek = false;
+                        }
+
+                        dayName[i] = DAY;
+                        this.columnNames.Add(DAY);
+
+                    }
+                }
 
             }
             catch (Exception ex)
