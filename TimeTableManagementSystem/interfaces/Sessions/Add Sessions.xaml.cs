@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
 using TimeTableManagementSystem.DB_Config;
+using System.Text.RegularExpressions;
 
 namespace TimeTableManagementSystem.interfaces.Sessions
 {
@@ -48,6 +49,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
         {
             bool returnExsits = false;
+            int stdCount;
             //bool returnExsits = checkDBValues();
 
             /*if (String.IsNullOrEmpty(textListInput.Text) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
@@ -62,7 +64,11 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                 || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
             {
                     MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
-            }else if(returnExsits == true)
+            }else if (!int.TryParse(StdCountTxt.Text, out stdCount))
+            {
+                MessageBox.Show("Student Count should contain only numeric values!");
+            }
+            else if(returnExsits == true)
             {
                 MessageBox.Show("Same Session Details are Already Added to DB!");
             }
@@ -130,6 +136,20 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             }
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^1-2]");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
+        private void NumberValidationTextBoxForStudent(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
         //With the List view. Implementation of the method
         private void addingToOtherTable()
         {
@@ -169,14 +189,14 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     }
                 }
 
-                if (done == true)
+                /*if (done == true)
                 {
                     MessageBox.Show("lecturers has been added");
                 }
                 else
                 {
                     MessageBox.Show("Error Occurd in adding lecturers to DB");
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -336,6 +356,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         {
             LctComboBox.Text = "";
             //textListInput.Text = "";
+            listViewInput.Items.Clear();
             SbjComboBox.Text = "";
             GrpIdComboBox.Text = "";
             TagComboBox.Text = "";
@@ -351,6 +372,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void BtnClearLecturers_Click(object sender, RoutedEventArgs e)
         {
             //textListInput.Text = "";
+            listViewInput.Items.Clear();
         }
 
         private void TagComboBox_DropDownClosed(object sender, EventArgs e)
