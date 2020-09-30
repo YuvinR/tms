@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.LecturerTimeTable"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TimeTableManagementSystem.interfaces.LecturerTimeTable.LecturerTimeTable"
         mc:Ignorable="d"
-        Title="Lecturer Time Table" Height="786" Width="1219" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Lecturer Time Table" Height="810" Width="1219" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="142*"/>
@@ -47,7 +47,8 @@
                   ItemsSource="{Binding}"
             materialDesign:HintAssist.Hint="Select Lecturer Name" materialDesign:HintAssist.HintOpacity=".26" Grid.Column="3" HorizontalAlignment="Left" Margin="86,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="204" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
         <Button x:Name="btn_generate" Content="Generate" Grid.Column="6" HorizontalAlignment="Left" Margin="33,24,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_generate_Click"/>
-        <Grid x:Name="MainGrid" Grid.Row="2" Grid.ColumnSpan="8" Margin="41,49,35,24" Grid.RowSpan="12"/>
+        <Grid x:Name="MainGrid" Grid.Row="2" Grid.ColumnSpan="8" Margin="41,49,35,10" Grid.RowSpan="11"/>
+        <Button x:Name="btn_print_table" Content="Print" Grid.Column="6" HorizontalAlignment="Left" Margin="33,10,0,0" Grid.Row="13" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_print_table_Click"/>
 
     </Grid>
 </Window>

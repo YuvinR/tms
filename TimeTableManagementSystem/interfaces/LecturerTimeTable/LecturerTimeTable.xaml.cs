@@ -16,6 +16,12 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.Diagnostics;
+using System.Net.Security;
+using Microsoft.Win32;
+
 namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 {
     /// <summary>
@@ -65,6 +71,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
         string[] dayName;
         int noOfSessions = 0;
         int noOfDays = 0;
+        string LecturerName;
 
         int loopbreak = 0;
 
@@ -85,12 +92,13 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         public LecturerTimeTable()
         {
+            
             loadFull();
             DatHeaddersaddingToTheTable();
 
             InitializeComponent();
             fetchDataToComboBox();
-
+            btn_print_table.IsEnabled = false;
 
         }
 
@@ -128,6 +136,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         private void btn_generate_Click(object sender, RoutedEventArgs e)
         {
+            this.LecturerName = cmbLecturerName.SelectedValue.ToString();
             generateTable(cmbLecturerName.SelectedValue.ToString());
         }
 
@@ -881,7 +890,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 }
             }
 
-
+            btn_print_table.IsEnabled = true;
         }
 
         Random r = new Random();
@@ -1032,5 +1041,100 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         }
 
+        private void btn_print_table_Click(object sender, RoutedEventArgs e)
+        {
+            string pdfPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            var MainDirectory = new DirectoryInfo(pdfPath+"\\");
+
+
+            if (MainDirectory.Exists)
+            {
+                MainDirectory.CreateSubdirectory("Genareted Time Tables");
+                Directory.CreateDirectory(pdfPath+"\\"+ "Genareted Time Tables"+"\\"+"Students Time Table");
+                Directory.CreateDirectory(pdfPath+"\\"+ "Genareted Time Tables"+"\\"+"Lecturers Time Table");
+                Directory.CreateDirectory(pdfPath+"\\"+ "Genareted Time Tables"+"\\"+"Lecture Hall Time Table");
+            }
+
+
+            string LecturerPDFPath = pdfPath + "\\" + "Genareted Time Tables" + "\\" + "Lecturers Time Table";
+            string LectureHallPDFPath = pdfPath + "\\" + "Genareted Time Tables" + "\\" + "Lecture Hall Time Table";
+            string StudentPDFPath = pdfPath + "\\" + "Genareted Time Tables" + "\\" + "Students Time Table";
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PDF (*.pdf)|*.pdf";
+            sfd.FileName = LecturerPDFPath+"\\"+this.LecturerName+".pdf";
+            bool fileError = false;
+
+
+            if (File.Exists(sfd.FileName))
+            {
+                try
+                {
+                    File.Delete(sfd.FileName);
+                }
+                catch (IOException ex)
+                {
+                    fileError = true;
+                    MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                }
+            }
+            if (!fileError)
+            {
+                try
+                {
+                    PdfPTable pdfTable = new PdfPTable(this.NEW_LIST.Count+1);
+                    pdfTable.DefaultCell.Padding = 3;
+                    pdfTable.WidthPercentage = 100;
+                    pdfTable.HorizontalAlignment = 1;
+
+
+                    //pdfTable.AddCell("Row 1, Col 1");
+                    //pdfTable.AddCell("Row 1, Col 2");
+                    //pdfTable.AddCell("Row 1, Col 3");
+
+                    //pdfTable.AddCell("Row 2, Col 1");
+                    //pdfTable.AddCell("Row 2, Col 2");
+                    //pdfTable.AddCell("Row 2, Col 3");
+
+                    //pdfTable.AddCell("Row 3, Col 1");
+                    //pdfTable.AddCell("Row 3, Col 2");
+                    //pdfTable.AddCell("Row 3, Col 3");
+                    pdfTable.AddCell("Time");
+                    foreach (var dayName in this.NEW_LIST)
+                    {
+                        pdfTable.AddCell(dayName.ToString());
+                    }
+
+
+                    for (int row = 0; row < this.timeSlots.Length; row++)
+                    {
+                        pdfTable.AddCell(this.timeSlots[row].ToString());
+                        for (int col = 0; col < this.NEW_LIST.Count; col++)
+                        {
+                            pdfTable.AddCell(this.finalSlotArray[row, col].ToString());
+                        }
+                    }
+
+
+
+                    using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                    {
+                        Document pdfDoc = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 10f);
+                        PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+                        pdfDoc.Add(pdfTable);
+                        pdfDoc.Close();
+                        stream.Close();
+                    }
+
+                    MessageBox.Show("Data Exported Successfully !!!", "Info");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error :" + ex.Message);
+                }
+            }
+        }
     }
 }
