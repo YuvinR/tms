@@ -70,6 +70,8 @@
         <TextBox x:Name="StdCountTxt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  materialDesign:HintAssist.Hint="Student Count"
+                 PreviewTextInput="NumberValidationTextBoxForStudent"
+                 MaxLength="3"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
         <TextBox x:Name="DurationTxt"
@@ -77,15 +79,17 @@
                  materialDesign:HintAssist.Hint="Duration"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Background="White"
+                 PreviewTextInput="NumberValidationTextBox"
+                 MaxLength="1"
                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left"  Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
 
         <!--List View-->
-        <!--<ListView x:Name="listViewInput" 
+        <ListView x:Name="listViewInput" 
                   materialDesign:HintAssist.Hint="Selected Lecturers"
                   materialDesign:HintAssist.HintOpacity=".26"
-                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5"/>-->
+                  Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5"/>
 
-        <TextBox x:Name="textListInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5" IsReadOnly="True" />
+        <!--<TextBox x:Name="textListInput" Grid.Column="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" Grid.Row="3" Width="240" FontSize="14" Height="125" Margin="10,1.5,0,1.5" IsReadOnly="True" />-->
         <!--Buttons-->
         <Button x:Name="BtnViewSessions"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"

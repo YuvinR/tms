@@ -28,33 +28,40 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
     {
         private SQLiteConnection connection = db_config.connect();
 
-        String weekType;
+
         int NoOfWorkingDays;
         int day_count = 0;
         int errorCount = 0;
         int checkBoxCounter = 0;
+        int weekID;
+        int WEEK_ID = 0;
+        int NO_OF_WORKING_DAYS = 0;
 
         Boolean editButtonPerformed = false;
         Boolean cancelButtonPerformed = false;
 
-        int weekID;
+        TimeSpan startingTimeForTimeSlots = new TimeSpan();
+        TimeSpan endingTimeForTimeSlots = new TimeSpan();
+        TimeSpan[] weekEndTimeSlotsArray;
+        TimeSpan[] weekDayTimeSlotsArray;
 
-        
         List<Chip> chipList;
         List<CheckBox> checkBoxList;
+        List<string> workingDays;
+        List<TimeSpan> GeneratedTimeSlots = new List<TimeSpan>();
 
+        String weekType;
         String workingTimePerDay;
         String startTime;
         String endTime;
         String[] CHECKING_DAYS = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-        int WEEK_ID = 0;
         String WEEK_TYPE = "";
-        int NO_OF_WORKING_DAYS = 0;
+
         DateTime PER_DAY_TIME;
         DateTime STARATING_TIME;
         DateTime ENDING_TIME;
-        List<string> workingDays;
+
+
 
 
         public ManageWorkignDaysAndHours()
@@ -161,7 +168,10 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
             this.workingTimePerDay = (endingTime - startingTime).ToString();
             this.startTime = startingTime.TimeOfDay.ToString();
+            this.startingTimeForTimeSlots = startingTime.TimeOfDay;
+
             this.endTime = endingTime.TimeOfDay.ToString();
+            this.endingTimeForTimeSlots = endingTime.TimeOfDay;
 
             Random random = new Random();
             this.weekID = random.Next(2344);
@@ -229,6 +239,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
                 if (this.errorCount > 0)
                 {
+                    generateTimeSlots();
                     clearFields();
                     initialLoad();
                     fetchDataFromDB();
@@ -244,6 +255,173 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
             {
                 MessageBox.Show("Please Check your details before submit");
             }
+        }
+
+
+        public void generateTimeSlots()
+        {
+            this.GeneratedTimeSlots.Clear();
+            int error_count = 0;
+            this.GeneratedTimeSlots.Add(this.startingTimeForTimeSlots);
+
+           // this.weekDayTimeSlotsArray = new TimeSpan[10];
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "DELETE FROM time_slots;";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            if (this.weekType == "full" || this.weekType == "weekend")
+            {
+
+
+
+                while (true)
+                {
+
+                    if(this.startingTimeForTimeSlots == this.endingTimeForTimeSlots)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if(this.startingTimeForTimeSlots == TimeSpan.Parse("13:30:00"))
+                        {
+                            this.startingTimeForTimeSlots = this.startingTimeForTimeSlots + TimeSpan.Parse("00:30:00");
+                            this.GeneratedTimeSlots.Add(this.startingTimeForTimeSlots);
+                        }
+                        else
+                        {
+                            this.startingTimeForTimeSlots = this.startingTimeForTimeSlots + TimeSpan.Parse("01:00:00");
+                            this.GeneratedTimeSlots.Add(this.startingTimeForTimeSlots);
+                        }
+
+                    }
+                }
+
+                this.weekEndTimeSlotsArray = new TimeSpan[this.GeneratedTimeSlots.Count];
+                this.weekEndTimeSlotsArray = this.GeneratedTimeSlots.ToArray();
+
+                for (int cnt = 0; cnt < this.weekEndTimeSlotsArray.Length-1; cnt++)
+                {
+                    System.Diagnostics.Debug.WriteLine("(weekend)Start Time : - " + this.weekEndTimeSlotsArray[cnt].ToString()+ "(Weekday)End Time : - " + this.weekEndTimeSlotsArray[cnt + 1].ToString() + "(Weekday)Duration : - " + (this.weekEndTimeSlotsArray[cnt + 1] - this.weekEndTimeSlotsArray[cnt]).ToString());
+
+                    connection.Open();
+
+                    try
+                    {
+                        SQLiteCommand command = connection.CreateCommand();
+                        command.CommandType = CommandType.Text;
+                        command.CommandText = "INSERT INTO time_slots (start_time,end_time,time_duration) VALUES(@StartTime,@EndTime,@TimeDuration);";
+                        Console.WriteLine(command.CommandText);
+
+                        //command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@StartTime", this.weekEndTimeSlotsArray[cnt].ToString());
+                        command.Parameters.AddWithValue("@EndTime", this.weekEndTimeSlotsArray[cnt + 1].ToString());
+                        command.Parameters.AddWithValue("@TimeDuration", (this.weekEndTimeSlotsArray[cnt + 1] - this.weekEndTimeSlotsArray[cnt]).ToString());
+
+                        error_count = command.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                }
+
+
+                if (error_count > 0)
+                {
+                    MessageBox.Show("Time Slots Also Created");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+            }
+            else
+            {
+
+                while (true)
+                {
+                    if (this.startingTimeForTimeSlots == this.endingTimeForTimeSlots)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        this.startingTimeForTimeSlots = this.startingTimeForTimeSlots + TimeSpan.Parse("01:00:00");
+                        this.GeneratedTimeSlots.Add(this.startingTimeForTimeSlots);
+                    }
+                }
+
+                this.weekDayTimeSlotsArray = new TimeSpan[this.GeneratedTimeSlots.Count];
+                this.weekDayTimeSlotsArray = this.GeneratedTimeSlots.ToArray();
+
+                for (int cnt = 0; cnt < this.weekDayTimeSlotsArray.Length-1; cnt++)
+                {
+                    System.Diagnostics.Debug.WriteLine("(Weekday)Start Time : - " + this.weekDayTimeSlotsArray[cnt].ToString() + "(Weekday)End Time : - " + this.weekDayTimeSlotsArray[cnt+1].ToString() + "(Weekday)Duration : - " + (this.weekDayTimeSlotsArray[cnt + 1] - this.weekDayTimeSlotsArray[cnt]).ToString());
+
+                    connection.Open();
+
+                    try
+                    {
+                        SQLiteCommand command = connection.CreateCommand();
+                        command.CommandType = CommandType.Text;
+                        command.CommandText = "INSERT INTO time_slots (start_time,end_time,time_duration) VALUES(@StartTime,@EndTime,@TimeDuration);";
+                        Console.WriteLine(command.CommandText);
+
+                        //command.Parameters.AddWithValue("@id", id);
+                        command.Parameters.AddWithValue("@StartTime", this.weekDayTimeSlotsArray[cnt].ToString());
+                        command.Parameters.AddWithValue("@EndTime", this.weekDayTimeSlotsArray[cnt + 1].ToString());
+                        command.Parameters.AddWithValue("@TimeDuration", (this.weekDayTimeSlotsArray[cnt + 1] - this.weekDayTimeSlotsArray[cnt]).ToString());
+
+                        error_count = command.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                }
+
+                if (error_count > 0)
+                {
+                    MessageBox.Show("Time Slots Also Created");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+            }
+
         }
 
 
@@ -435,7 +613,9 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
             this.workingTimePerDay = (endingTime - startingTime).ToString();
             this.startTime = startingTime.TimeOfDay.ToString();
+            this.startingTimeForTimeSlots = startingTime.TimeOfDay;
             this.endTime = endingTime.TimeOfDay.ToString();
+            this.endingTimeForTimeSlots = endingTime.TimeOfDay;
 
             Random random = new Random();
             this.weekID = random.Next(2344);
@@ -501,6 +681,7 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
                 if (this.errorCount > 0)
                 {
+                    generateTimeSlots();
                     clearFields();
                     initialLoad();
                     fetchDataFromDB();

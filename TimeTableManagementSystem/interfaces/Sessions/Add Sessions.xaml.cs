@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
 using TimeTableManagementSystem.DB_Config;
+using System.Text.RegularExpressions;
 
 namespace TimeTableManagementSystem.interfaces.Sessions
 {
@@ -22,6 +23,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
     {
         private string selectedLec;
         private string lecturers;
+
         private string subject;
         private string subCode;
         private string tag;
@@ -46,21 +48,34 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
         private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
         {
-            
-            bool returnExsits = checkDBValues();
+            bool returnExsits = false;
+            int stdCount;
+            //bool returnExsits = checkDBValues();
 
-            if (String.IsNullOrEmpty(textListInput.Text) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
+            /*if (String.IsNullOrEmpty(textListInput.Text) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
+                || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
+            {*/
+            for(int i = 0; i < listViewInput.Items.Count; i++)
+            {
+                lecturers = lecturers + listViewInput.Items[i] + "\n";
+            }
+
+            if ((listViewInput.Items.Count == 0 ) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
                 || String.IsNullOrEmpty(StdCountTxt.Text) || String.IsNullOrEmpty(DurationTxt.Text))
             {
-                MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
-            }else if(returnExsits == true)
+                    MessageBox.Show("Please fill the Text Boxes Before Creating Sessions!");
+            }else if (!int.TryParse(StdCountTxt.Text, out stdCount))
+            {
+                MessageBox.Show("Student Count should contain only numeric values!");
+            }
+            else if(returnExsits == true)
             {
                 MessageBox.Show("Same Session Details are Already Added to DB!");
             }
             else
             {
                 connection.Open();
-                lecturers = textListInput.Text;
+                //lecturers = textListInput.Text;
                 subject = SbjComboBox.Text;
                 groupID = GrpIdComboBox.Text;
                 tag = TagComboBox.Text;
@@ -94,6 +109,8 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
                     int rows = command.ExecuteNonQuery();
 
+                    
+
                     if (rows > 0)
                     {
                         MessageBox.Show("New Session Has been Created.");
@@ -103,8 +120,10 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                         MessageBox.Show("Error Occurd");
                     }
 
-
-                }catch(Exception ex)
+                    //With the List view. Use this Method
+                    addingToOtherTable();
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -117,10 +136,83 @@ namespace TimeTableManagementSystem.interfaces.Sessions
             }
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^1-2]");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
+        private void NumberValidationTextBoxForStudent(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
+        //With the List view. Implementation of the method
+        private void addingToOtherTable()
+        {
+            string Sellec = "";
+            bool done = false; 
+            
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "Select MAX(Session_ID) from Sessions";
+
+                int sesID = (int)(long)command.ExecuteScalar();
+
+                for (int i = 0; i < listViewInput.Items.Count; i++)
+                {
+                    Sellec = (string)listViewInput.Items[i];
+                    command.CommandText = "Insert into Session_Lecturers " +
+                                        "(sessionID, Lecturers ) " +
+                                        "Values " +
+                                        "(@sessionID, @Lecturers )";
+
+                    command.Parameters.AddWithValue("@sessionID", sesID);
+                    command.Parameters.AddWithValue("@Lecturers", Sellec) ;
+
+                    int rows = command.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        done = true;
+                    }
+                    else
+                    {
+                        done = false;
+                    }
+                }
+
+                /*if (done == true)
+                {
+                    MessageBox.Show("lecturers has been added");
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurd in adding lecturers to DB");
+                }*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+               
+            finally
+            {
+               
+            }
+        }
+
         private bool checkDBValues()
         {
             bool exsits = false;
-            lecturers = textListInput.Text;
+            //lecturers = textListInput.Text;
             subject = SbjComboBox.Text;
             groupID = GrpIdComboBox.Text;
             tag = TagComboBox.Text;
@@ -173,14 +265,16 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void BtnSelectSessions_Click(object sender, RoutedEventArgs e)
         {
             selectedLec = LctComboBox.Text;
-            if (String.IsNullOrEmpty(textListInput.Text))
+            /*if (String.IsNullOrEmpty(textListInput.Text))
             {
                 textListInput.Text =selectedLec;
             }
             else
             {
                 textListInput.Text = textListInput.Text + "\n" + selectedLec;
-            }
+            }*/
+
+            listViewInput.Items.Add(selectedLec);
         }
 
         private void loadComboBox()
@@ -261,7 +355,8 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void clearFields()
         {
             LctComboBox.Text = "";
-            textListInput.Text = "";
+            //textListInput.Text = "";
+            listViewInput.Items.Clear();
             SbjComboBox.Text = "";
             GrpIdComboBox.Text = "";
             TagComboBox.Text = "";
@@ -276,7 +371,8 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
         private void BtnClearLecturers_Click(object sender, RoutedEventArgs e)
         {
-            textListInput.Text = "";
+            //textListInput.Text = "";
+            listViewInput.Items.Clear();
         }
 
         private void TagComboBox_DropDownClosed(object sender, EventArgs e)

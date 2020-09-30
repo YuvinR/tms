@@ -91,6 +91,29 @@ namespace TimeTableManagementSystem
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
+
+                if (!checkIfExist("Session_Lecturers"))
+                {
+                    connection.Open();
+                    SQLiteCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    /*cmd.CommandText = "CREATE TABLE Subject ( " +
+                                        "Subject_Code  TEXT, " +
+                                        "Subject_Name TEXT, " +
+                                        "Offered_Year  TEXT, " +
+                                        "Offered_Semester   TEXT, " +
+                                        "Lecture_Hours  INTEGER, " +
+                                        "Tutorial_Hours INTEGER, " +
+                                        "Lab_Hours INTEGER, " +
+                                        "Evaluation_Hours  INTEGER, " +
+                                        "PRIMARY KEY(Subject_Code));";*/
+
+                    cmd.CommandText = "CREATE TABLE Session_Lecturers (id INTEGER Primary Key Autoincrement, sessionID INTEGER, Lecturers TEXT);";
+
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+
                 if (!checkIfExist("Subject"))
                 {
                     connection.Open();

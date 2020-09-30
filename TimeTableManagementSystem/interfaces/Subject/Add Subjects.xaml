@@ -86,24 +86,32 @@
                  materialDesign:HintAssist.Hint="Lecture Hours"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Background="White"
+                 MaxLength="1"
+                 PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="6"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
         <TextBox x:Name="NumTuteHrTxt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  materialDesign:HintAssist.Hint="Tutorial Hours"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Background="White"
+                 MaxLength="1"
+                 PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="7"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
         <TextBox x:Name="NumLabHrTxt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  materialDesign:HintAssist.Hint="Lab Hours"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Background="White"
+                 MaxLength="1"
+                 PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="8"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
         <TextBox x:Name="NumEvaHrTxt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  materialDesign:HintAssist.Hint="Evaluation Hours"
                  IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
                  Background="White"
+                 MaxLength="1"
+                 PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,1.5,10,1" Grid.Row="9"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="240" Height="40" FontSize="14"/>
 
         <!--Buttons-->

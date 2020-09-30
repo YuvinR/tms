@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>interfaces\itextsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\clock.jpg" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\edit.png" />

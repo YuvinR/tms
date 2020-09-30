@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TimeTableManagementSystem.DB_Config;
+using System.Text.RegularExpressions;
 
 namespace TimeTableManagementSystem.interfaces.Subject
 {
@@ -127,6 +128,13 @@ namespace TimeTableManagementSystem.interfaces.Subject
             }
 
             
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-2]");
+            e.Handled = regex.IsMatch(e.Text);
+
         }
 
         private void clearFields()
