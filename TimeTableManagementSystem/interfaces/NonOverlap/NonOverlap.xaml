@@ -1,0 +1,63 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.NonOverlap.NonOverlap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.ParallelSessions"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="NonOverlap"  Height="600" Width="1000"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <DataGrid x:Name="SessionDataGrid" Margin="0,30,0,126"
+            AutoGenerateColumns="False" 
+            HorizontalAlignment="Center" 
+            HorizontalContentAlignment="Center"
+            Width="747"
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Session ID" Binding="{Binding Session_ID}" />
+                <DataGridTextColumn Header="Lecturers"  Binding="{Binding Lecturers}" />
+                <DataGridTextColumn Header="Subject"  Binding="{Binding Subject}" />
+                <DataGridTextColumn Header="Subject Code" Binding="{Binding Subject_Code}" />
+                <DataGridTextColumn Header="Tag" Binding="{Binding Tag}" />
+                <DataGridTextColumn Header="Group ID"  Binding="{Binding GroupID}" />
+                <DataGridTextColumn Header="Student Count" Binding="{Binding Student_Count}" />
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+                <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox
+                              
+                               x:Name="BtnEdit"
+                               Checked="AddNonOvClick"
+                               Unchecked="RemoveNonOvClick"
+                            />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button
+            x:Name="consecutive"
+            Click="Button_ClickMakeNonOv" 
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Margin="801,494,0,0" 
+            Height="33" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" Width="163">
+
+            Create Parallel
+        </Button>
+    </Grid>
+</Window>
