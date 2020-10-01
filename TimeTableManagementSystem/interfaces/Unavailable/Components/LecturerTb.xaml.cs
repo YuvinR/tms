@@ -39,7 +39,8 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Lecturer";
+                command.CommandText = "Select * from Lecturer Where isDeAllocated = @isDeAllocated ";
+                command.Parameters.AddWithValue("@isDeAllocated", 0);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -58,12 +59,44 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView row = LecDataGrid.SelectedItem as DataRowView;
+            var id = (row.Row["EmployeeID"].ToString());
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                
+                command.CommandText = "Update Lecturer Set isDeAllocated = @isDeAllocated Where EmployeeID = @empID ";
+                command.Parameters.AddWithValue("@empID", id);
+                command.Parameters.AddWithValue("@isDeAllocated", 1);
+                int rows = command.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Lecturer has been Unavailable!");
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurd");
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error Occurd" + ex);
+            }
+            finally
+            {
+                connection.Close();
+                loadDataGrid();
+            }
 
         }
 
-        private void LecDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
     }
 }
