@@ -184,6 +184,7 @@ namespace TimeTableManagementSystem.interfaces.ConsecutiveSessions
                         //loadDataGrid();
                     }
                 }
+                MessageBox.Show("Consecutive Sessions Created!");
             }
 
             
