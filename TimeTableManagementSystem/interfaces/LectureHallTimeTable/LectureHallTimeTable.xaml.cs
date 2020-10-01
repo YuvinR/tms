@@ -124,7 +124,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where RoomID = '" + roomNumber + "'";
+                command.CommandText = "SELECT * FROM Sessions WHERE RoomID = '" + roomNumber + "'";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -149,6 +149,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
                     session.StudentCount = int.Parse(ds.Tables[0].Rows[i].ItemArray[6].ToString());
                     session.Duration = int.Parse(ds.Tables[0].Rows[i].ItemArray[7].ToString());
                     session.IsDeAlocated = int.Parse(ds.Tables[0].Rows[i].ItemArray[8].ToString());
+                    session.RoomID = ds.Tables[0].Rows[i].ItemArray[12].ToString();
 
 
                     if (session.Duration == 2)
@@ -175,6 +176,96 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
             {
                 connection.Close();
             }
+
+
+
+            if (true)
+            {
+                Random random = new Random();
+
+                if (this.IsFullWeek)
+                {
+                    this.finalSlotArray = new string[12, 7];
+                    for (int row = 0; row < 12; row++)
+                    {
+                        for (int col = 0; col < 7; col++)
+                        {
+                            if (row == 5)
+                            {
+                                finalSlotArray[row, col] = "XXXXXXXX";
+                            }
+                            else
+                            {
+                                finalSlotArray[row, col] = "x";
+                            }
+
+                        }
+                    }
+                }
+                else
+                {
+                    this.finalSlotArray = new string[9, 5];
+                    for (int row = 0; row < 9; row++)
+                    {
+                        for (int col = 0; col < 5; col++)
+                        {
+                            if (row == 4)
+                            {
+                                finalSlotArray[row, col] = "XXXXXXXX";
+                            }
+                            else
+                            {
+                                finalSlotArray[row, col] = "x";
+                            }
+
+                        }
+                    }
+                }
+
+
+                var dg = new DataGrid();
+                this.MainGrid.Children.Add(dg);
+
+                var column1 = new DataGridTextColumn();
+                column1.Header = "Time";
+                column1.Binding = new Binding("Time");
+                dg.Columns.Add(column1);
+
+
+                foreach (var day in this.NEW_LIST)
+                {
+                    var column = new DataGridTextColumn();
+                    column.Header = day;
+                    column.Binding = new Binding(day);
+                    dg.Columns.Add(column);
+                }
+
+                string[,] abcd = new string[1, this.columnCount];
+
+                if (this.IsFullWeek)
+                {
+                    for (int row = 0; row < 12; row++)
+                    {
+                        dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4], Saturday = finalSlotArray[row, 5], Sunday = finalSlotArray[row, 6] });
+                    }
+                }
+                else
+                {
+                    for (int row = 0; row < 9; row++)
+                    {
+                        dg.Items.Add(new DataItem { Time = this.timeSlots[row], Monday = finalSlotArray[row, 0], Tuesday = finalSlotArray[row, 1], Wednesday = finalSlotArray[row, 2], Thursday = finalSlotArray[row, 3], Friday = finalSlotArray[row, 4] });
+                    }
+                }
+
+                btn_print_table.IsEnabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Selected days not enough for genarating this time table, Please chek days");
+            }
+
+
+
         }
 
 
