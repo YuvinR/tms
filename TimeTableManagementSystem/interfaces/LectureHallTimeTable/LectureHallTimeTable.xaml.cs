@@ -130,6 +130,15 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
 
         public void generateTable(string roomNumber)
         {
+            this.sessionDetails.Clear();
+            if (this.IsFullWeek)
+            {
+                this.availableTimeSlotCount = (this.weekDaysCount * 2) + (this.weekEndCount * 11);
+            }
+            else
+            {
+                this.availableTimeSlotCount = (this.weekDaysCount * 8) + (this.weekEndCount * 11);
+            }
             //Session Details
             try
             {
