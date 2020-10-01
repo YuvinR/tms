@@ -9,7 +9,7 @@
     <Grid>
         <Label>
            <materialDesign:Card Margin="21,74,615,239">
-            <Grid Margin="0,0,-5,37">
+            <Grid Margin="0,0,-5,37" RenderTransformOrigin="0.474,0.552">
                 <Grid.RowDefinitions>
                     <RowDefinition
                         Height="37" />
@@ -32,9 +32,9 @@
                 <StackPanel
                      Margin="8,18,8,46" Grid.RowSpan="4">
                     <TextBlock
-                        FontWeight="Bold" Height="19" Width="173"><Run Text="Add  Year and Semester"/></TextBlock>
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Make Unavailable"/></TextBlock>
                     <TextBlock
-                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is for create Academic Year And Academic Semester"/></TextBlock>
+                        TextWrapping="Wrap" Height="54" Width="164"><Run Text="This Option is for mak unavailable session,lecturer,group or subgroup"/></TextBlock>
                 </StackPanel>
 
 

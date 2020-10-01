@@ -171,13 +171,14 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     if (saveButton.Content.ToString() == "Save")
                     {
                         command.CommandText = "Insert into Groups " +
-                                               "(yearSem, groupNo,groupId,prgmID) " +
+                                               "(yearSem, groupNo,groupId,prgmID,isDeAllocated) " +
                                                "Values " +
-                                               "(@yearSem, @groupNo,@groupId,@prgmID)";
+                                               "(@yearSem, @groupNo,@groupId,@prgmID,@isDeAllocated)";
                         command.Parameters.AddWithValue("@yearSem", yns);
                         command.Parameters.AddWithValue("@groupNo", no);
                         command.Parameters.AddWithValue("@groupId", code);
                         command.Parameters.AddWithValue("@prgmID", prgm);
+                        command.Parameters.AddWithValue("@isDeAllocated", 0);
                         int rows = command.ExecuteNonQuery();
 
                         if (rows > 0)
@@ -192,12 +193,13 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     else
                     {
                         var idx = int.Parse(idTxt.Text.ToString());
-                        command.CommandText = "Update Groups Set yearSem = @yearSem, groupNo = @groupNo, groupId = @groupId,prgmID = @prgmID Where id = @idx ";
+                        command.CommandText = "Update Groups Set yearSem = @yearSem, groupNo = @groupNo, groupId = @groupId,prgmID = @prgmID,isDeAllocated = @isDeAllocated Where id = @idx ";
                         command.Parameters.AddWithValue("@yearSem", yns);
                         command.Parameters.AddWithValue("@groupNo", no);
                         command.Parameters.AddWithValue("@groupId", code);
                         command.Parameters.AddWithValue("@idx", idx);
                         command.Parameters.AddWithValue("@prgmID", prgm);
+                        command.Parameters.AddWithValue("@isDeAllocated", 0);
                         int rows = command.ExecuteNonQuery();
 
                         if (rows > 0)
