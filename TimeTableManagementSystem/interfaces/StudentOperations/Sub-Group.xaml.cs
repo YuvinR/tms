@@ -131,12 +131,13 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     if (saveButton.Content.ToString() == "Save")
                     {
                         command.CommandText = "Insert into SubGroup" +
-                                               "(groupId, subgroupNo,subgroupId) " +
+                                               "(groupId, subgroupNo,subgroupId,isDeAllocated) " +
                                                "Values " +
-                                               "(@groupId, @subgroupNo,@subgroupId)";
+                                               "(@groupId, @subgroupNo,@subgroupId,@isDeAllocated)";
                         command.Parameters.AddWithValue("@groupId", yns);
                         command.Parameters.AddWithValue("@subgroupNo", no);
                         command.Parameters.AddWithValue("@subgroupId", code);
+                        command.Parameters.AddWithValue("@isDeAllocated", 0);
                         int rows = command.ExecuteNonQuery();
 
                         if (rows > 0)
@@ -151,11 +152,12 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                     else
                     {
                         var idx = int.Parse(idTxt.Text.ToString());
-                        command.CommandText = "Update SubGroup Set groupId = @groupId, subgroupNo = @subgroupNo, subgroupId = @subgroupId Where id = @idx ";
+                        command.CommandText = "Update SubGroup Set groupId = @groupId, subgroupNo = @subgroupNo, subgroupId = @subgroupId,isDeAllocated = @isDeAllocated Where id = @idx ";
                         command.Parameters.AddWithValue("@groupId", yns);
                         command.Parameters.AddWithValue("@subgroupNo", no);
                         command.Parameters.AddWithValue("@subgroupId", code);
                         command.Parameters.AddWithValue("@idx", idx);
+                        command.Parameters.AddWithValue("@isDeAllocated", 0);
                         int rows = command.ExecuteNonQuery();
 
                         if (rows > 0)

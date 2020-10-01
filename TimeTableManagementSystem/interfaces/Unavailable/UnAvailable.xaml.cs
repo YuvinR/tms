@@ -22,34 +22,33 @@ namespace TimeTableManagementSystem.interfaces.Unavailable
         public UnAvailable()
         {
             InitializeComponent();
+      
         }
 
-        private void ListViewMenu_SelectionChanged()
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            int index = 0;
+            RadioButton li = (sender as RadioButton);
+            var txt =  li.Content.ToString();
+       
 
-            switch (index)
+            switch (txt)
             {
-                case 0:
+                case "Lecturers":
                     GridPrincipal.Children.Clear();
                     GridPrincipal.Children.Add(new LecturerTb());
                     break;
-                //case 1:
-                //    GridPrincipal.Children.Clear();
-                //    GridPrincipal.Children.Add(new Sessions());
-                //    break;
-                //case 2:
-                //    GridPrincipal.Children.Clear();
-                //    GridPrincipal.Children.Add(new GruopTb());
-                //    break;
-                //case 3:
-                //    GridPrincipal.Children.Clear();
-                //    GridPrincipal.Children.Add(new Student());
-                //    break;
-                //case 4:
-                //    GridPrincipal.Children.Clear();
-                //    GridPrincipal.Children.Add(new Subject());
-                //    break;
+                case "Sessions":
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new SessionTb());
+                    break;
+                case "Groups":
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new GroupsTb());
+                    break;
+                case "Sub-Groups":
+                    GridPrincipal.Children.Clear();
+                    GridPrincipal.Children.Add(new SubGroupTb());
+                    break;
                 default:
                     break;
             }

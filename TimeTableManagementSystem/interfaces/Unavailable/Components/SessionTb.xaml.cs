@@ -17,52 +17,53 @@ using TimeTableManagementSystem.DB_Config;
 namespace TimeTableManagementSystem.interfaces.Unavailable.Components
 {
     /// <summary>
-    /// Interaction logic for SubGroupTb.xaml
+    /// Interaction logic for SessionTb.xaml
     /// </summary>
-    public partial class SubGroupTb : UserControl
+    public partial class SessionTb : UserControl
     {
         private SQLiteConnection connection = db_config.connect();
 
-        public SubGroupTb()
+        public SessionTb()
         {
             InitializeComponent();
             loadDataGrid();
         }
 
-
         private void loadDataGrid()
         {
             connection.Open();
+
             try
             {
                 DataTable dataTable = new DataTable();
 
                 SQLiteCommand command = connection.CreateCommand();
+
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from SubGroup";
+                command.CommandText = "Select * from Sessions";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 dataAdapter.Fill(dataTable);
 
-                subgrpsGrid.ItemsSource = dataTable.DefaultView;
+                SessionDataGrid.ItemsSource = dataTable.DefaultView;
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 connection.Close();
             }
         }
+
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-       
-
 
 
         }
+
     }
 }

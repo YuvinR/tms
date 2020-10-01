@@ -21,28 +21,30 @@
             <RadioButton
                 Style="{StaticResource MaterialDesignTabRadioButton}"
                 Margin="4"
-                IsChecked="True"
+                x:Name="Lecs"
+                Checked="RadioButton_Checked"
                 Content="Lecturers"
+                
             />
 
             <RadioButton
                 Style="{StaticResource MaterialDesignTabRadioButton}"
                 Margin="4"
-                IsChecked="False"
+                Checked="RadioButton_Checked"
                 Content="Sessions" 
             />
 
             <RadioButton
                 Style="{StaticResource MaterialDesignTabRadioButton}"
                 Margin="4"
-                IsChecked="False"
+                Checked="RadioButton_Checked" 
                 Content="Groups" 
             />
 
             <RadioButton
                 Style="{StaticResource MaterialDesignTabRadioButton}"
                 Margin="4"
-                IsChecked="False"
+                 Checked="RadioButton_Checked"
                 Content="Sub-Groups" 
             />
 
