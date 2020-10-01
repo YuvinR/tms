@@ -546,9 +546,9 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                                     if (sesionObj.Duration == 2)
                                     {
-                                        if (mdRandom6 == 1 || mdRandom6 == 6)
+                                        if (mdRandom6 == 1 || mdRandom6 == 7)
                                         {
-                                            if ((this.finalSlotArray[(mdRandom6 - 1), 5] != "x") && (this.finalSlotArray[mdRandom6, 5] == "x") && (this.finalSlotArray[mdRandom6 + 1, 5] == "x") && ((mdRandom6 + 1) != 4) && ((mdRandom6 + 1) != 9))
+                                            if ((this.finalSlotArray[(mdRandom6 - 1), 5] != "x") && (this.finalSlotArray[mdRandom6, 5] == "x") && (this.finalSlotArray[mdRandom6 + 1, 5] == "x") && ((mdRandom6 + 1) != 5) && ((mdRandom6 + 1) != 12))
                                             {
                                                 this.finalSlotArray[mdRandom6, 5] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                                 this.saturdayTime = this.saturdayTime.Where((source, index) => index != mdRandom6).ToArray();
@@ -560,7 +560,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                         }
                                         else
                                         {
-                                            if ((this.finalSlotArray[mdRandom6, 5] == "x") && (this.finalSlotArray[mdRandom6 + 1, 5] == "x") && ((mdRandom6 + 1) != 4) && ((mdRandom6 + 1) != 9))
+                                            if ((this.finalSlotArray[mdRandom6, 5] == "x") && (this.finalSlotArray[mdRandom6 + 1, 5] == "x") && ((mdRandom6 + 1) != 5) && ((mdRandom6 + 1) != 12))
                                             {
                                                 this.finalSlotArray[mdRandom6, 5] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                                 this.saturdayTime = this.saturdayTime.Where((source, index) => index != mdRandom6).ToArray();
@@ -573,7 +573,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     }
                                     else
                                     {
-                                        if ((this.finalSlotArray[mdRandom6, 5] == "x") && ((mdRandom6) != 4) && ((mdRandom6) != 9))
+                                        if ((this.finalSlotArray[mdRandom6, 5] == "x") && ((mdRandom6) != 5) && ((mdRandom6) != 12))
                                         {
                                             this.finalSlotArray[mdRandom6, 5] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
                                             this.saturdayTime = this.saturdayTime.Where((source, index) => index != mdRandom6).ToArray();
@@ -591,9 +591,9 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
                                     if (sesionObj.Duration == 2)
                                     {
-                                        if (mdRandom7 == 1 || mdRandom7 == 6)
+                                        if (mdRandom7 == 1 || mdRandom7 == 7)
                                         {
-                                            if ((this.finalSlotArray[(mdRandom7 - 1), 6] != "x") && (this.finalSlotArray[mdRandom7, 6] == "x") && (this.finalSlotArray[mdRandom7 + 1, 5] == "x") && ((mdRandom7 + 1) != 4) && ((mdRandom7 + 1) != 9))
+                                            if ((this.finalSlotArray[(mdRandom7 - 1), 6] != "x") && (this.finalSlotArray[mdRandom7, 6] == "x") && (this.finalSlotArray[mdRandom7 + 1, 5] == "x") && ((mdRandom7 + 1) != 5) && ((mdRandom7 + 1) != 12))
                                             {
                                                 this.finalSlotArray[mdRandom7, 6] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                                 this.sundayTime = this.sundayTime.Where((source, index) => index != mdRandom7).ToArray();
@@ -605,7 +605,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                         }
                                         else
                                         {
-                                            if ((this.finalSlotArray[mdRandom7, 6] == "x") && (this.finalSlotArray[mdRandom7 + 1, 6] == "x") && ((mdRandom7 + 1) != 4) && ((mdRandom7 + 1) != 9))
+                                            if ((this.finalSlotArray[mdRandom7, 6] == "x") && (this.finalSlotArray[mdRandom7 + 1, 6] == "x") && ((mdRandom7 + 1) != 5) && ((mdRandom7 + 1) != 12))
                                             {
                                                 this.finalSlotArray[mdRandom7, 6] = duration1Session1.SessionID + " : " + duration1Session1.SubjectCode + "-" + duration1Session1.Subject + "(" + duration1Session1.Tag + ")" + "\n" + duration1Session1.GroupID;
                                                 this.sundayTime = this.sundayTime.Where((source, index) => index != mdRandom7).ToArray();
@@ -618,7 +618,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                                     }
                                     else
                                     {
-                                        if ((this.finalSlotArray[mdRandom7, 6] == "x") && ((mdRandom7) != 4) && ((mdRandom7) != 9))
+                                        if ((this.finalSlotArray[mdRandom7, 6] == "x") && ((mdRandom7) != 5) && ((mdRandom7) != 12))
                                         {
                                             this.finalSlotArray[mdRandom7, 6] = defaultDurationSession.SessionID + " : " + defaultDurationSession.SubjectCode + "-" + defaultDurationSession.Subject + "(" + defaultDurationSession.Tag + ")" + "\n" + defaultDurationSession.GroupID;
                                             this.sundayTime = this.sundayTime.Where((source, index) => index != mdRandom7).ToArray();
