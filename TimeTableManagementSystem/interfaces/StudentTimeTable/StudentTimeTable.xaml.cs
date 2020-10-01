@@ -107,12 +107,34 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
 
         public StudentTimeTable()
         {
-            loadFull();
-            DatHeaddersaddingToTheTable();
-
             InitializeComponent();
             fetchDataToComboBox();
             btn_print_table.IsEnabled = false;
+        }
+
+        public void cleanVariables()
+        {
+            this.noOfSessions = 0;
+            this.noOfDays = 0;
+            this.groupNumber = "";
+
+            this.loopbreak = 0;
+
+            this.IsFullWeek = false;
+
+            this.rowCount = 0;
+            this.columnCount = 0;
+            this.totalSessionDuration = 0;
+            this.weekDaysCount = 0;
+            this.weekEndCount = 0;
+            this.availableTimeSlotCount = 0;
+
+            this.ABCD.Clear();
+            this.sessionDetails.Clear();
+            this.NEW_LIST.Clear();
+            this.columnNames.Clear();
+            this.sessionDetailsSecondTurnFiltering.Clear();
+
         }
 
         public void DatHeaddersaddingToTheTable()
@@ -245,7 +267,12 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
 
         private void btn_generate_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(cmb_year.Text) || string.IsNullOrEmpty(cmb_semester.Text) || cmb_group.SelectedValue == null || cmb_degree_name.SelectedValue == null)
+
+            cleanVariables();
+            loadFull();
+            DatHeaddersaddingToTheTable();
+
+            if (string.IsNullOrEmpty(cmb_year.Text) || string.IsNullOrEmpty(cmb_semester.Text) || cmb_group.SelectedValue == null || cmb_degree_name.SelectedValue == null)
             {
                 MessageBox.Show("Please Complete fields before Generating Table!");
             }
