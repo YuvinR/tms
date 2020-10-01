@@ -194,7 +194,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
 
 
 
-            if (true)
+            if (this.totalSessionDuration < this.availableTimeSlotCount)
             {
                 Random random = new Random();
 
