@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TimeTableManagementSystem.DB_Config;
+using TimeTableManagementSystem.interfaces.Sessions;
 
 namespace TimeTableManagementSystem.interfaces.ManageRooms
 {
@@ -44,6 +46,54 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
     
             selectedRoom = SearchRoomCombo.Text;
             listViewRooms.Items.Add(selectedRoom);
+        }
+
+        private void BtnViewSessions_Click(object sender, RoutedEventArgs e)
+        {
+            View_Sessions view_Sessions = new View_Sessions();
+            view_Sessions.Show();
+        }
+
+        private void BtnFindRoom_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(SearchSessionCombo.Text))
+            {
+                listViewRooms.Items.Clear();
+                SearchRoomCombo.Items.Clear();
+                try
+                {
+                    connection.Open();
+                    SQLiteCommand command2 = connection.CreateCommand();
+                    command2.CommandType = CommandType.Text;
+                    SQLiteCommand command3 = connection.CreateCommand();
+                    command3.CommandType = CommandType.Text;
+
+                    int keyword = int.Parse(SearchSessionCombo.Text);
+                    command2.CommandText = "Select Student_Count from Sessions where  Session_ID = " + keyword;
+                    int scount = Convert.ToInt32(command2.ExecuteScalar());
+                    System.Diagnostics.Debug.WriteLine("scount is", scount);
+                    command3.CommandText = "Select DISTINCT l.RoomNumber from Location l, Sessions s where  l.RoomCapacity >= " + scount;
+
+
+                    SQLiteDataReader reader3 = command3.ExecuteReader();
+
+                    while (reader3.Read())
+                    {
+                        SearchRoomCombo.Items.Add(reader3.GetString("RoomNumber"));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+
+                }
+
+            }
         }
 
         private void BtnAllocateRoom_Click(object sender, RoutedEventArgs e)
@@ -123,15 +173,32 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
                     command.Parameters.AddWithValue("@TagID", tag);
                 }
 
-                if (!String.IsNullOrEmpty(SearchSessionCombo.Text))
+                if (!String.IsNullOrEmpty(SearchSessionCombo.Text) && !String.IsNullOrEmpty(SearchRoomCombo.Text))
                 {
+                    command.CommandText = "Update Sessions " +
+                            "set RoomID = @RoomID " +
+                            "Where Session_ID = @ID";
 
+                    command.Parameters.AddWithValue("@RoomID", rooms);
+                    command.Parameters.AddWithValue("@ID", SearchSessionCombo.Text);
+
+                    if(listViewRooms.Items.Count > 1)
+                    {
+                        MessageBox.Show("Only One Room Can Be Assigned to a Session!");
+                        SearchSessionCombo.Text = "";
+                        listViewRooms.Items.Clear();
+                        SearchRoomCombo.Items.Clear();
+                        rooms = null;
+                        return;
+          
+                    }
+                   
+                    
                 }
 
 
+
                 int rows = command.ExecuteNonQuery();
-
-
 
                 if (rows > 0)
                 {
@@ -302,7 +369,7 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
 
                 while (reader1.Read())
                 {
-                    SearchSessionCombo.Items.Add(reader1.GetString("Session_ID"));
+                    SearchSessionCombo.Items.Add(reader1.GetInt32("Session_ID"));
                 }
             }
             catch (Exception ex)
@@ -315,28 +382,30 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
             }
 
             //populate rooms combo box
+
             try
-            {
-                connection.Open();
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Select * from Location";
+             {
+                 connection.Open();
+                 SQLiteCommand command = connection.CreateCommand();
+                 command.CommandType = CommandType.Text;
+                 command.CommandText = "Select * from Location";
 
-                SQLiteDataReader reader1 = command.ExecuteReader();
+                 SQLiteDataReader reader1 = command.ExecuteReader();
 
-                while (reader1.Read())
-                {
-                    SearchRoomCombo.Items.Add(reader1.GetString("RoomNumber"));
-                }
-            }
+                 while (reader1.Read())
+                    {
+                        SearchRoomCombo.Items.Add(reader1.GetString("RoomNumber"));
+                    }
+             }
             catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+             {
+                    MessageBox.Show(ex.Message);
+             }
             finally
             {
-                connection.Close();
+                    connection.Close();
             }
+
         }
 
     }
