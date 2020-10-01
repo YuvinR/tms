@@ -268,7 +268,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             System.Diagnostics.Debug.WriteLine("total slot count " + this.availableTimeSlotCount);
 
 
-            if (this.totalSessionDuration < this.availableTimeSlotCount-1)
+            if (this.totalSessionDuration < this.availableTimeSlotCount)
             //if (true)
             {
                 Random random = new Random();
