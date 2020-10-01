@@ -45,7 +45,7 @@
         <Label x:Name="label1_Copy4" Content="Sub Group" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="100" FontSize="17" FontWeight="Bold" Margin="21,27,0,0" Grid.RowSpan="2" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"/>
         <ComboBox materialDesign:HintAssist.Hint="Student" Grid.Column="1" HorizontalAlignment="Right" Margin="0,26,8,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Grid.RowSpan="2"/>
         <ComboBox materialDesign:HintAssist.Hint="Degree Program" x:Name="cmb_degree_name" ItemsSource="{Binding}" Grid.Column="1" HorizontalAlignment="Left" Margin="31,30,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" Grid.RowSpan="2"/>
-        <ComboBox materialDesign:HintAssist.Hint="Select Year" x:Name="cmb_year" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="163,26,0,0" Grid.Row="1" Width="120" Grid.RowSpan="2" VerticalAlignment="Top">
+        <ComboBox materialDesign:HintAssist.Hint="Select Year" x:Name="cmb_year" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="163,26,0,37" Grid.Row="1" Width="120" Grid.RowSpan="2" VerticalAlignment="Stretch">
             <ComboBoxItem>1</ComboBoxItem>
             <ComboBoxItem>2</ComboBoxItem>
             <ComboBoxItem>3</ComboBoxItem>
@@ -59,6 +59,6 @@
         <ComboBox ItemsSource="{Binding}" materialDesign:HintAssist.Hint="Select Sub Group" x:Name="cmb_sub_group" Grid.Column="5" HorizontalAlignment="Left" Margin="22,0,0,41" Grid.RowSpan="2" Grid.Row="2" VerticalAlignment="Bottom" Width="120"/>
         <Button x:Name="btn_generate" Content="Generate" Grid.Column="6" HorizontalAlignment="Left" Margin="100,26,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_generate_Click"/>
         <Grid x:Name="MainGrid" Grid.ColumnSpan="8" HorizontalAlignment="Left" Height="385" Margin="35,25,0,0" Grid.RowSpan="10" Grid.Row="3" VerticalAlignment="Top" Width="1147"/>
-        <Button x:Name="btn_print_table" Content="Print" Grid.Column="6" HorizontalAlignment="Left" Margin="100,35,0,0" Grid.Row="12" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_generate_Click" Grid.RowSpan="2"/>
+        <Button x:Name="btn_print_table" Content="Print" Grid.Column="6" HorizontalAlignment="Left" Margin="100,35,0,0" Grid.Row="12" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Grid.RowSpan="2" Click="btn_print_table_Click"/>
     </Grid>
 </Window>
