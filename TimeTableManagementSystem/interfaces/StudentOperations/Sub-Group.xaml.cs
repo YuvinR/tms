@@ -40,7 +40,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from SubGroup";
+                command.CommandText = "Select * from SubGroup ";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 

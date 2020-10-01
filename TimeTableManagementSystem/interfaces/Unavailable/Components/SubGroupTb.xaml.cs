@@ -40,7 +40,8 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from SubGroup";
+                command.CommandText = "Select * from SubGroup Where isDeAllocated = @isDeAllocated";
+                command.Parameters.AddWithValue("@isDeAllocated", 0);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -59,7 +60,43 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-       
+
+            DataRowView row = subgrpsGrid.SelectedItem as DataRowView;
+            var id = int.Parse(row.Row["id"].ToString());
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+
+                command.CommandText = "Update SubGroup Set isDeAllocated = @isDeAllocated Where id = @SGID ";
+                command.Parameters.AddWithValue("@SGID", id);
+                command.Parameters.AddWithValue("@isDeAllocated", 1);
+                int rows = command.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("SubGroup has been Unavailable!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurd");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Occurd" + ex);
+            }
+            finally
+            {
+                connection.Close();
+                loadDataGrid();
+            }
 
 
 

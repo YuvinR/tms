@@ -17,9 +17,9 @@
         <DataGrid 
             x:Name="groupsGrid" 
             AutoGenerateColumns="False" 
-            Margin="0,30,0,31" 
+            Margin="0,28,0,28" 
             HorizontalAlignment="Center" 
-            Width="680" 
+            Width="740" 
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
@@ -27,10 +27,10 @@
             >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="80" />
-                <DataGridTextColumn Header="Year and Sem ID" Binding="{Binding yearSem}" />
-                <DataGridTextColumn Header="GroupCode" Binding="{Binding prgmID}" />
-                <DataGridTextColumn Header="GroupNo" Binding="{Binding groupNo}" />
-                <DataGridTextColumn Header="ProgrmID" Binding="{Binding groupId}" />
+                <DataGridTextColumn Header="Year and Sem ID" Binding="{Binding yearSem}" Width="100" />
+                <DataGridTextColumn Header="GroupCode" Binding="{Binding prgmID}" Width="100" />
+                <DataGridTextColumn Header="GroupNo" Binding="{Binding groupNo}" Width="100" />
+                <DataGridTextColumn Header="ProgrmID" Binding="{Binding groupId}" Width="100" />
 
                 <DataGridTemplateColumn Header="Acction Make Unavailable" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
