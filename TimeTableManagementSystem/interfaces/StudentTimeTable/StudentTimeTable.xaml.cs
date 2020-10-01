@@ -27,10 +27,7 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
             fetchDataToComboBox();
         }
 
-        private void btn_generate_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         public void fetchDataToComboBox()
         {
@@ -130,6 +127,12 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
             {
                 connection.Close();
             }
+
+        }
+
+
+        private void btn_generate_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
