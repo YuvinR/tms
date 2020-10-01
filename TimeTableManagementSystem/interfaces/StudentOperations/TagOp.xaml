@@ -75,13 +75,13 @@
         <DataGrid 
             x:Name="tagsGrid" 
             AutoGenerateColumns="False" 
-            Margin="0,164,0,50" 
+            Margin="0,147,0,67" 
             HorizontalAlignment="Center" 
-            Width="510" 
+            Width="501" 
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
-            CanUserResizeColumns="False" Grid.RowSpan="2"
+            CanUserResizeColumns="False"
             >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}" />

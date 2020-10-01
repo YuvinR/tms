@@ -99,6 +99,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
 
         }
 
+
         private void Button_ClickGenerate(object sender, RoutedEventArgs e)
         {
             string no = subgroupnoTxt.Text;

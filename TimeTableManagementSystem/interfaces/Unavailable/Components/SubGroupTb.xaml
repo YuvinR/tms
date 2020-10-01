@@ -17,19 +17,19 @@
         <DataGrid 
             x:Name="subgrpsGrid" 
             AutoGenerateColumns="False" 
-            Margin="0,36,0,68" 
+            Margin="0,28,0,76" 
             HorizontalAlignment="Center" 
-            Width="465" 
+            Width="738" 
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
             CanUserResizeColumns="False" 
             >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
-                <DataGridTextColumn Header="GroupID" Binding="{Binding groupId}" />
-                <DataGridTextColumn Header="SubGroupNo" Binding="{Binding subgroupNo}" />
-                <DataGridTextColumn Header="SubGroupId" Binding="{Binding subgroupId}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="150" />
+                <DataGridTextColumn Header="GroupID" Binding="{Binding groupId}" Width="150" />
+                <DataGridTextColumn Header="SubGroupNo" Binding="{Binding subgroupNo}" Width="150" />
+                <DataGridTextColumn Header="SubGroupId" Binding="{Binding subgroupId}" Width="150" />
 
 
 
