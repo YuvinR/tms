@@ -8,38 +8,79 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="400*"/>
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="185*"/>
-            <RowDefinition Height="185*"/>
-        </Grid.RowDefinitions>
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="0" x:Name="TrainsitionigContentSlide1" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Label Grid.Column="0" Grid.Row="0" >
-                <TextBlock Grid.Column="0" Grid.Row="0"  TextDecorations="Underline" FontSize="30" FontWeight="DemiBold" Margin="10,5,0,0">Reserve/Allocate Rooms</TextBlock>
-            </Label>
-        </materialDesign:TransitioningContent>
+        <Label>
+            <TextBlock TextDecorations="Underline" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Reserve and Allocate Rooms</TextBlock>
+        </Label>
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="1"  x:Name="TrainsitionigContentSlide2" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}" Height="auto">
-            <Button Grid.Column="1"  x:Name="BtnViewLoc" Content="Reserve a Room" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,18,50,117"  />
-        </materialDesign:TransitioningContent>
+        <materialDesign:Card Margin="21,66,615,246">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnReserveRoom"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
 
-        <materialDesign:TransitioningContent Grid.Column="1" Grid.Row="2"  x:Name="TrainsitionigContentSlide3" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Button Grid.Column="1" x:Name="BtnAddLoc" Content="Allocate Room" FontWeight="Medium" FontSize ="25" Height="50" Width="300" Margin="50,47,50,88" />
-        </materialDesign:TransitioningContent>
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Reserve Rooms"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is to reserve a room on a specific day at a given time."/></TextBlock>
+                </StackPanel>
 
-        <!--Image-->
-        <materialDesign:TransitioningContent Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  x:Name="TrainsitionigContentSlide4" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image HorizontalAlignment="Left" Height="236" Margin="28,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="332" Grid.RowSpan="2">
-                <Image.Source>
-                    <ImageSource>/Images/reservation.png</ImageSource>
-                </Image.Source>
-            </Image>
-        </materialDesign:TransitioningContent>
+
+
+            </Grid>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="252,66,382,246">
+            <Grid Margin="0,0,-5,37">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="BtnAddRoom"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,50,0,0" Background="#FFFFFFFF" Height="51" Width="51">
+                    <materialDesign:PackIcon Kind="MapMarker" HorizontalAlignment="Center" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,46" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Allocate Rooms"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="45" Width="164"><Run Text="This Option is used to allocate rooms based on specific conditions."/></TextBlock>
+                </StackPanel>
+
+
+
+            </Grid>
+        </materialDesign:Card>
 
     </Grid>
 </UserControl>

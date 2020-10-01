@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeTableManagementSystem.interfaces.ManageRooms;
 
 namespace TimeTableManagementSystem.Pages
 {
@@ -21,6 +22,18 @@ namespace TimeTableManagementSystem.Pages
         public De_Allocation()
         {
             InitializeComponent();
+        }
+
+        private void BtnAddRoom(object sender, RoutedEventArgs e)
+        {
+            Allocate_Rooms allocate_Rooms = new Allocate_Rooms();
+            allocate_Rooms.Show();
+        }
+
+        private void BtnReserveRoom(object sender, RoutedEventArgs e)
+        {
+            ReserveRooms reserveRooms = new ReserveRooms();
+            reserveRooms.Show();
         }
     }
 }
