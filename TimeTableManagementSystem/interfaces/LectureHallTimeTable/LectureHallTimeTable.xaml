@@ -44,6 +44,8 @@
         <ComboBox materialDesign:HintAssist.Hint="Lecture Hall" x:Name="cmb_type" Grid.Column="1" HorizontalAlignment="Left" Margin="39,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Grid.RowSpan="2"/>
         <ComboBox ItemsSource="{Binding}" materialDesign:HintAssist.Hint="Select Location" x:Name="cmb_location" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="131,30,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="120" DropDownClosed="LoadRommNumbers"/>
         <ComboBox ItemsSource="{Binding}" materialDesign:HintAssist.Hint="Select Hall Number" x:Name="cmb_hall_number" Grid.Column="5" HorizontalAlignment="Left" Margin="22,31,0,0" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
+        <Grid x:Name="MainGrid" Grid.Row="2" Grid.ColumnSpan="8" Margin="35,49,65,43" Grid.RowSpan="11"/>
+        <Button x:Name="btn_print_table" Content="Print" Grid.Column="6" HorizontalAlignment="Left" Margin="76,21,0,0" Grid.RowSpan="2" Grid.Row="12" VerticalAlignment="Top" Width="152" Grid.ColumnSpan="2" Background="#FF48D641" FontWeight="Bold" FontSize="16" Click="btn_print_table_Click" />
 
     </Grid>
 </Window>
