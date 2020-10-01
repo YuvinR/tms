@@ -29,7 +29,7 @@
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                 BorderBrush="Black" BorderThickness="3,3,3,3"
-            Content="Search" HorizontalAlignment="Left" Margin="314,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+            Content="Search" HorizontalAlignment="Left" Margin="314,142,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
             " Width="152" FontSize="20" FontWeight="Bold" Background="#4DB5AB" Foreground="White" Click="BtnSearchFields_Click"
             />
 
@@ -37,19 +37,20 @@
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                 BorderBrush="Black" BorderThickness="3,3,3,3"
-            Content="Clear" HorizontalAlignment="Left" Margin="30,176,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
+            Content="Clear" HorizontalAlignment="Left" Margin="30,142,0,0" Grid.Row="1" VerticalAlignment="Top" Height="40
             " Width="152" FontSize="20" FontWeight="Bold" Background="#F54337" Foreground="White" Grid.Column="1" Click="BtnClearFields_Click"
             />
         <DataGrid x:Name="SessionDataGrid"
-            Grid.Row="1" Margin="31,227,32,16" Grid.ColumnSpan="2"
+            Grid.Row="1" Margin="31,191,0,10" Grid.ColumnSpan="2"
             AutoGenerateColumns="False" 
-            HorizontalAlignment="Center" 
+            HorizontalAlignment="Left" 
             HorizontalContentAlignment="Center"
             Width="937"
+           
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
-            CanUserResizeColumns="False">
+            CanUserResizeColumns="True">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Session ID" Binding="{Binding Session_ID}" />
@@ -74,29 +75,29 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Lecturers"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,47,0,0"/>
-        <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="1"/>
-        <Label Content="Tag"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,121,0,0" Grid.Column="1"/>
-        <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,121,0,0"/>
+        <Label Content="Lecturers"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,17,0,0"/>
+        <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,20,0,0" Grid.Column="1"/>
+        <Label Content="Tag"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,91,0,0" Grid.Column="1"/>
+        <Label Content="Group ID"  HorizontalAlignment="Left" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="55,91,0,0"/>
 
 
         <ComboBox x:Name="SearchLecCombo"
             materialDesign:HintAssist.Hint="Select Lecturer"
             materialDesign:HintAssist.HintOpacity=".26"
             
-            HorizontalAlignment="Left" Margin="244,43,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
+            HorizontalAlignment="Left" Margin="244,13,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
         <ComboBox x:Name="SearchSubCombo"
             materialDesign:HintAssist.Hint="Select Subject"
             materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="228,47,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
+            Grid.Column="1" HorizontalAlignment="Left" Margin="228,17,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
         <ComboBox x:Name="SearchGrpCombo"
             materialDesign:HintAssist.Hint="Select Group ID"
             materialDesign:HintAssist.HintOpacity=".26"
-            HorizontalAlignment="Left" Margin="242,117,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
+            HorizontalAlignment="Left" Margin="242,87,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top" />
         <ComboBox x:Name="SearchTagCombo"
             materialDesign:HintAssist.Hint="Select Tag"
             materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="226,118,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
+            Grid.Column="1" HorizontalAlignment="Left" Margin="226,88,0,0" Grid.Row="1" Width="240" Height="40" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

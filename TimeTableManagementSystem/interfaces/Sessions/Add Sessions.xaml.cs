@@ -23,7 +23,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
     {
         private string selectedLec;
         private string lecturers;
-
+        private string mainGrpId;
         private string subject;
         private string subCode;
         private string tag;
@@ -49,7 +49,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
         private void BtnCreateSessions_Click(object sender, RoutedEventArgs e)
         {
             bool returnExsits = false;
-            int stdCount;
+            //int stdCount;
             //bool returnExsits = checkDBValues();
 
             /*if (String.IsNullOrEmpty(textListInput.Text) || String.IsNullOrEmpty(SbjComboBox.Text) || String.IsNullOrEmpty(GrpIdComboBox.Text) || String.IsNullOrEmpty(TagComboBox.Text)
@@ -93,10 +93,22 @@ namespace TimeTableManagementSystem.interfaces.Sessions
 
                     subCode = (string)command.ExecuteScalar();
 
+                    if (tag.ToLower().Equals("practical"))
+                    {
+                        command.CommandText = "Select g.groupId from Groups g INNER JOIN SubGroup s ON g.id = s.groupId Where s.subgroupId = @subgroupId";
+                        command.Parameters.AddWithValue("@subgroupId", groupID);
+
+                        mainGrpId = (string)command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        mainGrpId = groupID;
+                    }
+
                     command.CommandText = "Insert into Sessions " +
-                                        "(Lecturers, Subject, Subject_Code, Tag, GroupID, Student_Count,Duration,isDeAllocated) " +
+                                        "(Lecturers, Subject, Subject_Code, Tag, GroupID, Student_Count,Duration,isDeAllocated, MainGroupID) " +
                                         "Values " +
-                                        "(@Lecturers, @Subject, @Subject_Code, @Tag, @GroupID, @Student_Count, @Duration,0)";
+                                        "(@Lecturers, @Subject, @Subject_Code, @Tag, @GroupID, @Student_Count, @Duration,0 , @MainGroupID)";
 
                     command.Parameters.AddWithValue("@Lecturers",lecturers);
                     command.Parameters.AddWithValue("@Subject", subject);
@@ -105,6 +117,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     command.Parameters.AddWithValue("@GroupID", groupID);
                     command.Parameters.AddWithValue("@Student_Count", stdCount);
                     command.Parameters.AddWithValue("@Duration",duration);
+                    command.Parameters.AddWithValue("@MainGroupID", mainGrpId);
                  
 
                     int rows = command.ExecuteNonQuery();
@@ -133,6 +146,7 @@ namespace TimeTableManagementSystem.interfaces.Sessions
                     connection.Close();
                 }
                 clearFields();
+                lecturers = "";
             }
         }
 
