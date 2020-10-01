@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeTableManagementSystem.interfaces.ConsecutiveSessions;
+using TimeTableManagementSystem.interfaces.NonOverlap;
+using TimeTableManagementSystem.interfaces.ParallelSessions;
 using TimeTableManagementSystem.interfaces.StudentOperations;
 using TimeTableManagementSystem.interfaces.Unavailable;
 
@@ -35,6 +37,18 @@ namespace TimeTableManagementSystem.Pages
         private void Btn_ConsecutiveClick(object sender, RoutedEventArgs e)
         {
             Consecutive consec = new Consecutive();
+            consec.Show();
+        }
+
+        private void Btn_ParallelClick(object sender, RoutedEventArgs e)
+        {
+            ParralelSessions consec = new ParralelSessions();
+            consec.Show();
+        }
+
+        private void Btn_NonOvClick(object sender, RoutedEventArgs e)
+        {
+            NonOverlap consec = new NonOverlap();
             consec.Show();
         }
     }
