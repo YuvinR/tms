@@ -24,36 +24,12 @@
             </Label>
         </materialDesign:TransitioningContent>
         <!--Charts-->
-        <lvc:PieChart x:Name="SubPieChart" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="-48,59,28,48" Grid.Row="1">
+        <lvc:PieChart x:Name="SubPieChart" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="-48,59,28,47" Grid.Row="1">
             
         </lvc:PieChart>
-        <lvc:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="0,60,17,10" Grid.Row="1" Grid.Column="1">
-            <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Professor" Values="1" DataLabels="True"
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Assistant Professor" Values="2" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Senior Lecturer" Values="6" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Lecturer" Values="2" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Assistant Lecturer" Values="3" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Instructor" Values="3" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-            </lvc:PieChart.Series>
+        <lvc:PieChart x:Name="LecPieChart" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="0,60,17,30" Grid.Row="1" Grid.Column="1">
         </lvc:PieChart>
-        <lvc:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="8,60,-18,47" Grid.Row="1" Grid.Column="2">
-            <lvc:PieChart.Series>
-                <lvc:PieSeries Title="Year 1" Values="3" DataLabels="True"
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Year 2" Values="2" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Year 3" Values="1" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries Title="Year 4" Values="2" DataLabels="True" 
-                    LabelPoint="{Binding PointLabel}"/>
-            </lvc:PieChart.Series>
+        <lvc:PieChart x:Name="GroupPieChart" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" Margin="8,60,-18,47" Grid.Row="1" Grid.Column="2">
         </lvc:PieChart>
         <Label Content="Subject Breakdown" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="188" FontSize="20px" FontWeight="Bold"/>
         <Label Content="Lecturer Breakdown" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="40" Width="190" FontSize="20px" Grid.Column="1" FontWeight="Bold" Margin="26,0,0,0"/>
