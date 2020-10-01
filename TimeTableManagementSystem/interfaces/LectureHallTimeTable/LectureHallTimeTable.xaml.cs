@@ -72,41 +72,46 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
         private void LoadRommNumbers(object sender, EventArgs e)
         {
 
-            string locationName =  cmb_location.SelectedValue.ToString();
-
-            try
+            if(cmb_location.SelectedValue != null)
             {
-                DataTable dataTable = new DataTable();
-
-                SQLiteCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-
-                command.CommandText = "SELECT * FROM Location WHERE BuildingName = '"+locationName+"';";
-
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-
-                DataSet ds = new DataSet();
-
-                dataAdapter.Fill(ds);
-
-                //cmb_location.ItemsSource = ds.Tables[0].DefaultView;
-                //cmb_location.DisplayMemberPath = ds.Tables[0].Columns["BuildingName"].ToString();
-                //cmb_location.SelectedValuePath = ds.Tables[0].Columns["BuildingName"].ToString();
+                string locationName = cmb_location.SelectedValue.ToString();
 
 
-                cmb_hall_number.ItemsSource = ds.Tables[0].DefaultView;
-                cmb_hall_number.DisplayMemberPath = ds.Tables[0].Columns["RoomNumber"].ToString();
-                cmb_hall_number.SelectedValuePath = ds.Tables[0].Columns["RoomNumber"].ToString();
+                try
+                {
+                    DataTable dataTable = new DataTable();
 
+                    SQLiteCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+
+                    command.CommandText = "SELECT * FROM Location WHERE BuildingName = '" + locationName + "';";
+
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+                    DataSet ds = new DataSet();
+
+                    dataAdapter.Fill(ds);
+
+                    //cmb_location.ItemsSource = ds.Tables[0].DefaultView;
+                    //cmb_location.DisplayMemberPath = ds.Tables[0].Columns["BuildingName"].ToString();
+                    //cmb_location.SelectedValuePath = ds.Tables[0].Columns["BuildingName"].ToString();
+
+
+                    cmb_hall_number.ItemsSource = ds.Tables[0].DefaultView;
+                    cmb_hall_number.DisplayMemberPath = ds.Tables[0].Columns["RoomNumber"].ToString();
+                    cmb_hall_number.SelectedValuePath = ds.Tables[0].Columns["RoomNumber"].ToString();
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch (Exception ex)
-            {
 
-            }
-            finally
-            {
-                connection.Close();
-            }
         }
     }
 }
