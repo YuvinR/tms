@@ -37,8 +37,7 @@
         <Label Content="Group"  HorizontalAlignment="Left" Grid.Row="5" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="0"/>
 
         <Label Content="Subject"  HorizontalAlignment="Left" Grid.Row="2" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="1"/>
-        <Label Content="Consecutive Session"  HorizontalAlignment="Left" Grid.Row="3" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="1"/>
-        <Label Content="Session"  HorizontalAlignment="Left" Grid.Row="4" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,50,0,0" Grid.Column="1"/>
+        <Label Content="Session"  HorizontalAlignment="Left" Grid.Row="3" FontWeight="SemiBold" VerticalAlignment="Top" FontSize="16" Height="35" Width="170" Margin="35,46,0,0" Grid.Column="1"/>
 
         <ComboBox Name="SearchRoomCombo"
             materialDesign:HintAssist.Hint="Select Room/s"
@@ -63,14 +62,10 @@
             materialDesign:HintAssist.Hint="Select Subject"
             materialDesign:HintAssist.HintOpacity=".26"
             Grid.Column="1" HorizontalAlignment="Left" Margin="228,47,0,0" Grid.Row="2" Width="240" Height="40" VerticalAlignment="Top"/>
-        <ComboBox x:Name="SearchConSessionCombo"
-            materialDesign:HintAssist.Hint="Select Consecutive Session"
-            materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="228,47,0,0" Grid.Row="3" Width="240" Height="40" VerticalAlignment="Top"/>
         <ComboBox x:Name="SearchSessionCombo"
             materialDesign:HintAssist.Hint="Select Session"
             materialDesign:HintAssist.HintOpacity=".26"
-            Grid.Column="1" HorizontalAlignment="Left" Margin="228,47,0,0" Grid.Row="4" Width="240" Height="40" VerticalAlignment="Top"/>
+            Grid.Column="1" HorizontalAlignment="Left" Margin="228,48,0,0" Grid.Row="3" Width="240" Height="40" VerticalAlignment="Top"/>
 
         <!--List View-->
         <ListView x:Name="listViewRooms" 
@@ -84,23 +79,25 @@
     >
             _SELECT
         </Button>
-
-        <Button
-    Style="{StaticResource MaterialDesignFlatLightBgButton}" Grid.Column="1" Margin="252,2,32,56" Grid.Row="3" RenderTransformOrigin="0.495,0.467"
-    >
-            View Consecutive Sessions
-        </Button>
         <Button
     Style="{StaticResource MaterialDesignFlatLightBgButton}"
-    ToolTip="MaterialDesignFlatLightButton" Grid.Column="1" Margin="252,2,32,55" Grid.Row="4">
+    ToolTip="MaterialDesignFlatLightButton" Grid.Column="1" Margin="161,28,123,29" Grid.Row="4"
+            Click="BtnViewSessions_Click">
             View Sessions
         </Button>
 
         <Button
-    Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="376,23,376,35" Grid.Row="6" Grid.ColumnSpan="2"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="135,23,117,35" Grid.Row="6"
             Click="BtnAllocateRoom_Click"
     >
             _SAVE
+        </Button>
+
+        <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="126,23,126,35" Grid.Row="6"
+            Click="BtnFindRoom_Click" Grid.Column="1"
+    >
+            _FIND A ROOM
         </Button>
     </Grid>
 </Window>
