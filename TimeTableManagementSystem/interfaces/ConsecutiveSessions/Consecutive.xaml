@@ -1,0 +1,88 @@
+﻿<Window x:Class="TimeTableManagementSystem.interfaces.ConsecutiveSessions.Consecutive"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.StudentOperations"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        mc:Ignorable="d"
+        Title="Consecutive"  Height="600" Width="1000"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <Label RenderTransformOrigin="0.5,0.481">
+            <TextBlock FontSize="20" FontWeight="DemiBold" Margin="10,5,0,0">Create Consecutive Sessions</TextBlock>
+        </Label>
+        <ComboBox
+            materialDesign:HintAssist.Hint="Subject"
+            materialDesign:HintAssist.HintOpacity=".26"
+            IsEditable="True"
+            HorizontalAlignment="Left" 
+            Width="188" 
+            Margin="132,86,0,0" 
+            VerticalAlignment="Top"
+            x:Name="comboSubjects"
+            ItemsSource="{Binding}" Height="31" RenderTransformOrigin="0.615,1.297"
+            >
+        </ComboBox>
+        <Button
+            x:Name="generate"
+            Click="Button_ClickGenerate" 
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Margin="399,83,0,0" 
+            Height="33" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" Width="144">
+            Search
+        </Button>
+        <DataGrid x:Name="SessionDataGrid" Margin="0,151,0,71"
+            AutoGenerateColumns="False" 
+            HorizontalAlignment="Center" 
+            HorizontalContentAlignment="Center"
+            Width="772"
+            CanUserAddRows="False" 
+            IsReadOnly="True"
+            CanUserReorderColumns="False" 
+            CanUserResizeColumns="False" SelectionChanged="SessionDataGrid_SelectionChanged" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Session ID" Binding="{Binding Session_ID}" />
+                <DataGridTextColumn Header="Lecturers"  Binding="{Binding Lecturers}" />
+                <DataGridTextColumn Header="Subject"  Binding="{Binding Subject}" />
+                <DataGridTextColumn Header="Subject Code" Binding="{Binding Subject_Code}" />
+                <DataGridTextColumn Header="Tag" Binding="{Binding Tag}" />
+                <DataGridTextColumn Header="Group ID"  Binding="{Binding GroupID}" />
+                <DataGridTextColumn Header="Student Count" Binding="{Binding Student_Count}" />
+                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
+                <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox
+                              
+                               x:Name="BtnEdit"
+                               Checked="AddConsecutiveClick"
+                               Unchecked="RemoveCosecutiveClick"
+                            />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="consecutive"
+            Click="Button_ClickMakeConsec" 
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" 
+            Margin="804,513,0,0" 
+            Height="33" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left" Width="163">
+
+            Create Consecutive
+        </Button>
+    </Grid>
+</Window>

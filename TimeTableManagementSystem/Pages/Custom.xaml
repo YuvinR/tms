@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label>
-           <materialDesign:Card Margin="21,74,615,239">
-            <Grid Margin="0,0,-5,37" RenderTransformOrigin="0.474,0.552">
+
+        <materialDesign:Card Margin="30,99,604,132">
+            <Grid Margin="0,0,0,40" RenderTransformOrigin="0.477,0.465">
                 <Grid.RowDefinitions>
                     <RowDefinition
                         Height="37" />
@@ -25,23 +25,115 @@
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                     Click="BtnYnSAdd_Click"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top" Background="White" Height="51" Width="51" Margin="0,50,0,0">
+                    VerticalAlignment="Top" Background="White" Height="51" Width="50" RenderTransformOrigin="0.525,-0.33" Margin="0,25,0,0">
                     <materialDesign:PackIcon Kind="CalendarEdit" />
 
                 </Button>
                 <StackPanel
-                     Margin="8,18,8,46" Grid.RowSpan="4">
+                     Margin="8,18,8,73" Grid.RowSpan="5">
                     <TextBlock
                         FontWeight="Bold" Height="19" Width="173"><Run Text="Make Unavailable"/></TextBlock>
                     <TextBlock
-                        TextWrapping="Wrap" Height="54" Width="164"><Run Text="This Option is for mak unavailable session,lecturer,group or subgroup"/></TextBlock>
+                        TextWrapping="Wrap" Height="64" Width="164" RenderTransformOrigin="0.517,0.802"><Run Text="This Option is for mak unavailable session,lecturer,group or subgroup"/></TextBlock>
                 </StackPanel>
-
-
 
             </Grid>
         </materialDesign:Card>
 
-        </Label>
+        <materialDesign:Card Margin="222,99,412,132">
+            <Grid Margin="0,0,0,40" RenderTransformOrigin="0.477,0.465">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="Btn_ConsecutiveClick"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="50" RenderTransformOrigin="0.525,-0.33" Margin="0,25,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
+
+                </Button>
+                <StackPanel
+                     Margin="8,18,8,31" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Consecutve Session Creation"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="71" Width="164" RenderTransformOrigin="0.517,0.802"><Run Text="This Option is for make Consecutive Sessions"/></TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="413,99,221,132">
+            <Grid Margin="0,0,0,40" RenderTransformOrigin="0.477,0.465">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="Btn_ParallelClick"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="50" RenderTransformOrigin="0.525,-0.33" Margin="0,25,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
+
+                </Button>
+                <StackPanel
+                    Margin="8,18,8,31" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Parallel Session Creation"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="71" Width="164" RenderTransformOrigin="0.517,0.802"><Run Text="This Option is for make Consecutive Sessions"/></TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="604,99,30,132">
+            <Grid Margin="0,0,0,40" RenderTransformOrigin="0.477,0.465">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="37" />
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Click="Btn_NonOvClick"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Background="White" Height="51" Width="50" RenderTransformOrigin="0.525,-0.33" Margin="0,25,0,0">
+                    <materialDesign:PackIcon Kind="CalendarEdit" />
+
+                </Button>
+                <StackPanel
+                    Margin="8,18,8,31" Grid.RowSpan="4">
+                    <TextBlock
+                        FontWeight="Bold" Height="19" Width="173"><Run Text="Non-Overlap"/></TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap" Height="71" Width="164" RenderTransformOrigin="0.517,0.802"><Run Text="This Option is for make Consecutive Sessions"/></TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:Card>
+
+
     </Grid>
 </UserControl>
