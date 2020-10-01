@@ -4,19 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Unavailable.Components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="WhiteSmoke">
+             d:DesignHeight="447.209"
+             Background="WhiteSmoke" d:DesignWidth="846.047">
     <Grid>
-        <DataGrid x:Name="SessionDataGrid" Margin="0,39,0,204"
+        <DataGrid x:Name="SessionDataGrid" Margin="18,32,0,40"
             AutoGenerateColumns="False" 
-            HorizontalAlignment="Center" 
+            HorizontalAlignment="Left" 
             HorizontalContentAlignment="Center"
-            Width="781"
+            Width="808"
             CanUserAddRows="False" 
             IsReadOnly="True"
             CanUserReorderColumns="False" 
-            CanUserResizeColumns="False">
+            CanUserResizeColumns="False" SelectionChanged="SessionDataGrid_SelectionChanged">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Session ID" Binding="{Binding Session_ID}" />
@@ -27,13 +29,18 @@
                 <DataGridTextColumn Header="Group ID"  Binding="{Binding GroupID}" />
                 <DataGridTextColumn Header="Student Count" Binding="{Binding Student_Count}" />
                 <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />
-                <DataGridTemplateColumn Header="Delete" Width="70">
+                <DataGridTemplateColumn Header="Make Unavailable">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnDelete" Height="20" Width="20" Click="BtnEdit_Click">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Images/delete.png" Stretch="Uniform"/>
-                                </Button.Background>
+                            <Button
+                                x:Name="BtnEdit"
+                                Click="BtnEdit_Click"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Height="30"
+                                Width="30"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                <materialDesign:PackIcon Kind="Cancel"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

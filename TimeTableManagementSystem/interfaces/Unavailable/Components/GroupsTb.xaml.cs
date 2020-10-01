@@ -38,7 +38,8 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Groups";
+                command.CommandText = "Select * from Groups  Where isDeAllocated = @isDeAllocated";
+                command.Parameters.AddWithValue("@isDeAllocated", 0);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
@@ -58,7 +59,42 @@ namespace TimeTableManagementSystem.interfaces.Unavailable.Components
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-           
+            DataRowView row = groupsGrid.SelectedItem as DataRowView;
+            var id = int.Parse(row.Row["id"].ToString());
+
+            connection.Open();
+
+            try
+            {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+
+                command.CommandText = "Update Groups Set isDeAllocated = @isDeAllocated Where id = @GID ";
+                command.Parameters.AddWithValue("@GID", id);
+                command.Parameters.AddWithValue("@isDeAllocated", 1);
+                int rows = command.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Group has been Unavailable!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurd");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Occurd" + ex);
+            }
+            finally
+            {
+                connection.Close();
+                loadDataGrid();
+            }
 
 
         }
