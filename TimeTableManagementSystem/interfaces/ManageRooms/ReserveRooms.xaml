@@ -41,9 +41,8 @@
         <materialDesign:TimePicker Name="endTime" Grid.Column="1" HorizontalAlignment="Left" Margin="231,0,0,0" Grid.Row="2" Width="239"/>
 
         <Button
-    Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="370,41,370,73" Grid.Row="3" Grid.ColumnSpan="2"
-            Click="BtnReserveRoom_Click"
-           
+    Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="328,41,327,72" Grid.Row="3"
+            Click="BtnReserveRoom_Click" Grid.ColumnSpan="2"         
     >
             _SAVE
         </Button>
