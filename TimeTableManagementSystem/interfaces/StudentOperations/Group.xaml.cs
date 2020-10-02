@@ -130,7 +130,16 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
 
                 if (rows > 0)
                 {
-                    MessageBox.Show("Group Data has been Deleted!");
+
+                    command.CommandText = "Delete from SubGroup where groupId = @groupId";
+                    command.Parameters.AddWithValue("@groupId", id.ToString());
+
+                    int srow = command.ExecuteNonQuery();
+                    if (rows > 0)
+                    {
+
+                        MessageBox.Show("Group Data has been Deleted!");
+                    }
                 }
                 else
                 {
@@ -152,7 +161,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
         private void Button_ClickSave(object sender, RoutedEventArgs e)
         {
 
-            if (String.IsNullOrEmpty(comboacys.Text) && String.IsNullOrEmpty(comboProgram.Text) && String.IsNullOrEmpty(groupNo.Text) && String.IsNullOrEmpty(groupid.Text))
+            if (String.IsNullOrEmpty(comboacys.Text) || String.IsNullOrEmpty(comboProgram.Text) || String.IsNullOrEmpty(groupNo.Text) || String.IsNullOrEmpty(groupid.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }
