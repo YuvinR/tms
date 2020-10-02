@@ -27,6 +27,7 @@ namespace TimeTableManagementSystem.interfaces.NonOverlap
         public NonOverlap()
         {
             InitializeComponent();
+            loadDataGrid();
         }
 
 
@@ -42,9 +43,8 @@ namespace TimeTableManagementSystem.interfaces.NonOverlap
 
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions Where isDeAllocated = @isDeAllocated AND ParallelCat = @ParallelCat";
+                command.CommandText = "Select * from Sessions Where isDeAllocated = @isDeAllocated AND ParallelCat is NULL";
                 command.Parameters.AddWithValue("@isDeAllocated", 0);
-                command.Parameters.AddWithValue("@ParallelCat", null);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
