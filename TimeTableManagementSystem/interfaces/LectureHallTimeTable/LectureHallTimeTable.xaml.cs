@@ -1235,7 +1235,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
                         stream.Close();
                     }
 
-                    MessageBox.Show("Data Exported Successfully !!!", "Info");
+                    MessageBox.Show("Time Table PDF Exported Successfully ! \n Please visit " + LectureHallPDFPath, "PDF EXPORT STATUS");
                 }
                 catch (Exception ex)
                 {

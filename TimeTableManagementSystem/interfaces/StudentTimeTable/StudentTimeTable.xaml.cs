@@ -1279,7 +1279,7 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
                         stream.Close();
                     }
 
-                    MessageBox.Show("Data Exported Successfully !!!", "Info");
+                    MessageBox.Show("Time Table PDF Exported Successfully ! \n Please visit " + StudentPDFPath, "PDF EXPORT STATUS");
                 }
                 catch (Exception ex)
                 {

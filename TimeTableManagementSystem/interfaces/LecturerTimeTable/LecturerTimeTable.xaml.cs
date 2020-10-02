@@ -1192,7 +1192,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                         stream.Close();
                     }
 
-                    MessageBox.Show("Data Exported Successfully !!!", "Info");
+                    MessageBox.Show("Time Table PDF Exported Successfully ! \n Please visit "+ LecturerPDFPath, "PDF EXPORT STATUS");
                 }
                 catch (Exception ex)
                 {
