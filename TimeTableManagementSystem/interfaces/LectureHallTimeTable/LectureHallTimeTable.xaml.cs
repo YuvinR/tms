@@ -177,7 +177,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "SELECT * FROM Sessions WHERE RoomID = '" + roomNumber + "' AND isDeAllocated = 0";
+                command.CommandText = "SELECT * FROM Sessions WHERE RoomID LIKE '%" + roomNumber + "%' AND isDeAllocated = 0";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
