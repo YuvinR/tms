@@ -97,16 +97,36 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         public LecturerTimeTable()
         {
-            
-            loadFull();
-            DatHeaddersaddingToTheTable();
-
             InitializeComponent();
             fetchDataToComboBox();
             btn_print_table.IsEnabled = false;
 
         }
 
+        public void cleanVariables()
+        {
+            this.noOfSessions = 0;
+            this.noOfDays = 0;
+            this.LecturerName = "";
+
+            this.loopbreak = 0;
+
+            this.IsFullWeek = false;
+
+            this.rowCount = 0;
+            this.columnCount = 0;
+            this.totalSessionDuration = 0;
+            this.weekDaysCount = 0;
+            this.weekEndCount = 0;
+            this.availableTimeSlotCount = 0;
+
+            this.ABCD.Clear();
+            this.sessionDetails.Clear();
+            this.NEW_LIST.Clear();
+            this.columnNames.Clear();
+            this.sessionDetailsSecondTurnFiltering.Clear();
+
+        }
 
         public void DatHeaddersaddingToTheTable()
         {
@@ -141,6 +161,10 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
 
         private void btn_generate_Click(object sender, RoutedEventArgs e)
         {
+            cleanVariables();
+            loadFull();
+            DatHeaddersaddingToTheTable();
+
             this.LecturerName = cmbLecturerName.SelectedValue.ToString();
             generateTable(cmbLecturerName.SelectedValue.ToString());
         }
