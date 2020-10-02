@@ -22,7 +22,7 @@ namespace TimeTableManagementSystem.interfaces.Unavailable
         public UnAvailable()
         {
             InitializeComponent();
-      
+            Lecs.IsChecked = true;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

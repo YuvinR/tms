@@ -924,7 +924,7 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "SELECT * FROM Location";
+                command.CommandText = "SELECT DISTINCT BuildingName FROM Location";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
