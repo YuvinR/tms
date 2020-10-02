@@ -239,7 +239,10 @@ namespace TimeTableManagementSystem.interfaces.ManageWorkingDaysAndHours
 
                 if (this.errorCount > 0)
                 {
-                    generateTimeSlots();
+                    if ((this.startTime.ToString() == "08:30:00" && this.endTime.ToString() == "17:30:00" && this.weekType == "weekday") || (this.startTime.ToString() == "08:30:00" && this.endTime.ToString() == "20:00:00" && this.weekType == "full" || this.weekType == "weekend"))
+                    {
+                        generateTimeSlots();
+                    }
                     clearFields();
                     initialLoad();
                     fetchDataFromDB();
