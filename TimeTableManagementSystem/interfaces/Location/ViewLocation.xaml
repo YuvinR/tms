@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Location"
         mc:Ignorable="d"
-        Title="ViewLocation" Height="650" Width="1000" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="ViewLocation" Height="650" Width="1000" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="217*"/>
@@ -37,10 +37,10 @@
         <DataGrid x:Name="LocDataGrid" Grid.Row="2" Margin="160,3,160,4" Grid.ColumnSpan="4"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                   CanUserReorderColumns="False" CanUserResizeColumns="False" RowHeight="40">
             <DataGrid.Columns >
-                <DataGridTextColumn  Header="ID" Binding="{Binding ID}" Width="40" />
+                <DataGridTextColumn  Header="ID" Binding="{Binding ID}" Width="45" />
                 <DataGridTextColumn  Header="Building Name" Binding="{Binding BuildingName}" Width="150"  />
                 <DataGridTextColumn Header="Room Type" Binding="{Binding RoomType}" Width="150"/>
-                <DataGridTextColumn Header="Room Number" Width="110" Binding="{Binding RoomNumber}"  />
+                <DataGridTextColumn Header="Room Number" Width="113" Binding="{Binding RoomNumber}"  />
                 <DataGridTextColumn Header="Capacity" Width="99" Binding="{Binding RoomCapacity}" />
 
 
@@ -56,7 +56,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Delete" Width="60">
+                <DataGridTemplateColumn Header="Delete" Width="70">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnDelete" Click="BtnDelete_Click" Height="20" Width="20">

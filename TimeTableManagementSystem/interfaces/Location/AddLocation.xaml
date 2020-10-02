@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeTableManagementSystem.interfaces.Location"
         mc:Ignorable="d"
-        Title="AddLocation" Height="500" Width="800">
+        Title="AddLocation" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" ResizeMode="NoResize">
 
     <Grid Margin="0,0,0,-6">
         <Grid.RowDefinitions>

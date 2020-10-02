@@ -114,7 +114,7 @@ namespace TimeTableManagementSystem.interfaces.StudentOperations
         private void Button_ClickSave(object sender, RoutedEventArgs e)
         {
 
-            if (String.IsNullOrEmpty(comboGroup.Text) && String.IsNullOrEmpty(subgroupnoTxt.Text) && String.IsNullOrEmpty(subgroupID.Text))
+            if (String.IsNullOrEmpty(comboGroup.Text) || String.IsNullOrEmpty(subgroupnoTxt.Text) || String.IsNullOrEmpty(subgroupID.Text))
             {
                 MessageBox.Show("Please fill the Text Boxes Before Inserting Data!");
             }

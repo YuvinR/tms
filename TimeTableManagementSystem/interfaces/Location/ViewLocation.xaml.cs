@@ -124,10 +124,10 @@ namespace TimeTableManagementSystem.interfaces.Location
             bName= UpdBuildingTxt.Text;
             rType = UpdRoomTypeCombo.Text;
             roomNo = UpdRoomNoTxt.Text;
-            rCapacity = int.Parse(UpdCapacityTxt.Text);
+            
 
 
-            if (String.IsNullOrEmpty(roomNo) || String.IsNullOrEmpty(bName) || String.IsNullOrEmpty(rType) || String.IsNullOrEmpty(rCapacity.ToString()))
+            if (String.IsNullOrEmpty(UpdIDTxt.Text) || String.IsNullOrEmpty(UpdRoomNoTxt.Text) || String.IsNullOrEmpty(UpdBuildingTxt.Text) || (UpdCapacityTxt.Text == null) || String.IsNullOrEmpty(UpdCapacityTxt.Text))
 
             {
                 MessageBox.Show("Please fill in all the fields before proceeding!");
@@ -135,7 +135,7 @@ namespace TimeTableManagementSystem.interfaces.Location
 
             else
             {
-
+                rCapacity = int.Parse(UpdCapacityTxt.Text);
                 connection.Open();
 
                 try

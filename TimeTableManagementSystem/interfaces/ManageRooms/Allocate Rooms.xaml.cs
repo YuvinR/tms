@@ -94,6 +94,10 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
                 }
 
             }
+            else
+            {
+                MessageBox.Show("Please Select a Session");
+            }
         }
 
         private void BtnAllocateRoom_Click(object sender, RoutedEventArgs e)
@@ -115,6 +119,13 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
                 SQLiteCommand command = connection.CreateCommand();
 
                 command.CommandType = CommandType.Text;
+
+                if(String.IsNullOrEmpty(SearchTagCombo.Text) && String.IsNullOrEmpty(SearchRoomCombo.Text) && String.IsNullOrEmpty(SearchLecCombo.Text) && String.IsNullOrEmpty(SearchGroupCombo.Text)
+                    && String.IsNullOrEmpty(SearchSubGroupCombo.Text) && String.IsNullOrEmpty(SearchSubjCombo.Text) && String.IsNullOrEmpty(SearchSessionCombo.Text))
+                {
+                    MessageBox.Show("Please specify at least one condition for a given room or rooms");
+                    return;
+                }
 
                 if (!String.IsNullOrEmpty(SearchTagCombo.Text) && !String.IsNullOrEmpty(SearchRoomCombo.Text))
                 {
