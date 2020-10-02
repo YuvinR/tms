@@ -102,16 +102,45 @@ namespace TimeTableManagementSystem.interfaces.LectureHallTimeTable
 
         public LectureHallTimeTable()
         {
-            loadFull();
-            DatHeaddersaddingToTheTable();
-
             InitializeComponent();
             fetchDataToComboBox();
             btn_print_table.IsEnabled = false;
         }
 
+        public void cleanVariables()
+        {
+            this.noOfSessions = 0;
+            this.noOfDays = 0;
+            this.roomNumber = "";
+
+            this.roomPdfName = "";
+
+            this.loopbreak = 0;
+
+            this.IsFullWeek = false;
+
+            this.rowCount = 0;
+            this.columnCount = 0;
+            this.totalSessionDuration = 0;
+            this.weekDaysCount = 0;
+            this.weekEndCount = 0;
+            this.availableTimeSlotCount = 0;
+
+            this.ABCD.Clear();
+            this.sessionDetails.Clear();
+            this.NEW_LIST.Clear();
+            this.columnNames.Clear();
+            this.sessionDetailsSecondTurnFiltering.Clear();
+
+        }
+
         private void btn_generate_Click(object sender, RoutedEventArgs e)
         {
+            cleanVariables();
+            loadFull();
+            DatHeaddersaddingToTheTable();
+
+
             if (cmb_hall_number.SelectedValue != null && cmb_location.SelectedValue != null)
             {
                 this.roomNumber = cmb_hall_number.SelectedValue.ToString();
