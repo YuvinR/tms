@@ -11,7 +11,7 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Title="View_Lecturer" Height="650" Width="1000" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="View_Lecturer" Height="650" Width="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFA0A0A0" Offset="1"/>
