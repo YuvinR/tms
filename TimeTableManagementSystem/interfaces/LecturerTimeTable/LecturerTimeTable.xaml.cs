@@ -239,7 +239,7 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lecturerName + "%'";
+                command.CommandText = "Select * from Sessions where Lecturers LIKE '%" + lecturerName + "%' AND isDeAllocated = 0";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 

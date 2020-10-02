@@ -460,7 +460,7 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "SELECT * FROM Sessions WHERE MainGroupID = '" + groupDetails + "'";
+                command.CommandText = "SELECT * FROM Sessions WHERE MainGroupID = '" + groupDetails + "' AND isDeAllocated = 0";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
