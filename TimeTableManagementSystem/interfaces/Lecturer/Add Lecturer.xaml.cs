@@ -58,7 +58,7 @@ namespace TimeTableManagementSystem.interfaces.Lecturer
             {
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Select * from Location";
+                command.CommandText = "Select DISTINCT BuildingName from Location";
 
                 SQLiteDataReader reader = command.ExecuteReader();
 
