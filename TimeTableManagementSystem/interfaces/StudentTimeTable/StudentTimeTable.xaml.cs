@@ -287,7 +287,7 @@ namespace TimeTableManagementSystem.interfaces.StudentTimeTable
                 string year = cmb_year.Text.ToString();
                 string semester = cmb_semester.Text.ToString();
 
-                this.groupNumber = ("Y" + year + ".S" + semester + "." + cmb_degree_name.SelectedValue.ToString() + "." + grupNumberCharcter).ToString();
+                this.groupNumber = ("Y" + year + ".S" + semester + "." + cmb_degree_name.SelectedValue.ToString() + "." + cmb_group.SelectedValue.ToString()).ToString();
 
                 System.Diagnostics.Debug.WriteLine("Number " + this.groupNumber);
                 generateTable(this.groupNumber);
