@@ -168,8 +168,16 @@ namespace TimeTableManagementSystem.interfaces.LecturerTimeTable
             loadFull();
             DatHeaddersaddingToTheTable();
 
-            this.LecturerName = cmbLecturerName.SelectedValue.ToString();
-            generateTable(cmbLecturerName.SelectedValue.ToString());
+            if (cmbLecturerName.SelectedValue == null)
+            {
+                MessageBox.Show("Please Select Fields Before Genarating");
+            }
+            else
+            {
+                this.LecturerName = cmbLecturerName.SelectedValue.ToString();
+                generateTable(cmbLecturerName.SelectedValue.ToString());
+            }
+
         }
 
         public void fetchDataToComboBox()
