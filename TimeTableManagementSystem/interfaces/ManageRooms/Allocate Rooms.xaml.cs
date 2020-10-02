@@ -203,6 +203,8 @@ namespace TimeTableManagementSystem.interfaces.ManageRooms
                         return;
           
                     }
+
+                    rooms = "";
                    
                     
                 }
